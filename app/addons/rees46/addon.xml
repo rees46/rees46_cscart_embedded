@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<addon scheme="2.0">
+    <id>rees46</id>
+    <version>0.0.1</version>
+    <name>Rees46 Recommender</name>
+    <description>SOME DESC</description>
+    <priority>100500</priority>
+    <settings>
+        <sections>
+            <section id="main">
+                <items>
+                    <item id="shop_id">
+                        <name>Shop ID</name>
+                        <type>input</type>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+</addon>

@@ -1,2 +1,22 @@
-*
+/*
 !.gitignore
+
+# module
+!app/
+app/*
+!app/addons/
+app/addons/*
+!app/addons/rees46/
+
+# template
+!design/
+design/*
+!design/themes/
+design/themes/*
+!design/themes/basic/
+design/themes/basic/*
+!design/themes/basic/templates/
+design/themes/basic/templates/*
+!design/themes/basic/templates/addons/
+design/themes/basic/templates/addons/*
+!design/themes/basic/templates/addons/rees46/
