@@ -13,6 +13,9 @@ class Events
             case 'remove_from_cart':
                 $cookie_name = 'rees46_track_remove_from_cart';
                 break;
+            case 'order':
+                $cookie_name = 'rees46_track_purchase';
+                break;
             default:
                 throw new \Exception('Unknown type');
         }

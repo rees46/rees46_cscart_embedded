@@ -2,7 +2,8 @@
 
 fn_register_hooks(
     'add_to_cart',
-    'delete_cart_product'
+    'delete_cart_product',
+    'place_order'
 );
 
 function fn_rees46_add_to_cart($cart, $product_id, $_id)
@@ -19,4 +20,21 @@ function fn_rees46_delete_cart_product($cart, $cart_id, $full_erase)
             \Rees46\Events::CookieEvent('remove_from_cart', array('item_id' => $product_id));
         }
     }
+}
+
+function fn_rees46_place_order($order_id, $action, $order_status, $cart, $auth)
+{
+    $data = array(
+        'items'     => array(),
+        'order_id'  => $order_id,
+    );
+
+    foreach ($cart['products'] as $product) {
+        $data['items'][] = array(
+            'item_id' => $product['item_id'],
+            'amount'  => $product['amount']
+        );
+    }
+
+    \Rees46\Events::CookieEvent('order', $data);
 }
