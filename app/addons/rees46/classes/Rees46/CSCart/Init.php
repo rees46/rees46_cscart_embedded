@@ -7,8 +7,7 @@ class Init
     public static function getGlobal()
     {
         return array(
-            'shop_id' => Config::getShopID(),
-            'user_id' => Runtime::getUserID(),
+            'shop_id' => Config::getShopID()
         );
     }
 }
