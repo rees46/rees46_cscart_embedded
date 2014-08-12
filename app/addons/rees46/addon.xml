@@ -2,16 +2,26 @@
 
 <addon scheme="2.0">
     <id>rees46</id>
-    <version>0.0.1</version>
-    <name>Rees46 Recommender</name>
-    <description>SOME DESC</description>
+    <version>1.0</version>
+    <default_language>ru</default_language>
     <priority>100500</priority>
+    <auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
+
+    <name>REES46: персональные рекомендации товаров в интернет-магазине</name>
+    <description>
+        Модуль персонализации REES46 анализирует действия покупателей на вашем интернет-магазине и уже с первых шагов выявляет цели и предпочтения каждого вашего посетителя. Модуль знает, зачем пришел этот человек, какие товары его заинтересуют, а какие лучше не предлагать. 
+    </description>
+    
     <settings>
         <sections>
             <section id="main">
                 <items>
+                    <item id="info">
+                        <type>info</type>
+                        <handler>fn_rees46_generate_info</handler>
+                    </item>
                     <item id="shop_id">
-                        <name>Shop ID</name>
+                        <name>Код вашего магазина</name>
                         <type>input</type>
                     </item>
                 </items>

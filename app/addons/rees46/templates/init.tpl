@@ -24,10 +24,30 @@
         };
     }
 
+    {if $product}
+      document.currentProductId = {$product.product_id};
+    {/if}
+
+    {if $cart}
+      document.currentCart = '{$cart.products|json_encode}';
+      document.currentCart = document.currentCart.replace(/&quot;/g, '"');
+      document.currentCart = JSON.parse(document.currentCart);
+      var ids = [];
+
+      for(var k in document.currentCart) {
+        ids.push(document.currentCart[k].product_id);
+      }
+
+      document.currentCart = ids;
+    {else}
+      document.currentCart = [];
+    {/if}
+
     REES46.addReadyListener(function() {
       $('.rees46').each(function() {
         var recommenderBlock = $(this);
         var recommenderType = recommenderBlock.attr('data-type');
+        var categoryId = recommenderBlock.attr('data-category');
 
         var tpl_items = '<div class="recommender-block-title">[1]</div><div class="recommended-items">[0]</div>';
         var tpl_item  = '<div class="recommended-item">'+
@@ -48,21 +68,30 @@
 
         if (recommenderType) {
           REES46.recommend({
-            recommender_type: recommenderType
+            recommender_type: recommenderType,
+            category: categoryId,
+            item: document.currentProductId,
+            cart: document.currentCart
           }, function(ids) {
+            if (ids.length == 0) {
+              return;
+            }
+
             $.getJSON('index.php?dispatch=rees46.get_info&product_ids=' + ids.join(','), function(data) {
               var products = JSON.parse(data.text).products;
 
               var productsBlock = '';
 
               $(products).each(function() {
-                productsBlock += tpl_item.format(
-                  this.url + '?recommended_by=' + recommenderType,
-                  this.name,
-                  this.image_url,
-                  this.price,
-                  REES46.currency
-                );
+                if (this.name != '') {
+                  productsBlock += tpl_item.format(
+                    this.url + '?recommended_by=' + recommenderType,
+                    this.name,
+                    this.image_url,
+                    this.price,
+                    REES46.currency
+                  );
+                }
               });
 
               var recommender_titles = {
@@ -74,8 +103,10 @@
                   recently_viewed: 'Вы недавно смотрели'
               };
 
-              items = tpl_items.format(productsBlock, recommender_titles[recommenderType]);
-              recommenderBlock.html(items);
+              if (productsBlock != '') {
+                items = tpl_items.format(productsBlock, recommender_titles[recommenderType]);
+                recommenderBlock.html(items);
+              }
             });
           });
         }

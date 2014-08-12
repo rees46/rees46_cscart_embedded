@@ -30,10 +30,7 @@ function fn_rees46_place_order($order_id, $action, $order_status, $cart, $auth)
     );
 
     foreach ($cart['products'] as $product) {
-        $data['items'] = array(
-            'item_id' => $product['product_id'],
-            'amount'  => $product['amount']
-        );
+        array_push($data['items'], array('item_id' => $product['product_id'], 'amount'  => $product['amount']));
     }
 
     \Rees46\Events::CookieEvent('order', $data);
