@@ -20,9 +20,15 @@ function fn_rees46_generate_info()
     </p>
     ';
   } else {
-    return '
-    <p>Перейти к <a href="http://rees46.com/shops" target="_blank">статистике эффективности</a> работы системы персонализации.</p>
-    <p>Прочитать <a href="http://memo.mkechinov.ru/display/R46D/CS-Cart" target="_blank">подробную инструкцию</a> по настройке модуля.</p>
+    $res = '
+      <p>Перейти к <a href="http://rees46.com/shops" target="_blank">статистике эффективности</a> работы системы персонализации.</p>
+      <p>Прочитать <a href="http://memo.mkechinov.ru/display/R46D/CS-Cart" target="_blank">подробную инструкцию</a> по настройке модуля.</p>
     ';
+
+    if (Registry::get('addons.rees46.already_exported') != 'true') {
+      $res = $res . '<p><a href="/admin.php?dispatch=rees46.export_orders" class="btn btn-primary">Выгрузить заказы</a> (может занять некоторое время)</p>';
+    }
+
+    return $res;
   }
 }

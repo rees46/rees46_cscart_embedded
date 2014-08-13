@@ -24,6 +24,10 @@
                         <name>Код вашего магазина</name>
                         <type>input</type>
                     </item>
+                    <item id="shop_secret">
+                        <name>Секретный ключ вашего магазина</name>
+                        <type>input</type>
+                    </item>
                 </items>
             </section>
         </sections>
