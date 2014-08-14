@@ -1,6 +1,4 @@
 <?php
-use Tygh\Registry;
-use Tygh\BlockManager\ProductTabs;
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 

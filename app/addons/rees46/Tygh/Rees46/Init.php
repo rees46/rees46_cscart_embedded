@@ -1,6 +1,6 @@
 <?php
 
-namespace Rees46\CSCart;
+namespace Tygh\Rees46;
 
 class Init
 {

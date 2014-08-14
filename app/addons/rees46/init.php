@@ -1,9 +1,9 @@
 <?php
 
-/** @var \Composer\Autoload\ClassLoader $autoloader */
-$autoloader = require __DIR__ . '/../../lib/vendor/autoload.php';
+if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
-$autoloader->add('Rees46\\', __DIR__ . '/classes');
-
-require __DIR__ . '/hooks.php';
-require __DIR__ . '/func.php';
+fn_register_hooks(
+    'add_to_cart',
+    'delete_cart_product',
+    'place_order'
+);

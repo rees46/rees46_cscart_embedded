@@ -1,6 +1,6 @@
 <?php
 
-namespace Rees46;
+namespace Tygh\Rees46;
 
 class Events
 {

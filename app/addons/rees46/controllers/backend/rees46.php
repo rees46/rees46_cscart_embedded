@@ -1,13 +1,13 @@
 <?php
-use Tygh\Registry;
+use Tygh\Rees46\Config;
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
 if ($mode == 'export_orders') {
-    if ((Registry::get('addons.rees46.shop_id') == '') || (Registry::get('addons.rees46.shop_secret') == '')) {
+    $shop_id = Config::getShopID();
+    $shop_secret = Config::getShopSecret();
+    if (($shop_id == '') || ($shop_secret == '')) {
         fn_set_notification('E', 'Ошибка' ,'Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.', 'I');
-    } elseif (Registry::get('addons.rees46.already_exported') == 'true') {
-        fn_set_notification('E', 'Ошибка' ,'Вы уже выгрузили заказы', 'I');
     } else {
         $params = array('timestamp > ' . strtotime('-6 months'), 'items_per_page' => 1000);
         $orders = fn_get_orders($params);
@@ -40,17 +40,15 @@ if ($mode == 'export_orders') {
         }
 
         $result = array(
-            'shop_id' => Registry::get('addons.rees46.shop_id'),
-            'shop_secret' => Registry::get('addons.rees46.shop_secret'),
+            'shop_id' => $shop_id,
+            'shop_secret' => $shop_secret,
             'orders' => $processed_orders
         );
 
         $pest = new \PestJSON('http://api.rees46.com');
         $pest->post('/import/orders.json', $result);
 
-        Registry::set('addons.rees46.already_exported', 'true');
-
-        fn_set_notification('N', 'Выгрузка заказов в REES46 успешно завершена.', '', 'I');
+        fn_set_notification('N', 'Выгрузка заказов в REES46 успешно инициирована.', '', 'I');
     }
 
     return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");
