@@ -32,4 +32,24 @@
             </section>
         </sections>
     </settings>
+
+    <language_variables>
+        <item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
+        <item lang="ru" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
+        <item lang="ru" id="rees46_also_bought">С этим также покупают</item>
+        <item lang="ru" id="rees46_interesting">Вам это будет интересно</item>
+        <item lang="ru" id="rees46_popular">Популярные</item>
+        <item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
+        <item lang="ru" id="rees46_see_also">Посмотрите также</item>
+        <item lang="ru" id="rees46_similar">Похожие товары</item>
+
+        <item lang="en" id="block_rees46">Блок рекомендаций REES46</item>
+        <item lang="en" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
+        <item lang="en" id="rees46_also_bought">С этим также покупают</item>
+        <item lang="en" id="rees46_interesting">Вам это будет интересно</item>
+        <item lang="en" id="rees46_popular">Популярные</item>
+        <item lang="en" id="rees46_recently_viewed">Вы недавно смотрели</item>
+        <item lang="en" id="rees46_see_also">Посмотрите также</item>
+        <item lang="en" id="rees46_similar">Похожие товары</item>
+    </language_variables>
 </addon>

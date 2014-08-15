@@ -1,3 +1,5 @@
+{** block-description:rees46_also_bought **}
+
 {if $product}
   <div class="rees46 rees46-recommend" data-type="also_bought" data-id="{$product.product_id}"></div>
 {else}
