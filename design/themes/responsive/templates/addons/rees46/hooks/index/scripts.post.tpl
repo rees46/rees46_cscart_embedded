@@ -129,6 +129,11 @@
 
                   if (productsBlock != '') {
                     items = tpl_items.format(productsBlock, recommender_titles[recommenderType]);
+
+                    if (REES46.showPromotion) {
+                        items = items + REES46.getPromotionBlock();
+                    }
+                    
                     recommenderBlock.html(items);
                   }
                 });
