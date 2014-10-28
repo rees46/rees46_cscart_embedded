@@ -1,15 +1,5 @@
 {if $rees46 && $rees46.shop_id != ''}
   <script type="text/javascript">
-    (function () { 
-      var link = document.createElement('link'); 
-      link.setAttribute('rel', 'stylesheet'); 
-      link.setAttribute('type', 'text/css'); 
-      link.setAttribute('href', '//rees46.com/shop_css/{$rees46.shop_id}'); 
-      document.getElementsByTagName('head')[0].appendChild(link); 
-    })();
-  </script>
-
-  <script type="text/javascript">
     function initREES46() {
       $(function () {
         {if $auth.user_id > 0}
@@ -50,6 +40,12 @@
         {/if}
 
         REES46.addReadyListener(function() {
+          var link = document.createElement('link');
+          link.setAttribute('rel', 'stylesheet');
+          link.setAttribute('type', 'text/css');
+          link.setAttribute('href', '//rees46.com/shop_css/{$rees46.shop_id}');
+          document.getElementsByTagName('head')[0].appendChild(link);
+
           {if $runtime.controller == 'products' && $runtime.mode == 'view'}
             {if $product}
               REES46.pushData('view', {
@@ -144,7 +140,7 @@
       });
     }
 
-    var script = document.createElement('script'); 
+    var script = document.createElement('script');
     script.src = '//cdn.rees46.com/rees46_script2.js';
     script.async = true;
     script.onload = function() {
