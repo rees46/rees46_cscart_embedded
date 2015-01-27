@@ -1,4 +1,5 @@
 <?php
+use Tygh\Registry;
 use Tygh\Rees46\Config;
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
@@ -52,4 +53,8 @@ if ($mode == 'export_orders') {
     }
 
     return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");
+}
+
+if( $mode == 'settings' ) {
+	Registry::get('view')->assign('rees46', fn_rees46_generate_info());
 }
