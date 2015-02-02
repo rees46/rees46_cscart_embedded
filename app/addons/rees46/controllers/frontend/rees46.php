@@ -7,8 +7,6 @@ if (!defined('BOOTSTRAP')) { die('Access denied'); }
 if ($mode == 'get_info') {
     $ids = array_map('intval', explode(',', $_REQUEST['product_ids']));
 
-		list($products, $search) = fn_get_products($ids, 4);
-
 //    $products = array();
 
 //    foreach ($ids as $id) {
@@ -25,8 +23,8 @@ if ($mode == 'get_info') {
 //        }
 //    }
 
-	Registry::get('view')->assign('products', $ids);
-	Registry::get('view')->display('templates/blocks/list_templates/products_list.tpl');
+	Registry::get('view')->assign('rees46_products', $ids);
+	Registry::get('view')->display('templates/addons/rees46/blocks/recommenders.tpl');
 	exit;
 //    header('Content-Type: application/json');
 //    die(json_encode(Array('products' => $products)));

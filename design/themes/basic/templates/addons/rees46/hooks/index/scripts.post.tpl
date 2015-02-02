@@ -97,42 +97,49 @@
                   return;
                 }
 
-                $.getJSON('index.php?dispatch=rees46.get_info&product_ids=' + ids.join(','), function(data) {
-                  var products = JSON.parse(data.text).products;
+								$.ceAjax('request', fn_url("rees46.get_info"), {
+									data: {
+										product_ids: ids, // передаём параметры в запрос из формы.
+										result_ids: 'my_rees46_div' // div который будет обновляться, можно несколько.
+									}
+								});
 
-                  var productsBlock = '';
-
-                  $(products).each(function() {
-                    if (this.name != '') {
-                      productsBlock += tpl_item.format(
-                        this.url + '?recommended_by=' + recommenderType,
-                        this.name,
-                        this.image_url,
-                        this.price,
-                        REES46.currency
-                      );
-                    }
-                  });
-
-                  var recommender_titles = {
-                      interesting: 'Вам это будет интересно',
-                      also_bought: 'С этим также покупают',
-                      similar: 'Похожие товары',
-                      popular: 'Популярные товары',
-                      see_also: 'Посмотрите также',
-                      recently_viewed: 'Вы недавно смотрели'
-                  };
-
-                  if (productsBlock != '') {
-                    items = tpl_items.format(productsBlock, recommender_titles[recommenderType]);
-
-                    if (REES46.showPromotion) {
-                        items = items + REES46.getPromotionBlock();
-                    }
-
-                    recommenderBlock.html(items);
-                  }
-                });
+//                $.getJSON('index.php?dispatch=rees46.get_info&product_ids=' + ids.join(','), function(data) {
+//                  var products = JSON.parse(data.text).products;
+//
+//                  var productsBlock = '';
+//
+//                  $(products).each(function() {
+//                    if (this.name != '') {
+//                      productsBlock += tpl_item.format(
+//                        this.url + '?recommended_by=' + recommenderType,
+//                        this.name,
+//                        this.image_url,
+//                        this.price,
+//                        REES46.currency
+//                      );
+//                    }
+//                  });
+//
+//                  var recommender_titles = {
+//                      interesting: 'Вам это будет интересно',
+//                      also_bought: 'С этим также покупают',
+//                      similar: 'Похожие товары',
+//                      popular: 'Популярные товары',
+//                      see_also: 'Посмотрите также',
+//                      recently_viewed: 'Вы недавно смотрели'
+//                  };
+//
+//                  if (productsBlock != '') {
+//                    items = tpl_items.format(productsBlock, recommender_titles[recommenderType]);
+//
+//                    if (REES46.showPromotion) {
+//                        items = items + REES46.getPromotionBlock();
+//                    }
+//
+//                    recommenderBlock.html(items);
+//                  }
+//                });
               });
             }
           });
