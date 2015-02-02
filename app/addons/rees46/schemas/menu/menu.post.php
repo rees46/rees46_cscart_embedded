@@ -14,12 +14,13 @@
 
 $schema['central']['rees46'] = array(
 	'items'    => array(
-		'rees46' => array(
+		'rees46_settings' => array(
 			'href'     => 'rees46.settings',
+			'alt' => 'rees46_settings',
 			'position' => 100
 		)
 	),
-	'position' => 500,
+	'position' => 999,
 );
 
 return $schema;
