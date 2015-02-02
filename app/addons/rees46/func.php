@@ -4,6 +4,7 @@ if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
 use Tygh\Rees46\Config;
 use Tygh\Rees46\Events;
+use Tygh\Registry;
 
 function fn_rees46_generate_info()
 {
