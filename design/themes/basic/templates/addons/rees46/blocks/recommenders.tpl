@@ -1,5 +1,7 @@
+{$block|fn_print_r}
 <div class="rees46 rees46-recommend" data-type="recently_viewed" id="my_rees46_div">
 {if $rees46_products}
+	{$block|fn_print_r}
 	{include file="blocks/list_templates/grid_list.tpl"
 	products=$rees46_products
 	show_trunc_name=true

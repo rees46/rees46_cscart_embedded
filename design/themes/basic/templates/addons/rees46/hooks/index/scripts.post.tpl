@@ -3,7 +3,8 @@
     function initREES46() {
       $(function () {
         {if $auth.user_id > 0}
-          REES46.init('{$rees46.shop_id}', {$auth.user_id|default:'null'});
+					{$short_user_data = $auth.user_id|fn_get_user_short_info}
+					REES46.init('{$rees46.shop_id}', { "id":{$auth.user_id|default:'null'}, "email":"{$short_user_data.email|default:''}" });
         {else}
           REES46.init('{$rees46.shop_id}', null);
         {/if}
