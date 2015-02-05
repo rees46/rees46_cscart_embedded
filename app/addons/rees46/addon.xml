@@ -11,6 +11,7 @@
     <description>
         Модуль персонализации REES46 анализирует действия покупателей на вашем интернет-магазине и уже с первых шагов выявляет цели и предпочтения каждого вашего посетителя.
     </description>
+	<status>active</status>
     
     <settings layout="separate" edition_type="ROOT,ULT:VENDOR">
         <sections>
@@ -44,17 +45,9 @@
 			<item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
 			<item lang="ru" id="rees46_see_also">Посмотрите также</item>
 			<item lang="ru" id="rees46_similar">Похожие товары</item>
-			<item lang="ru" id="rees46_items_count">Кол-во товаров в блоке</item>
-
-			<item lang="en" id="rees46_menu">Персонализация</item>
-			<item lang="en" id="rees46_menu_settings">Настройки</item>
-			<item lang="en" id="block_rees46">Блок рекомендаций REES46</item>
-			<item lang="en" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
-			<item lang="en" id="rees46_also_bought">С этим также покупают</item>
-			<item lang="en" id="rees46_interesting">Вам это будет интересно</item>
-			<item lang="en" id="rees46_popular">Популярные</item>
-			<item lang="en" id="rees46_recently_viewed">Вы недавно смотрели</item>
-			<item lang="en" id="rees46_see_also">Посмотрите также</item>
-			<item lang="en" id="rees46_similar">Похожие товары</item>
+			<item lang="ru" id="rees46_items_count">Минимальное кол-во товаров в блоке</item>
+			<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
+			<item lang="ru" id="recommenders">Персонализация</item>
+			<item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
     </language_variables>
 </addon>

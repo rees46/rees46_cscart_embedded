@@ -68,6 +68,8 @@
           $('.rees46').each(function() {
             var recommenderBlock = $(this);
             var recommenderType = recommenderBlock.attr('data-type');
+            var recommenderCount = recommenderBlock.attr('data-count');
+            var recommenderTitle = recommenderBlock.attr('data-title');
             var categoryId = recommenderBlock.attr('data-category');
 
             var tpl_items = '<div class="recommender-block-title">[1]</div><div class="recommended-items">[0]</div>';
@@ -98,12 +100,28 @@
                   return;
                 }
 
-								$.ceAjax('request', fn_url("rees46.get_info"), {
-									data: {
-										product_ids: ids, // передаём параметры в запрос из формы.
-										result_ids: 'my_rees46_div' // div который будет обновляться, можно несколько.
-									}
-								});
+								if( recommenderCount >= ids.length ) {
+
+									//Стандартные заголовки
+									var recommender_titles = {
+										interesting: 'Вам это будет интересно',
+										also_bought: 'С этим также покупают',
+										similar: 'Похожие товары',
+										popular: 'Популярные товары',
+										see_also: 'Посмотрите также',
+										recently_viewed: 'Вы недавно смотрели'
+                  };
+
+									//Отправляем запрос
+									$.ceAjax('request', fn_url("rees46.get_info"), {
+										data: {
+											product_ids: ids,
+											recommended_by: recommenderType,
+											result_ids: recommenderBlock.attr('id'),
+											title: recommenderTitle ? recommenderTitle : recommender_titles[recommenderType]
+										}
+									});
+								}
 
 //                $.getJSON('index.php?dispatch=rees46.get_info&product_ids=' + ids.join(','), function(data) {
 //                  var products = JSON.parse(data.text).products;

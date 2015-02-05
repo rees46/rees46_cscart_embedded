@@ -1,7 +1,8 @@
-{$block|fn_print_r}
-<div class="rees46 rees46-recommend" data-type="recently_viewed" id="my_rees46_div">
+<div class="rees46 rees46-recommend" data-type="{$block.properties.rees46_recommender_type}" data-title="{$block.properties.rees46_recommender_title}" data-count="{$block.properties.rees46_items_count}" id="rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}">
 {if $rees46_products}
-	{$block|fn_print_r}
+	{if $rees46_title}
+		<h1>{$rees46_title}</h1>
+	{/if}
 	{include file="blocks/list_templates/grid_list.tpl"
 	products=$rees46_products
 	show_trunc_name=true
@@ -15,5 +16,11 @@
 	no_sorting=true
 	columns=4
 	show_discount_label=true}
+	<div class="reed46-promo"></div>
+	<script>
+		if( REES46 && REES46.showPromotion ) {
+			$('.reed46-promo').html(REES46.getPromotionBlock());
+		}
+	</script>
 {/if}
-<!--my_rees46_div--></div>
+<!--rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}--></div>

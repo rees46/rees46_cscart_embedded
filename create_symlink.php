@@ -15,7 +15,6 @@ if( empty($argv[1]) ) {
 //Получаем текущую директорию
 $dir = realpath(__DIR__);
 $dir_target = realpath($argv[1]);
-echo $dir . ' ' . $dir_target . PHP_EOL;
 
 //Пути создания симлинков
 $paths = [
