@@ -10,7 +10,8 @@ if( $mode == 'get_info' ) {
 	$ids = array_map('intval', $_REQUEST['product_ids']);
 
 	list($products, $search) = fn_get_products(array(
-		'pid' => $ids,
+		'pid'         => $ids,
+		'rees46_type' => $_REQUEST['recommended_by']
 	));
 	fn_gather_additional_products_data($products, array('get_icon' => true, 'get_detailed' => true, 'get_additional' => false, 'get_options'=> false));
 

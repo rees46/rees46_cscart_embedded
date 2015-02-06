@@ -1,53 +1,79 @@
 <?xml version="1.0"?>
 
 <addon scheme="2.0">
-    <id>rees46</id>
-    <version>1.0</version>
-    <default_language>ru</default_language>
-    <priority>100500</priority>
-    <auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
+	<id>rees46</id>
+	<version>1.0</version>
+	<default_language>ru</default_language>
+	<priority>100500</priority>
+	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
 
-    <name>REES46: персональные рекомендации товаров в интернет-магазине</name>
-    <description>
-        Модуль персонализации REES46 анализирует действия покупателей на вашем интернет-магазине и уже с первых шагов выявляет цели и предпочтения каждого вашего посетителя.
-    </description>
+	<name>REES46: персональные рекомендации товаров в интернет-магазине</name>
+	<description>
+		Модуль персонализации REES46 анализирует действия покупателей на вашем интернет-магазине и уже с первых шагов выявляет цели и предпочтения каждого вашего посетителя.
+	</description>
 	<status>active</status>
-    
-    <settings layout="separate" edition_type="ROOT,ULT:VENDOR">
-        <sections>
-            <section id="main">
-                <items>
-                    <item id="info">
-                        <type>info</type>
-                        <handler>fn_rees46_generate_info</handler>
-                    </item>
-                    <item id="shop_id">
-                        <name>Код вашего магазина</name>
-                        <type>input</type>
-                    </item>
-                    <item id="shop_secret">
-                        <name>Секретный ключ вашего магазина</name>
-                        <type>input</type>
-                    </item>
-                </items>
-            </section>
-        </sections>
-    </settings>
 
-    <language_variables>
-			<item lang="ru" id="rees46_menu">Персонализация</item>
-			<item lang="ru" id="rees46_menu_settings">Настройки</item>
-			<item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
-			<item lang="ru" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
-			<item lang="ru" id="rees46_also_bought">С этим также покупают</item>
-			<item lang="ru" id="rees46_interesting">Вам это будет интересно</item>
-			<item lang="ru" id="rees46_popular">Популярные</item>
-			<item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
-			<item lang="ru" id="rees46_see_also">Посмотрите также</item>
-			<item lang="ru" id="rees46_similar">Похожие товары</item>
-			<item lang="ru" id="rees46_items_count">Минимальное кол-во товаров в блоке</item>
-			<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
-			<item lang="ru" id="recommenders">Персонализация</item>
-			<item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
-    </language_variables>
+	<translations>
+		<item for="name" lang="en">REES46: personalization SAAS for e-Commerce</item>
+		<item for="description" lang="en">REES46 is the most flexible personalization system aimed at increase of sales and user involvement in the web stores. REES46 analyzes the behavior and history of your site's visitors, predicts their next purchase and generates individual recommendations of potentially interesting goods for each of them. The reduce of the bounce rate and increase of conversion will give a steady increase in sales of at least 12% (commonly it makes up 20-25%).</item>
+	</translations>
+
+	<settings layout="separate" edition_type="ROOT,ULT:VENDOR">
+		<sections>
+			<section id="main">
+				<items>
+					<item id="info">
+						<type>info</type>
+						<handler>fn_rees46_generate_info</handler>
+					</item>
+					<item id="shop_id">
+						<name>Код вашего магазина</name>
+						<type>input</type>
+						<translations>
+							<item lang="en">Shop ID</item>
+						</translations>
+					</item>
+					<item id="shop_secret">
+						<name>Секретный ключ вашего магазина</name>
+						<type>input</type>
+						<translations>
+							<item lang="en">Shop secret key</item>
+						</translations>
+					</item>
+				</items>
+			</section>
+		</sections>
+	</settings>
+
+	<language_variables>
+		<item lang="ru" id="rees46_menu">Персонализация</item>
+		<item lang="ru" id="rees46_menu_settings">Настройки</item>
+		<item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
+		<item lang="ru" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
+		<item lang="ru" id="rees46_also_bought">С этим также покупают</item>
+		<item lang="ru" id="rees46_interesting">Вам это будет интересно</item>
+		<item lang="ru" id="rees46_popular">Популярные</item>
+		<item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
+		<item lang="ru" id="rees46_see_also">Посмотрите также</item>
+		<item lang="ru" id="rees46_similar">Похожие товары</item>
+		<item lang="ru" id="rees46_items_count">Минимальное кол-во товаров в блоке</item>
+		<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
+		<item lang="ru" id="recommenders">Персонализация</item>
+		<item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
+
+		<item lang="en" id="rees46_menu">Personalisation</item>
+		<item lang="en" id="rees46_menu_settings">Settings</item>
+		<item lang="en" id="block_rees46">REES46 product recommendation widget</item>
+		<item lang="en" id="block_rees46_description">Recommendation widget of the type chosen</item>
+		<item lang="en" id="rees46_also_bought">Customers who bought this product also bought</item>
+		<item lang="en" id="rees46_interesting">You may be interested with these products</item>
+		<item lang="en" id="rees46_popular">Popular products</item>
+		<item lang="en" id="rees46_recently_viewed">Recently viewed products</item>
+		<item lang="en" id="rees46_see_also">Customers who viewed this product also viewed</item>
+		<item lang="en" id="rees46_similar">Similar products</item>
+		<item lang="en" id="rees46_items_count">Minimum number of items in the widget</item>
+		<item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
+		<item lang="en" id="recommenders">Personalisation</item>
+		<item lang="en" id="rees46_recommender_title">Widget title</item>
+	</language_variables>
 </addon>

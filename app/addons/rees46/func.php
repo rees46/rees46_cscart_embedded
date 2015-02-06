@@ -64,4 +64,13 @@ function fn_rees46_place_order($order_id, $action, $order_status, $cart, $auth)
     Events::CookieEvent('order', $data);
 }
 
-
+//Хук к списку товаров
+function fn_rees46_get_products_post(&$products, $params, $lang_code) {
+	//Если запрос товаров с Rees46
+	if( !empty($params['rees46_type']) ) {
+		//Проходим по товарам
+		foreach( $products as $key => $product ) {
+			$products[$key]['rees46_type'] = $params['rees46_type'];
+		}
+	}
+}
