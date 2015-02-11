@@ -1,4 +1,4 @@
-<div class="rees46 rees46-recommend" data-type="{$block.properties.rees46_recommender_type}" data-title="{$block.properties.rees46_recommender_title}" data-count="{$block.properties.rees46_items_count}" id="rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}">
+<div class="rees46 rees46-recommend" data-category="{if $category_data}{$category_data.category_id}{/if}" data-type="{$block.properties.rees46_recommender_type}" data-title="{$block.properties.rees46_recommender_title}" data-count="{$block.properties.rees46_items_count}" id="rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}">
 {if $rees46_products}
 	{if $rees46_title}
 		<h1>{$rees46_title}</h1>
