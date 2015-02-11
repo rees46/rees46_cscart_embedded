@@ -15,6 +15,7 @@
 	but_role="action"
 	no_sorting=true
 	columns=4
+	no_pagination=true
 	show_discount_label=true}
 	<div class="reed46-promo"></div>
 	<script>
