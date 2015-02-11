@@ -17,6 +17,7 @@ $schema['rees46'] = array(
 				'recently_viewed' => 'rees46_recently_viewed',
 				'interesting'     => 'rees46_interesting',
 				'also_bought'     => 'rees46_also_bought',
+				'see_also'        => 'rees46_see_also',
 			),
 			'default_value' => 'recently_viewed'
 		),
