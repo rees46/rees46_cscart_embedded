@@ -65,7 +65,8 @@
             {/if}
           {/if}
 
-          $('.rees46').each(function() {
+					var rees46_blocks = $('.rees46'), i = 0;
+          var rees46_block_render = function() {
             var recommenderBlock = $(this);
             var recommenderType = recommenderBlock.attr('data-type');
             var recommenderCount = recommenderBlock.attr('data-count');
@@ -80,6 +81,7 @@
                 cart: document.currentCart
               }, function(ids) {
                 if (ids.length == 0) {
+									rees46_next_render();
                   return;
                 }
 
@@ -108,13 +110,23 @@
 											//Находим все ссылки
 											recommenderBlock.find('a').each(function(){
 												this.href += (this.href.match(/\?/) ? '&' : '?') + 'recommended_by=' + recommenderType
-											})
+											});
+											rees46_next_render();
 										}
 									})
+								} else {
+									rees46_next_render();
 								}
               })
             }
-          })
+          };
+					var rees46_next_render = function() {
+						if( i < rees46_blocks.length ) {
+							rees46_block_render.apply(rees46_blocks.eq(i));
+							i++;
+						}
+					};
+					rees46_next_render();
         })
       })
     }

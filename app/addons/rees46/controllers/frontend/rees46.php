@@ -13,7 +13,7 @@ if( $mode == 'get_info' ) {
 		'pid'         => $ids,
 		'rees46_type' => $_REQUEST['recommended_by']
 	));
-	fn_gather_additional_products_data($products, array('get_icon' => true, 'get_detailed' => true, 'get_additional' => false, 'get_options'=> false));
+	fn_gather_additional_products_data($products, array('get_icon' => false, 'get_detailed' => true, 'get_additional' => false, 'get_options'=> false));
 
 	Registry::get('view')->assign('rees46_products', $products);
 	Registry::get('view')->assign('rees46_type', $_REQUEST['recommended_by']);
