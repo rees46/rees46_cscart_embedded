@@ -51,7 +51,11 @@
             {if $product}
               REES46.pushData('view', {
                   item_id: {$product.product_id},
-                  price: {$product.base_price},
+									{if $product.price}
+									price: {$product.price},
+									{else}
+									price: {$product.base_price},
+									{/if}
                   {if $product.amount > 0}
                   is_available: true,
                   {else}
