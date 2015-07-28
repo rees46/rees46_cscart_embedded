@@ -1,4 +1,5 @@
 <?php
 use Tygh\Rees46\Init;
+use Tygh\Registry;
 
-\Tygh\Registry::get('view')->assign('rees46', Init::getGlobal());
+Registry::get('view')->assign('rees46', Init::getGlobal());
