@@ -12,15 +12,13 @@
  * "copyright.txt" FILE PROVIDED WITH THIS DISTRIBUTION PACKAGE.            *
  ****************************************************************************/
 
-$schema['central']['rees46_menu'] = array(
-	'items'    => array(
-		'rees46_menu_settings' => array(
-			'href'     => 'addons.update?addon=rees46',
-			'alt' => 'rees46_settings',
-			'position' => 100
-		)
+$schema['central']['marketing']['items']['rees46_menu'] = array(
+	'attrs' => array(
+		'class'=>'is-addon'
 	),
-	'position' => 999,
+	'href'     => 'addons.update?addon=rees46',
+	'alt'      => 'rees46_settings',
+	'position' => 501
 );
 
 return $schema;

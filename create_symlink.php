@@ -19,8 +19,8 @@ $dir_target = realpath($argv[1]);
 //Пути создания симлинков
 $paths = [
 	'/app/addons/rees46' => 'app/addons/rees46',
-	'/design/themes/basic/templates/addons/rees46' => 'design/themes/basic/templates/addons/rees46',
-	'/design/themes/responsive/templates/addons/rees46' => 'design/themes/basic/templates/addons/rees46',
+	'/design/themes/basic/templates/addons/rees46' => 'design/themes/responsive/templates/addons/rees46',
+	'/design/themes/responsive/templates/addons/rees46' => 'design/themes/responsive/templates/addons/rees46',
 ];
 
 //Проходим по путям
