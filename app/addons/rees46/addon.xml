@@ -56,10 +56,27 @@
 		<item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
 		<item lang="ru" id="rees46_see_also">Посмотрите также</item>
 		<item lang="ru" id="rees46_similar">Похожие товары</item>
-		<item lang="ru" id="rees46_items_count">Минимальное кол-во товаров в блоке</item>
+		<item lang="ru" id="rees46_items_count">Товаров в блоке</item>
 		<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
 		<item lang="ru" id="recommenders">Персонализация</item>
 		<item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
+		<item lang="ru" id="rees46_error_export_order">Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.</item>
+		<item lang="ru" id="rees46_export_order">Выгрузить заказы</item>
+		<item lang="ru" id="rees46_export_order_hint">может занять некоторое время</item>
+		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
+		<item lang="ru" id="rees46_text_settings_title">Для того, чтобы включить систему рекомендаций</item>
+		<item lang="ru" id="rees46_text_settings_steps">
+			&lt;li&gt;Перейдите на &lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
+			&lt;li&gt;Зарегистрируйтесь;&lt;/li&gt;
+			&lt;li&gt;Создайте магазин;&lt;/li&gt;
+			&lt;li&gt;Введите код вашего магазина в поле ниже;&lt;/li&gt;
+			&lt;li&gt;Нажмите &quot;Сохранить&quot;.&lt;/li&gt;
+			&lt;li&gt;Ознакомьтесь с &lt;a href=&quot;http://memo.mkechinov.ru/display/R46D/CS-Cart&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля.&lt;/li&gt;
+		</item>
+		<item lang="ru" id="rees46_text_settings_info">
+			&lt;p&gt;Перейти к &lt;a href=&quot;http://rees46.com/shops&quot; target=&quot;_blank&quot;&gt;статистике эффективности&lt;/a&gt; работы системы персонализации.&lt;/p&gt;
+			&lt;p&gt;Прочитать &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробную инструкцию&lt;/a&gt; по настройке модуля.&lt;/p&gt;
+		</item>
 
 		<item lang="en" id="rees46_menu">Personalisation</item>
 		<item lang="en" id="rees46_menu_settings">Settings</item>
@@ -71,9 +88,26 @@
 		<item lang="en" id="rees46_recently_viewed">Recently viewed products</item>
 		<item lang="en" id="rees46_see_also">Customers who viewed this product also viewed</item>
 		<item lang="en" id="rees46_similar">Similar products</item>
-		<item lang="en" id="rees46_items_count">Minimum number of items in the widget</item>
+		<item lang="en" id="rees46_items_count">Items in the widget</item>
 		<item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
 		<item lang="en" id="recommenders">Personalisation</item>
 		<item lang="en" id="rees46_recommender_title">Widget title</item>
+		<item lang="en" id="rees46_error_export_order">To upload orders, enter the code and a secret key of your store in the module settings.</item>
+		<item lang="en" id="rees46_export_order">Export order</item>
+		<item lang="en" id="rees46_export_order_hint">It may take some time</item>
+		<item lang="en" id="rees46_export_success">Unloading orders REES46 successfully initiated.</item>
+		<item lang="en" id="rees46_text_settings_title">To turn the system recommendations</item>
+		<item lang="en" id="rees46_text_settings_steps">
+			&lt;li&gt;Go to&lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
+			&lt;li&gt;Sign up;&lt;/li&gt;
+			&lt;li&gt;Create a shop;&lt;/li&gt;
+			&lt;li&gt;Enter the code of your store in the box below;&lt;/li&gt;
+			&lt;li&gt;Click to &quot;Save&quot;.&lt;/li&gt;
+			&lt;li&gt;Check out &lt;a href=&quot;http://memo.mkechinov.ru/display/R46D/CS-Cart&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module.&lt;/li&gt;
+		</item>
+		<item lang="en" id="rees46_text_settings_info">
+			&lt;p&gt;Go to &lt;a href=&quot;http://rees46.com/shops&quot; target=&quot;_blank&quot;&gt;the statistics&lt;/a&gt; system performance personalization.&lt;/p&gt;
+			&lt;p&gt;Read &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;the detailed instructions&lt;/a&gt; on configuring the module.&lt;/p&gt;
+		</item>
 	</language_variables>
 </addon>

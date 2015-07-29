@@ -107,7 +107,8 @@
 											product_ids: ids,
 											recommended_by: recommenderType,
 											result_ids: recommenderBlock.attr('id'),
-											title: recommenderTitle ? recommenderTitle : recommender_titles[recommenderType]
+											title: recommenderTitle ? recommenderTitle : recommender_titles[recommenderType],
+											count: recommenderCount
 										},
 										callback: function() {
 

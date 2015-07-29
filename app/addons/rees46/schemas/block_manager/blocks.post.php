@@ -24,7 +24,8 @@ $schema['rees46'] = array(
 		'rees46_recommender_title' => array(
 			'type' => 'input'
 		),
-	)
+	),
+	'cache' => false,
 );
 
 return $schema;

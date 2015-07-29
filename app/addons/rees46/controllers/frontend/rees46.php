@@ -7,17 +7,27 @@ if( !defined('BOOTSTRAP') ) {
 }
 
 if( $mode == 'get_info' ) {
-	$ids = array_map('intval', $_REQUEST['product_ids']);
+	if( empty($_REQUEST['count']) ) {
+		$count = 4;
+	} else {
+		$count = $_REQUEST['count'];
+	}
+	$ids = array_slice(array_map('intval', $_REQUEST['product_ids']), 0, $count);
 
-	list($products, $search) = fn_get_products(array(
-		'pid'         => $ids,
-		'rees46_type' => $_REQUEST['recommended_by']
-	));
-	fn_gather_additional_products_data($products, array('get_icon' => false, 'get_detailed' => true, 'get_additional' => false, 'get_options'=> false));
+	if( count($ids) == $count ) {
+		list($products, $search) = fn_get_products(array(
+			'pid'         => $ids,
+			'rees46_type' => $_REQUEST['recommended_by']
+		));
+		fn_gather_additional_products_data($products, array('get_icon' => false, 'get_detailed' => true, 'get_additional' => false, 'get_options' => false));
+	} else {
+		$products = [];
+	}
 
 	Registry::get('view')->assign('rees46_products', $products);
 	Registry::get('view')->assign('rees46_type', $_REQUEST['recommended_by']);
 	Registry::get('view')->assign('rees46_title', $_REQUEST['title']);
+	Registry::get('view')->assign('rees46_count', $count);
 	Registry::get('view')->display('addons/rees46/blocks/recommenders.tpl');
 	exit;
 }

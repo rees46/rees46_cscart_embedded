@@ -11,24 +11,16 @@ function fn_rees46_generate_info()
     if (Config::getShopID() == '') {
         return '
         <p>
-          <h3>Для того, чтобы включить систему рекомендаций:</h3>
+          <h3>' . __('rees46_text_settings_title') . ':</h3>
           <ol>
-            <li>Перейдите на <a href="REES46.com" target="_blank">http://rees46.com/</a>;</li>
-            <li>Зарегистрируйтесь;</li>
-            <li>Создайте магазин;</li>
-            <li>Введите код вашего магазина в поле ниже;</li>
-            <li>Нажмите "Сохранить".</li>
-            <li>Ознакомьтесь с <a href="http://memo.mkechinov.ru/display/R46D/CS-Cart" target="_blank">подробной инструкцией</a> по настройке модуля.</li>
+            ' . __('rees46_text_settings_steps') . '
           </ol>
         </p>
         ';
     } else {
-        $res = '
-          <p>Перейти к <a href="http://rees46.com/shops" target="_blank">статистике эффективности</a> работы системы персонализации.</p>
-          <p>Прочитать <a href="http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157" target="_blank">подробную инструкцию</a> по настройке модуля.</p>
-        ';
+        $res = __('rees46_text_settings_info');
 
-        $res = $res . '<p><a href="/admin.php?dispatch=rees46.export_orders" class="btn btn-primary">Выгрузить заказы</a> (может занять некоторое время)</p>';
+        $res = $res . '<p><a href="/admin.php?dispatch=rees46.export_orders" class="btn btn-primary">' . __('rees46_export_order') . '</a> (' . __('rees46_export_order_hint') . ')</p>';
 
         return $res;
     }

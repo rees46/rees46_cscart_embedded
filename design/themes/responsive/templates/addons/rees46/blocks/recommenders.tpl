@@ -14,13 +14,13 @@
 	show_add_to_cart=$show_add_to_cart|default:false
 	but_role="action"
 	no_sorting=true
-	columns=4
+	columns={$rees46_count|default:4}
 	no_pagination=true
 	show_discount_label=true}
 	<div class="reed46-promo"></div>
 	<script>
 		if( REES46 && REES46.showPromotion ) {
-			$('.reed46-promo').html(REES46.getPromotionBlock());
+			$('#rees46_recommend_{$rees46_type} .reed46-promo').html(REES46.getPromotionBlock());
 		}
 	</script>
 {/if}

@@ -8,7 +8,7 @@ if ($mode == 'export_orders') {
     $shop_id = Config::getShopID();
     $shop_secret = Config::getShopSecret();
     if (($shop_id == '') || ($shop_secret == '')) {
-        fn_set_notification('E', 'Ошибка' ,'Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.', 'I');
+        fn_set_notification('E', __('error'),__('rees46_error_export_order'), 'I');
     } else {
         $params = array('timestamp > ' . strtotime('-6 months'), 'items_per_page' => 500);
         $orders = fn_get_orders($params);
@@ -49,7 +49,7 @@ if ($mode == 'export_orders') {
         $pest = new \PestJSON('http://api.rees46.com');
         $pest->post('/import/orders.json', $result);
 
-        fn_set_notification('N', 'Выгрузка заказов в REES46 успешно инициирована.', '', 'I');
+        fn_set_notification('N', __('rees46_export_success'), '', 'I');
     }
 
     return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");
