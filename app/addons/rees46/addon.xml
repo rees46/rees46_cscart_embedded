@@ -66,7 +66,7 @@
 		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
 		<item lang="ru" id="rees46_text_settings_title">Для того, чтобы включить систему рекомендаций</item>
 		<item lang="ru" id="rees46_text_settings_steps">
-			&lt;li&gt;Перейдите на &lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
+			&lt;li&gt;Перейдите на &lt;a href=&quot;http://REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
 			&lt;li&gt;Зарегистрируйтесь;&lt;/li&gt;
 			&lt;li&gt;Создайте магазин;&lt;/li&gt;
 			&lt;li&gt;Введите код вашего магазина в поле ниже;&lt;/li&gt;
