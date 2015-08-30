@@ -7,15 +7,15 @@
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
 
-	<name>REES46: персональные рекомендации товаров в интернет-магазине</name>
+	<name>REES46: рекомендательная система</name>
 	<description>
-		Модуль персонализации REES46 анализирует действия покупателей на вашем интернет-магазине и уже с первых шагов выявляет цели и предпочтения каждого вашего посетителя.
+		Модуль персонализации REES46 повышает конверсию и средний чек интернет-магазина за счет персонализированных товарных рекомендаций.
 	</description>
 	<status>active</status>
 
 	<translations>
-		<item for="name" lang="en">REES46: personalization SAAS for e-Commerce</item>
-		<item for="description" lang="en">REES46 is the most flexible personalization system aimed at increase of sales and user involvement in the web stores. REES46 analyzes the behavior and history of your site's visitors, predicts their next purchase and generates individual recommendations of potentially interesting goods for each of them. The reduce of the bounce rate and increase of conversion will give a steady increase in sales of at least 12% (commonly it makes up 20-25%).</item>
+		<item for="name" lang="en">REES46: best recommender engine for e-commerce</item>
+		<item for="description" lang="en">REES46 increases revenue for 20% using personalization technologies.</item>
 	</translations>
 
 	<settings layout="separate" edition_type="ROOT,ULT:VENDOR">
@@ -46,7 +46,7 @@
 	</settings>
 
 	<language_variables>
-		<item lang="ru" id="rees46_menu">Персонализация</item>
+		<item lang="ru" id="rees46_menu">Рекомендательная система REES46</item>
 		<item lang="ru" id="rees46_menu_settings">Настройки</item>
 		<item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
 		<item lang="ru" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
@@ -66,7 +66,7 @@
 		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
 		<item lang="ru" id="rees46_text_settings_title">Для того, чтобы включить систему рекомендаций</item>
 		<item lang="ru" id="rees46_text_settings_steps">
-			&lt;li&gt;Перейдите на &lt;a href=&quot;http://REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
+			&lt;li&gt;Перейдите на &lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
 			&lt;li&gt;Зарегистрируйтесь;&lt;/li&gt;
 			&lt;li&gt;Создайте магазин;&lt;/li&gt;
 			&lt;li&gt;Введите код вашего магазина в поле ниже;&lt;/li&gt;
@@ -78,7 +78,7 @@
 			&lt;p&gt;Прочитать &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробную инструкцию&lt;/a&gt; по настройке модуля.&lt;/p&gt;
 		</item>
 
-		<item lang="en" id="rees46_menu">Personalisation</item>
+		<item lang="en" id="rees46_menu">Recommender Engine REES46</item>
 		<item lang="en" id="rees46_menu_settings">Settings</item>
 		<item lang="en" id="block_rees46">REES46 product recommendation widget</item>
 		<item lang="en" id="block_rees46_description">Recommendation widget of the type chosen</item>
