@@ -70,26 +70,32 @@
           {/if}
 
 					var rees46_blocks = $('.rees46'), i = 0;
-          var rees46_block_render = function() {
-            var recommenderBlock = $(this);
-            var recommenderType = recommenderBlock.attr('data-type');
-            var recommenderCount = recommenderBlock.attr('data-count');
-            var recommenderTitle = recommenderBlock.attr('data-title');
-            var categoryId = recommenderBlock.attr('data-category');
+					var rees46_block_render = function () {
+						var recommenderBlock = $(this);
+						var recommenderType = recommenderBlock.attr('data-type');
+						var recommenderCount = recommenderBlock.attr('data-count');
+						var recommenderTitle = recommenderBlock.attr('data-title');
+						var categoryId = recommenderBlock.attr('data-category');
 
-            if (recommenderType) {
-              REES46.recommend({
-                recommender_type: recommenderType,
-                category: categoryId,
-                item: document.currentProductId,
-                cart: document.currentCart
-              }, function(ids) {
-                if (ids.length == 0) {
+						if (recommenderType) {
+
+							// Skip see_also if cart is empty
+							if(recommenderType == 'see_also' && ( document.currentCart == null || document.currentCart.length == 0 ) ) {
+								return;
+							}
+
+							REES46.recommend({
+								recommender_type: recommenderType,
+								category: categoryId,
+								item: document.currentProductId,
+								cart: document.currentCart
+							}, function (ids) {
+								if (ids.length == 0) {
 									rees46_next_render();
-                  return;
-                }
+									return;
+								}
 
-								if( recommenderCount <= ids.length ) {
+								if (recommenderCount <= ids.length) {
 
 									//Стандартные заголовки
 									var recommender_titles = {
@@ -99,7 +105,7 @@
 										popular: 'Популярные товары',
 										see_also: 'Посмотрите также',
 										recently_viewed: 'Вы недавно смотрели'
-                  };
+									};
 
 									//Отправляем запрос
 									$.ceAjax('request', fn_url("rees46.get_info"), {
@@ -110,10 +116,10 @@
 											title: recommenderTitle ? recommenderTitle : recommender_titles[recommenderType],
 											count: recommenderCount
 										},
-										callback: function() {
+										callback: function () {
 
 											//Находим все ссылки
-											recommenderBlock.find('a').each(function(){
+											recommenderBlock.find('a').each(function () {
 												this.href += (this.href.match(/\?/) ? '&' : '?') + 'recommended_by=' + recommenderType
 											});
 											rees46_next_render();
@@ -122,9 +128,9 @@
 								} else {
 									rees46_next_render();
 								}
-              })
-            }
-          };
+							})
+						}
+					};
 					var rees46_next_render = function() {
 						if( i < rees46_blocks.length ) {
 							rees46_block_render.apply(rees46_blocks.eq(i));
