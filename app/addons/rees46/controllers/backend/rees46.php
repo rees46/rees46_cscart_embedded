@@ -1,6 +1,7 @@
 <?php
 use Tygh\Registry;
 use Tygh\Rees46\Config;
+use Tygh\Http;
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
@@ -15,7 +16,7 @@ if ($mode == 'export_orders') {
 
         $processed_orders = array();
 
-        foreach ($orders[0] as $order) {
+        foreach (reset($orders) as $order) {
             $order_info = fn_get_order_info($order['order_id']);
 
             $items_formatted_info = array();
@@ -46,10 +47,12 @@ if ($mode == 'export_orders') {
             'orders' => $processed_orders
         );
 
-        $pest = new \PestJSON('http://api.rees46.com');
-        $pest->post('/import/orders.json', $result);
-
-        fn_set_notification('N', __('rees46_export_success'), '', 'I');
+	$respond=Http::post('http://api.rees46.com/import/orders.json', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
+	if (strtoupper($respond)=='OK') {
+		fn_set_notification('N', __('rees46_export_success'), '', 'I');
+	} else {
+		fn_set_notification('E', __('rees46_export_unsuccess'), '', 'I');
+	}
     }
 
     return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");

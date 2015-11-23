@@ -28,6 +28,7 @@
         {if $cart}
           document.currentCart = '{$cart.products|json_encode}';
           document.currentCart = document.currentCart.replace(/&quot;/g, '"');
+          document.currentCart = document.currentCart.replace(/"\s+(?![\s*"{}:,[]])/g, '&quote;');
           document.currentCart = JSON.parse(document.currentCart);
           var ids = [];
 
@@ -47,7 +48,8 @@
           link.setAttribute('href', '//rees46.com/shop_css/{$rees46.shop_id}');
           document.getElementsByTagName('head')[0].appendChild(link);
 
-          {if $runtime.controller == 'products' && $runtime.mode == 'view'}
+
+          {if ($runtime.controller == 'products' && $runtime.mode == 'view')}
             {if $product}
               REES46.pushData('view', {
                   item_id: {$product.product_id},
@@ -61,7 +63,8 @@
                   {else}
                   is_available: false,
                   {/if}
-                  category: {$product.main_category},
+
+                  categories: [{foreach from=$product.category_ids key=cat_id item=cat name=cats}'{$cat}'{if !$smarty.foreach.cats.last},{/if}{/foreach}],
                   name: '{$product.product}',
                   url: '{"products.view?product_id=`$product.product_id`"|fn_url}',
                   image_url: '{$product.main_pair.detailed.image_path}'
@@ -76,6 +79,7 @@
 						var recommenderCount = recommenderBlock.attr('data-count');
 						var recommenderTitle = recommenderBlock.attr('data-title');
 						var categoryId = recommenderBlock.attr('data-category');
+						var recommenderOrientation = recommenderBlock.attr('data-orientation');
 
 						if (recommenderType) {
 
@@ -83,8 +87,10 @@
 							if(recommenderType == 'see_also' && ( document.currentCart == null || document.currentCart.length == 0 ) ) {
 								return;
 							}
-
 							REES46.recommend({
+								{if $rees46.modification && $rees46.modification != 'none'}
+									modification: '{$rees46.modification}',
+								{/if}
 								recommender_type: recommenderType,
 								category: categoryId,
 								item: document.currentProductId,
@@ -114,7 +120,8 @@
 											recommended_by: recommenderType,
 											result_ids: recommenderBlock.attr('id'),
 											title: recommenderTitle ? recommenderTitle : recommender_titles[recommenderType],
-											count: recommenderCount
+											count: recommenderCount,
+											orientation: recommenderOrientation
 										},
 										callback: function () {
 

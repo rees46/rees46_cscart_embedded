@@ -18,13 +18,27 @@
 		<item for="description" lang="en">REES46 increases revenue for 20% using personalization technologies.</item>
 	</translations>
 
-	<settings layout="separate" edition_type="ROOT,ULT:VENDOR">
+	<settings edition_type="ROOT,ULT:VENDOR">
 		<sections>
 			<section id="main">
 				<items>
-					<item id="info">
+					<item id="rees46_info_header">
+						<name>Информация</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Information</item>
+						</translations>
+					</item>
+					<item id="rees46_info">
 						<type>info</type>
 						<handler>fn_rees46_generate_info</handler>
+					</item>
+					<item id="rees46_settings_header">
+						<name>Настройка модуля</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Settings</item>
+						</translations>
 					</item>
 					<item id="shop_id">
 						<name>Код вашего магазина</name>
@@ -40,12 +54,106 @@
 							<item lang="en">Shop secret key</item>
 						</translations>
 					</item>
+					<item id="modification">
+						<name>Модификация алгоритма для тарифа &quot;&lt;a href=&quot;http://rees46.com/ecommerce#prices&quot; target=&quot;_blank&quot;&gt;Отраслевой&lt;/a&gt;&quot;</name>
+						<type>selectbox</type>
+						<default_value>none</default_value>
+							<variants>
+								<item id="none">
+									<name>Без модификаций</name>
+									<translations>
+										<item lang="en">Without modifications</item>
+									</translations>
+								</item>
+								<item id="fashion">
+									<name>Одежда, обувь, аксессуары</name>
+									<translations>
+										<item lang="en">Fashion</item>
+									</translations>
+								</item>
+								<item id="child">
+									<name>Детские товары</name>
+									<translations>
+										<item lang="en">Childen's goods</item>
+									</translations>
+								</item>
+								<item id="cosmetic">
+									<name>Косметика</name>
+									<translations>
+										<item lang="en">Cosmetics</item>
+									</translations>
+								</item>
+								<item id="fmcg">
+									<name>FMCG/CPG</name>
+								</item>
+								<item id="animal">
+									<name>Товары для животных</name>
+									<translations>
+										<item lang="en">Goods for pets</item>
+									</translations>
+								</item>
+								<item id="coupon">
+									<name>Купоны, акции, скидки</name>
+									<translations>
+										<item lang="en">Discounts, promotions</item>
+									</translations>
+								</item>
+							</variants>
+					</item>
+					<item id="rees46_orders_header">
+						<name>Cинхронизация заказов</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Export orders</item>
+						</translations>
+					</item>
+					<item id="rees46_orders">
+						<type>info</type>
+						<handler>fn_rees46_generate_orders</handler>
+					</item>
+					<item id="rees46_docs_header">
+						<name>Документация</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Documentation</item>
+						</translations>
+					</item>
+					<item id="rees46_docs">
+						<type>info</type>
+						<handler>fn_rees46_generate_docs</handler>
+					</item>
+					<item id="rees46_statistics_header">
+						<name>Статистика</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Statistics</item>
+						</translations>
+					</item>
+					<item id="rees46_statistics">
+						<type>info</type>
+						<handler>fn_rees46_generate_statistics</handler>
+					</item>
 				</items>
 			</section>
 		</sections>
 	</settings>
 
 	<language_variables>
+
+		<item lang="ru" id="rees46_info">
+			&lt;p&gt;Если вы ещё не зарегистрированы в REES46, то, пожалуйста, &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;зарегистрируйтесь&lt;/a&gt;. Затем добавьте свой интернет-магазин в &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личном кабинете&lt;/a&gt; REES46. Обратите внимание на &quot;&lt;b&gt;код магазина&lt;/b&gt;&quot; и &quot;&lt;b&gt;секретный ключ&lt;/b&gt;&quot;, они понадобятся для настройки модуля.&lt;/p&gt;
+		</item>
+		<item lang="ru" id="rees46_orders">
+			&lt;p&gt;Процесс обучения алгоритма рекомендаций занимает определенное время. Основное время, как правило, требуется на сбор информации и построение взаимосвязей между покупателями и товарами. Ускорить это время можно, загрузив в систему REES46 историю ваших заказов за последние полгода. Это позволяет построить рекомендации для ваших предыдущих клиентов и сформировать более детальные связи между товарами. Загрузка истории может занять некоторое время.&lt;/p&gt;
+		</item>
+		<item lang="ru" id="rees46_docs">
+			&lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
+		</item>
+		<item lang="ru" id="rees46_statistics">
+			&lt;p&gt;Для анализа статистики работы товарных рекомендаций, пожалуйста, перейдите в ваш &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личный кабинет&lt;/a&gt; REES46.&lt;/p&gt;
+		</item>
+		<item lang="ru" id="rees46_error_export_order">Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.</item>
+
 		<item lang="ru" id="rees46_menu">Рекомендательная система REES46</item>
 		<item lang="ru" id="rees46_menu_settings">Настройки</item>
 		<item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
@@ -60,23 +168,28 @@
 		<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
 		<item lang="ru" id="recommenders">Персонализация</item>
 		<item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
-		<item lang="ru" id="rees46_error_export_order">Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.</item>
+		<item lang="ru" id="rees46_recommender_orientation">Расположение блока</item>
+		<item lang="ru" id="rees46_orientation_horizontal">Горизонтальное</item>
+		<item lang="ru" id="rees46_orientation_vertical">Вертикальное</item>
+
+
 		<item lang="ru" id="rees46_export_order">Выгрузить заказы</item>
-		<item lang="ru" id="rees46_export_order_hint">может занять некоторое время</item>
 		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
-		<item lang="ru" id="rees46_text_settings_title">Для того, чтобы включить систему рекомендаций</item>
-		<item lang="ru" id="rees46_text_settings_steps">
-			&lt;li&gt;Перейдите на &lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
-			&lt;li&gt;Зарегистрируйтесь;&lt;/li&gt;
-			&lt;li&gt;Создайте магазин;&lt;/li&gt;
-			&lt;li&gt;Введите код вашего магазина в поле ниже;&lt;/li&gt;
-			&lt;li&gt;Нажмите &quot;Сохранить&quot;.&lt;/li&gt;
-			&lt;li&gt;Ознакомьтесь с &lt;a href=&quot;http://memo.mkechinov.ru/display/R46D/CS-Cart&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля.&lt;/li&gt;
+		<item lang="ru" id="rees46_export_unsuccess">Ошибка инициализации выгрузки заказов в REES46.</item>
+
+		<item lang="en" id="rees46_info">
+			&lt;p&gt;If you have not yet registered at REES46.com, please  &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Connection Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
 		</item>
-		<item lang="ru" id="rees46_text_settings_info">
-			&lt;p&gt;Перейти к &lt;a href=&quot;http://rees46.com/shops&quot; target=&quot;_blank&quot;&gt;статистике эффективности&lt;/a&gt; работы системы персонализации.&lt;/p&gt;
-			&lt;p&gt;Прочитать &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробную инструкцию&lt;/a&gt; по настройке модуля.&lt;/p&gt;
+		<item lang="en" id="rees46_orders">
+			&lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
 		</item>
+		<item lang="en" id="rees46_docs">
+			&lt;p&gt;Please check out the &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
+		</item>
+		<item lang="en" id="rees46_statistics">
+			&lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;
+		</item>
+		<item lang="en" id="rees46_error_export_order">To upload orders, enter the code and a secret key of your store in the module settings.</item>
 
 		<item lang="en" id="rees46_menu">Recommender Engine REES46</item>
 		<item lang="en" id="rees46_menu_settings">Settings</item>
@@ -92,22 +205,14 @@
 		<item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
 		<item lang="en" id="recommenders">Personalisation</item>
 		<item lang="en" id="rees46_recommender_title">Widget title</item>
-		<item lang="en" id="rees46_error_export_order">To upload orders, enter the code and a secret key of your store in the module settings.</item>
+
+		<item lang="en" id="rees46_recommender_orientation">Widget orientation</item>
+		<item lang="en" id="rees46_orientation_horizontal">Horizontal</item>
+		<item lang="en" id="rees46_orientation_vertical">Vertical</item>
+
 		<item lang="en" id="rees46_export_order">Export order</item>
-		<item lang="en" id="rees46_export_order_hint">It may take some time</item>
 		<item lang="en" id="rees46_export_success">Unloading orders REES46 successfully initiated.</item>
-		<item lang="en" id="rees46_text_settings_title">To turn the system recommendations</item>
-		<item lang="en" id="rees46_text_settings_steps">
-			&lt;li&gt;Go to&lt;a href=&quot;REES46.com&quot; target=&quot;_blank&quot;&gt;http://rees46.com/&lt;/a&gt;;&lt;/li&gt;
-			&lt;li&gt;Sign up;&lt;/li&gt;
-			&lt;li&gt;Create a shop;&lt;/li&gt;
-			&lt;li&gt;Enter the code of your store in the box below;&lt;/li&gt;
-			&lt;li&gt;Click to &quot;Save&quot;.&lt;/li&gt;
-			&lt;li&gt;Check out &lt;a href=&quot;http://memo.mkechinov.ru/display/R46D/CS-Cart&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module.&lt;/li&gt;
-		</item>
-		<item lang="en" id="rees46_text_settings_info">
-			&lt;p&gt;Go to &lt;a href=&quot;http://rees46.com/shops&quot; target=&quot;_blank&quot;&gt;the statistics&lt;/a&gt; system performance personalization.&lt;/p&gt;
-			&lt;p&gt;Read &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;the detailed instructions&lt;/a&gt; on configuring the module.&lt;/p&gt;
-		</item>
+		<item lang="en" id="rees46_export_unsuccess">Unloading of the orders in REES46 has failed.</item>
+
 	</language_variables>
 </addon>

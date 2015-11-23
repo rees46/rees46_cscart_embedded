@@ -24,6 +24,14 @@ $schema['rees46'] = array(
 		'rees46_recommender_title' => array(
 			'type' => 'input'
 		),
+		'rees46_recommender_orientation' => array(
+			'type'          => 'selectbox',
+			'values'        => array(
+				'horizontal' 	=> 'rees46_orientation_horizontal',
+				'vertical'	=> 'rees46_orientation_vertical',
+			),
+			'default_value' => 'horizontal'
+		),
 	),
 	'cache' => false,
 );

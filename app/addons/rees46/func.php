@@ -6,24 +6,30 @@ use Tygh\Rees46\Config;
 use Tygh\Rees46\Events;
 use Tygh\Registry;
 
+
 function fn_rees46_generate_info()
 {
-	if (Config::getShopID() == '') {
-		return '
-        <p>
-          <h3>' . __('rees46_text_settings_title') . ':</h3>
-          <ol>
-            ' . __('rees46_text_settings_steps') . '
-          </ol>
-        </p>
-        ';
-	} else {
-		$res = __('rees46_text_settings_info');
+	$res = __('rees46_info');
+	return $res;
+}
 
-		$res = $res . '<p><a href="' . fn_url('rees46.export_orders') . '" class="btn btn-primary">' . __('rees46_export_order') . '</a> (' . __('rees46_export_order_hint') . ')</p>';
+function fn_rees46_generate_orders()
+{
+	$res = __('rees46_orders');
+	$res = $res.'<p><a href="' . fn_url('rees46.export_orders') . '" class="btn btn-primary">' . __('rees46_export_order') . '</a></p>';
+	return $res;
+}
 
-		return $res;
-	}
+function fn_rees46_generate_docs()
+{
+	$res = __('rees46_docs');
+	return $res;
+}
+
+function fn_rees46_generate_statistics()
+{
+	$res = __('rees46_statistics');
+	return $res;
 }
 
 function fn_rees46_add_to_cart($cart, $product_id, $_id)

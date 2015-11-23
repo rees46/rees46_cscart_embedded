@@ -12,6 +12,11 @@ if( $mode == 'get_info' ) {
 	} else {
 		$count = $_REQUEST['count'];
 	}
+	if( empty($_REQUEST['orientation']) ) {
+		$orientation = 'horizontal';
+	} else {
+		$orientation = $_REQUEST['orientation'];
+	}
 	$ids = array_slice(array_map('intval', $_REQUEST['product_ids']), 0, $count);
 
 	if( count($ids) == $count ) {
@@ -28,6 +33,7 @@ if( $mode == 'get_info' ) {
 	Registry::get('view')->assign('rees46_type', $_REQUEST['recommended_by']);
 	Registry::get('view')->assign('rees46_title', $_REQUEST['title']);
 	Registry::get('view')->assign('rees46_count', $count);
+	Registry::get('view')->assign('rees46_block_orientation', $orientation);
 	Registry::get('view')->display('addons/rees46/blocks/recommenders.tpl');
 	exit;
 }
