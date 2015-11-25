@@ -171,7 +171,7 @@
 		<item lang="ru" id="rees46_recommender_orientation">Расположение блока</item>
 		<item lang="ru" id="rees46_orientation_horizontal">Горизонтальное</item>
 		<item lang="ru" id="rees46_orientation_vertical">Вертикальное</item>
-
+		<item lang="ru" id="rees46_php_version">Текущая версия PHP не поддерживается. Для работы модуля REES46 требуется версия PHP 5.4.0 или выше.</item>
 
 		<item lang="ru" id="rees46_export_order">Выгрузить заказы</item>
 		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
@@ -213,6 +213,6 @@
 		<item lang="en" id="rees46_export_order">Export order</item>
 		<item lang="en" id="rees46_export_success">Unloading orders REES46 successfully initiated.</item>
 		<item lang="en" id="rees46_export_unsuccess">Unloading of the orders in REES46 has failed.</item>
-
+		<item lang="en" id="rees46_php_version">Currently installed PHP version is not supported. REES46 addon requires PHP 5.4.0 or higher.</item>
 	</language_variables>
 </addon>
