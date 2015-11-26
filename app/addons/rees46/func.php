@@ -7,6 +7,25 @@ use Tygh\Rees46\Events;
 use Tygh\Registry;
 
 
+function fn_rees46_generate_php_version_status()
+{
+	$php_value = phpversion();
+	$php_value_required = '5.4.0';
+	if (version_compare($php_value, $php_value_required, '>=')) {
+		return(true);
+	} else {
+                return(false);
+	}
+}
+
+function fn_rees46_generate_php_version()
+{
+	if (!fn_rees46_generate_php_version_status() && __('rees46_php_version')!='_rees46_php_version') {
+		fn_set_notification('E', __('rees46_php_version'), '', true, 'I');
+	}
+	return;
+}
+
 function fn_rees46_generate_info()
 {
 	$res = __('rees46_info');
