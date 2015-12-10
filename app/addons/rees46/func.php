@@ -6,7 +6,6 @@ use Tygh\Rees46\Config;
 use Tygh\Rees46\Events;
 use Tygh\Registry;
 
-
 function fn_rees46_generate_php_version_status()
 {
 	$php_value = phpversion();
@@ -49,11 +48,6 @@ function fn_rees46_generate_statistics()
 {
 	$res = __('rees46_statistics');
 	return $res;
-}
-
-function fn_rees46_add_to_cart($cart, $product_id, $_id)
-{
-	Events::CookieEvent('cart', array('item_id' => $product_id));
 }
 
 function fn_rees46_delete_cart_product($cart, $cart_id, $full_erase)
