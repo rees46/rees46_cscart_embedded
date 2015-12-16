@@ -50,17 +50,6 @@ function fn_rees46_generate_statistics()
 	return $res;
 }
 
-function fn_rees46_delete_cart_product($cart, $cart_id, $full_erase)
-{
-	if (!empty($cart_id) && !empty($cart['products'][$cart_id])) {
-		if (!empty($cart['products'][$cart_id]['product_id'])) {
-			$product_id = $cart['products'][$cart_id]['product_id'];
-
-			Events::CookieEvent('remove_from_cart', array('item_id' => $product_id));
-		}
-	}
-}
-
 function fn_rees46_place_order($order_id, $action, $order_status, $cart, $auth)
 {
 	$data = array(

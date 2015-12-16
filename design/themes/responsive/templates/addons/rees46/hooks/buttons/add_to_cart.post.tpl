@@ -1,6 +1,5 @@
 ﻿{if $rees46 && $rees46.shop_id != ''}
 <script type="text/javascript">
-
 	{if $product}
 		$("{if $rees46_type}#rees46_recommend_{$rees46_type}{/if} #button_cart_{$product.product_id}").on ("click", function(){
 		        REES46.addReadyListener(function() {
@@ -21,7 +20,8 @@
 					{/if}
 					categories: [{foreach from=$product.category_ids key=cat_id item=cat name=cats}'{$cat}'{if !$smarty.foreach.cats.last},{/if}{/foreach}],
 					name: '{$product.product}',
-					url: '{"products.view?product_id=`$product.product_id`"|fn_url}',image_url: '{$product.main_pair.detailed.image_path}'
+					url: '{"products.view?product_id=`$product.product_id`"|fn_url}',
+					image_url: '{$product.main_pair.detailed.image_path}'
 				}
 				REES46.pushData('cart', param);
 			});
