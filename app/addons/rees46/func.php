@@ -50,20 +50,6 @@ function fn_rees46_generate_statistics()
 	return $res;
 }
 
-function fn_rees46_place_order($order_id, $action, $order_status, $cart, $auth)
-{
-	$data = array(
-		'items'     => array(),
-		'order_id'  => $order_id,
-	);
-
-	foreach ($cart['products'] as $product) {
-		array_push($data['items'], array('item_id' => $product['product_id'], 'amount'  => $product['amount']));
-	}
-
-	Events::CookieEvent('order', $data);
-}
-
 //Хук к списку товаров
 function fn_rees46_get_products_post(&$products, $params, $lang_code) {
 	//Если запрос товаров с Rees46
