@@ -4,16 +4,16 @@
 	order_info = order_info.replace(/&quot;/g, '"');
 	order_info = order_info.replace(/"\s+(?![\s*"{}:,[]])/g, '&quote;');
 	order_info = JSON.parse(order_info);
-	param = [];
-	$.each (order_info.products, function(a, b){
-		param.push ({
-			item_id: b.product_id,
-			price: b.price,
-			is_available: true,
-			amount: b.amount
-		});
-	});	
 	window.onload = function () {
+		param = [];
+		$.each (order_info.products, function(a, b){
+			param.push ({
+				item_id: b.product_id,
+				price: b.price,
+				is_available: true,
+				amount: b.amount
+			});
+		});	
 		REES46.addReadyListener(function () {
 			REES46.pushData('purchase', param, order_info['order_id']);
 		});
