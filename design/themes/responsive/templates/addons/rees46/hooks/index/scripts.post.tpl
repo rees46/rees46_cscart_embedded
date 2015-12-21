@@ -55,9 +55,7 @@
 			{if $features}
 			{foreach from=$features name=features_list item=feature}
 			{if ($feature.description == 'Brand')}
-			attributes: {
-			brand: '{$feature.variant|default:$feature.value}'
-			},
+			brand: '{$feature.variant|default:$feature.value}',
 			{/if}
 			{/foreach}
 			{/if}
