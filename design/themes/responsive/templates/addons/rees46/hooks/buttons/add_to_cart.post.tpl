@@ -4,6 +4,16 @@
 		$("{if $rees46_type}#rees46_recommend_{$rees46_type}{/if} #button_cart_{$product.product_id}").on ("click", function(){
 		        REES46.addReadyListener(function() {
 				param = {
+					{$features=$product.header_features}
+					{if $features}
+					{foreach from=$features name=features_list item=feature}
+					{if ($feature.description == 'Brand')}
+					attributes: {
+					brand: '{$feature.variant|default:$feature.value}'
+					},
+					{/if}
+					{/foreach}
+					{/if}
 					{if $rees46_type}
 					recommended_by: '{$rees46_type}',
 					{/if}
