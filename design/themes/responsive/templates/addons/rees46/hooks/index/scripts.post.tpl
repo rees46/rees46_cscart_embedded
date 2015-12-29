@@ -115,6 +115,7 @@
 					{if $size_item == 'x large' || $size_item == 'xl'}{if $sizes}{assign var=sizes value="$sizes, `XL`"}{else}{assign var=sizes value="`XL`"}{/if}{/if}
 					{if $size_item == 'xx large' || $size_item == 'xxl'}{if $sizes}{assign var=sizes value="$sizes, `XXL`"}{else}{assign var=sizes value="`XXL`"}{/if}{/if}
 					{if $size_item == 'xxx large' || $size_item == 'xxxl'}{if $sizes}{assign var=sizes value="$sizes, `XXXL`"}{else}{assign var=sizes value="`XXXL`"}{/if}{/if}
+					{if is_numeric($size_item)}{if $sizes}{assign var=sizes value="$sizes, $size_item"}{else}{assign var=sizes value="$size_item"}{/if}{/if}
 				{/foreach}
 			{/if}
 		{/foreach}

@@ -62,6 +62,7 @@
 				{if $variant_name == 'x large' || $variant_name == 'xl'}{$sizes="`XL`"}{/if}
 				{if $variant_name == 'xx large' || $variant_name == 'xxl'}{$sizes="`XXL`"}{/if}
 				{if $variant_name == 'xxx large' || $variant_name == 'xxxl'}{$sizes="`XXXL`"}{/if}
+				{if is_numeric($variant_name)}{$sizes="$variant_name"}{/if}
 			{/if}
 		{/foreach}
 		cart_param = {
