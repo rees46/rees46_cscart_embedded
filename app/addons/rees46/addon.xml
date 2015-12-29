@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>1.0</version>
+	<version>2.0</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -22,10 +22,6 @@
 		<sections>
 			<section id="main">
 				<items>
-					<item id="rees46_php_verion">
-						<type>info</type>
-						<handler>fn_rees46_generate_php_version</handler>
-					</item>
 					<item id="rees46_info_header">
 						<name>Информация</name>
 						<type>header</type>
@@ -104,6 +100,21 @@
 								</item>
 							</variants>
 					</item>
+					<item id="rees46_yml_header">
+						<name>Настройка YML-файла</name>
+						<type>header</type>
+						<translations>
+							<item lang="en">Catalog XML settings</item>
+						</translations>
+					</item>
+					<item id="rees46_yml">
+						<name>YML-файл</name>
+						<type>info</type>
+						<handler>fn_rees46_yml_url</handler>
+						<translations>
+							<item lang="en">YML</item>
+						</translations>
+					</item>
 					<item id="rees46_orders_header">
 						<name>Cинхронизация заказов</name>
 						<type>header</type>
@@ -157,6 +168,9 @@
 			&lt;p&gt;Для анализа статистики работы товарных рекомендаций, пожалуйста, перейдите в ваш &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личный кабинет&lt;/a&gt; REES46.&lt;/p&gt;
 		</item>
 		<item lang="ru" id="rees46_error_export_order">Для выгрузки заказов введите код и секретный ключ вашего магазина в настройках модуля.</item>
+		<item lang="ru" id="rees46_yml">
+			&lt;p&gt;Ссылку на YML-файл необходимо указать в настройках &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личного кабинета&lt;/a&gt; REES46.&lt;/p&gt;
+		</item>
 
 		<item lang="ru" id="rees46_menu">Рекомендательная система REES46</item>
 		<item lang="ru" id="rees46_menu_settings">Настройки</item>
@@ -175,7 +189,6 @@
 		<item lang="ru" id="rees46_recommender_orientation">Расположение блока</item>
 		<item lang="ru" id="rees46_orientation_horizontal">Горизонтальное</item>
 		<item lang="ru" id="rees46_orientation_vertical">Вертикальное</item>
-		<item lang="ru" id="rees46_php_version">Для работы модуля REES46 требуется версия PHP 5.4.0 или выше.</item>
 
 		<item lang="ru" id="rees46_export_order">Выгрузить заказы</item>
 		<item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
@@ -194,6 +207,9 @@
 			&lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;
 		</item>
 		<item lang="en" id="rees46_error_export_order">To upload orders, enter the code and a secret key of your store in the module settings.</item>
+		<item lang="en" id="rees46_yml">
+			&lt;p&gt;Please copy the link below and paste in the settings of your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;profile&lt;/a&gt;.&lt;/p&gt;
+		</item>
 
 		<item lang="en" id="rees46_menu">Recommender Engine REES46</item>
 		<item lang="en" id="rees46_menu_settings">Settings</item>
@@ -217,6 +233,5 @@
 		<item lang="en" id="rees46_export_order">Export order</item>
 		<item lang="en" id="rees46_export_success">Unloading orders REES46 successfully initiated.</item>
 		<item lang="en" id="rees46_export_unsuccess">Unloading of the orders in REES46 has failed.</item>
-		<item lang="en" id="rees46_php_version">REES46 addon requires PHP 5.4.0 or higher.</item>
 	</language_variables>
 </addon>

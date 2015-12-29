@@ -26,7 +26,7 @@ if( $mode == 'get_info' ) {
 		));
 		fn_gather_additional_products_data($products, array('get_icon' => false, 'get_detailed' => true, 'get_additional' => false, 'get_options' => false));
 	} else {
-		$products = [];
+		$products = array();
 	}
 
 	Registry::get('view')->assign('rees46_products', $products);
@@ -36,4 +36,12 @@ if( $mode == 'get_info' ) {
 	Registry::get('view')->assign('rees46_block_orientation', $orientation);
 	Registry::get('view')->display('addons/rees46/blocks/recommenders.tpl');
 	exit;
+}
+
+if ($mode == 'yml') {
+	$filename = Registry::get('config.dir.cache_misc') . 'ymlsitemap.xml';
+	require_once('rees46_yml.php');
+	@ignore_user_abort(true);
+	set_time_limit(3600);
+	fn_yml_get_rees46_yml($filename);
 }
