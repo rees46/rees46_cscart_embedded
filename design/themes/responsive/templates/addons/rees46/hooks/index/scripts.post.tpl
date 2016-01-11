@@ -27,9 +27,15 @@
 
         {if $cart}
           document.currentCart = '{$cart.products|json_encode}';
-          document.currentCart = document.currentCart.replace(/&quot;/g, '"');
-          document.currentCart = document.currentCart.replace(/"\s+(?![\s*"{}:,[]])/g, '&quote;');
+	  {literal}
+          document.currentCart = document.currentCart.replace(/&quot;/g, "'");
+          document.currentCart = document.currentCart.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
+          document.currentCart = document.currentCart.replace(/'(?=[:,}\]])/g, '"');
+          document.currentCart = document.currentCart.replace(/([{:,\[])'/g, '$1"');
+          document.currentCart = document.currentCart.replace(/'/g, '&quot;');
           document.currentCart = JSON.parse(document.currentCart);
+          {/literal}
+
           var ids = [];
 
           for(var k in document.currentCart) {

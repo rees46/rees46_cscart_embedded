@@ -2,9 +2,14 @@
 <script type="text/javascript">
 	{if $cart}
 		cart = '{$cart.products|json_encode}';
-		cart=cart.replace(/&quot;/g, '"');
-		cart=cart.replace(/"\s+(?![\s*"{}:,[]])/g, '&quote;');
-		cart=JSON.parse(cart);
+		{literal}
+		cart = cart.replace(/&quot;/g, "'");
+		cart = cart.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
+		cart = cart.replace(/'(?=[:,}\]])/g, '"');
+		cart = cart.replace(/([{:,\[])'/g, '$1"');
+		cart = cart.replace(/'/g, '&quot;');
+		cart = JSON.parse(cart);
+		{/literal}
 		$("a.ty-cart-content__product-delete").each(function(b,a){
 		    r=new RegExp('cart_id=([0-9]+)','g');
 		    cid=a.href.match(r);

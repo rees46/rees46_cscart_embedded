@@ -152,7 +152,15 @@ foreach ($products as $product) {
                 ON pfvdesc.variant_id = pfval.variant_id
                 LEFT JOIN cscart_product_features_descriptions AS pfdesc
                 ON pfdesc.feature_id = pfval.feature_id 
-	WHERE p.product_id =".$product['id']." AND pfval.feature_id AND pfdesc.description = 'brand'";
+	WHERE p.product_id =".$product['id']." AND pfval.feature_id AND 
+		(pfdesc.description LIKE 'brand' OR 
+		pfdesc.description LIKE 'vendor' OR
+		pfdesc.description LIKE 'бренд' OR
+		pfdesc.description LIKE 'брэнд' OR
+		pfdesc.description LIKE 'производитель' OR
+		pfdesc.description LIKE 'торговая марка' OR
+		pfdesc.description LIKE 'вендор')";
+
 	$line = db_get_row($query);
         fwrite($f, chr(9).chr(9).chr(9).'<vendor>'.$line['vendor'].'</vendor>'.chr(10));
         // описание получаем из  короткого описания товара
@@ -161,7 +169,9 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'<description>'.chr(10));
         fwrite($f, chr(9).chr(9).chr(9).chr(9).check_xml(strip_tags($product["descript"])).chr(10));
         fwrite($f, chr(9).chr(9).chr(9).'</description>'.chr(10));
-//        fwrite($f, chr(9).chr(9).chr(9).'<country_of_origin>Германия</country_of_origin>'.chr(10));
+
+
+
         fwrite($f, chr(9).'</offer>'.chr(10));
 }
 
