@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>2.0</version>
+	<version>2.1</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -65,10 +65,10 @@
 										<item lang="en">Without modifications</item>
 									</translations>
 								</item>
-								<item id="fashion">
-									<name>Одежда, обувь, аксессуары</name>
+								<item id="appliances">
+									<name>Бытовая техника</name>
 									<translations>
-										<item lang="en">Fashion</item>
+										<item lang="en">Appliances</item>
 									</translations>
 								</item>
 								<item id="child">
@@ -83,8 +83,23 @@
 										<item lang="en">Cosmetics</item>
 									</translations>
 								</item>
-								<item id="fmcg">
-									<name>FMCG/CPG</name>
+								<item id="coupon">
+									<name>Купоны, акции, скидки</name>
+									<translations>
+										<item lang="en">Discounts, promotions</item>
+									</translations>
+								</item>
+								<item id="fashion">
+									<name>Одежда, обувь, аксессуары</name>
+									<translations>
+										<item lang="en">Fashion</item>
+									</translations>
+								</item>
+								<item id="construction">
+									<name>Строительные материалы</name>
+									<translations>
+										<item lang="en">Construction materials and tools</item>
+									</translations>
 								</item>
 								<item id="animal">
 									<name>Товары для животных</name>
@@ -92,11 +107,8 @@
 										<item lang="en">Goods for pets</item>
 									</translations>
 								</item>
-								<item id="coupon">
-									<name>Купоны, акции, скидки</name>
-									<translations>
-										<item lang="en">Discounts, promotions</item>
-									</translations>
+								<item id="fmcg">
+									<name>FMCG/CPG</name>
 								</item>
 							</variants>
 					</item>
@@ -182,6 +194,7 @@
 		<item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
 		<item lang="ru" id="rees46_see_also">Посмотрите также</item>
 		<item lang="ru" id="rees46_similar">Похожие товары</item>
+		<item lang="ru" id="rees46_buying_now">Сейчас покупают</item>
 		<item lang="ru" id="rees46_items_count">Товаров в блоке</item>
 		<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
 		<item lang="ru" id="recommenders">Персонализация</item>
@@ -221,6 +234,7 @@
 		<item lang="en" id="rees46_recently_viewed">Recently viewed products</item>
 		<item lang="en" id="rees46_see_also">Customers who viewed this product also viewed</item>
 		<item lang="en" id="rees46_similar">Similar products</item>
+		<item lang="en" id="rees46_buying_now">Right now people buying</item>
 		<item lang="en" id="rees46_items_count">Items in the widget</item>
 		<item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
 		<item lang="en" id="recommenders">Personalisation</item>

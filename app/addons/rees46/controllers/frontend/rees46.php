@@ -39,7 +39,7 @@ if( $mode == 'get_info' ) {
 }
 
 if ($mode == 'yml') {
-	$filename = Registry::get('config.dir.cache_misc') . 'ymlsitemap.xml';
+	$filename = Registry::get('config.dir.cache_misc') . 'rees46.yml';
 	require_once('rees46_yml.php');
 	@ignore_user_abort(true);
 	set_time_limit(3600);
