@@ -221,7 +221,7 @@ foreach ($products as $product) {
 			case 'fashion':
 				fwrite($f, chr(9).chr(9).chr(9).'<fashion>'.chr(10));
 				if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-				if ($sizes) {
+				if ($sizes && !empty($gender)) {
 					fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
 					foreach ($sizes as $size) {
 						$size_items = mb_strtolower($size['name']);
@@ -256,7 +256,7 @@ foreach ($products as $product) {
 			case 'child':
 				fwrite($f, chr(9).chr(9).chr(9).'<child>'.chr(10));
 				if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-				if ($sizes) {
+				if ($sizes && !empty($gender)) {
 					fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
 					foreach ($sizes as $size) {
 						$size_items = mb_strtolower($size['name']);
