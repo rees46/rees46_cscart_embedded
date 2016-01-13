@@ -164,7 +164,7 @@ foreach ($products as $product) {
 	$line = db_get_row($query);
 	$vendor = $line['vendor'];
 
-        fwrite($f, chr(9).chr(9).chr(9).'<vendor>'.$vendor.'</vendor>'.chr(10));
+        if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).'<vendor>'.$vendor.'</vendor>'.chr(10));};
         // описание получаем из  короткого описания товара
         fwrite($f, chr(9).chr(9).chr(9).'<name> '.check_xml($product["name"]).'</name>'.chr(10));
         // описание
@@ -219,68 +219,74 @@ foreach ($products as $product) {
 
 		switch ($modification) {
 			case 'fashion':
-				fwrite($f, chr(9).chr(9).chr(9).'<fashion>'.chr(10));
-				if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-				if ($sizes && !empty($gender)) {
-					fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
-					foreach ($sizes as $size) {
-						$size_items = mb_strtolower($size['name']);
-						$size_item = '';
-						if (!is_numeric($size_items)) {
-							if ($size_items == 'xx small' || $size_items == 'xxs') 	{$size_item = 'XXS';};
-							if ($size_items == 'x small' || $size_items == 'xs') 	{$size_item = 'XS';};
-							if ($size_items == 'small' || $size_items == 's') 	{$size_item = 'S';};
-							if ($size_items == 'medium' || $size_items == 'm') 	{$size_item = 'M';};
-							if ($size_items == 'large' || $size_items == 'l') 	{$size_item = 'L';};
-							if ($size_items == 'x large' || $size_items == 'xl') 	{$size_item = 'XL';};
-							if ($size_items == 'xx large' || $size_items == 'xxl') 	{$size_item = 'XXL';};
-							if ($size_items == 'xxx large' || $size_items == 'xxxl'){$size_item = 'XXXL';};
-						} else {
-							$size_item = $size_items;
+				if (!empty($gender)) {
+					fwrite($f, chr(9).chr(9).chr(9).'<fashion>'.chr(10));
+					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
+					if ($sizes && !empty($gender)) {
+						fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
+						foreach ($sizes as $size) {
+							$size_items = mb_strtolower($size['name']);
+							$size_item = '';
+							if (!is_numeric($size_items)) {
+								if ($size_items == 'xx small' || $size_items == 'xxs') 	{$size_item = 'XXS';};
+								if ($size_items == 'x small' || $size_items == 'xs') 	{$size_item = 'XS';};
+								if ($size_items == 'small' || $size_items == 's') 	{$size_item = 'S';};
+								if ($size_items == 'medium' || $size_items == 'm') 	{$size_item = 'M';};
+								if ($size_items == 'large' || $size_items == 'l') 	{$size_item = 'L';};
+								if ($size_items == 'x large' || $size_items == 'xl') 	{$size_item = 'XL';};
+								if ($size_items == 'xx large' || $size_items == 'xxl') 	{$size_item = 'XXL';};
+								if ($size_items == 'xxx large' || $size_items == 'xxxl'){$size_item = 'XXXL';};
+							} else {
+								$size_item = $size_items;
+							}
+							if (!empty($size_item)) {
+								fwrite($f, chr(9).chr(9).chr(9).chr(9).chr(9).'<size>'.$size_item.'</size>'.chr(10));
+							}
 						}
-						if (!empty($size_item)) {
-							fwrite($f, chr(9).chr(9).chr(9).chr(9).chr(9).'<size>'.$size_item.'</size>'.chr(10));
-						}
+						fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
 					}
-					fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
+					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
+					fwrite($f, chr(9).chr(9).chr(9).'</fashion>'.chr(10));
 				}
-				if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
-				fwrite($f, chr(9).chr(9).chr(9).'</fashion>'.chr(10));
 				break;
 			case 'cosmetic':
-				fwrite($f, chr(9).chr(9).chr(9).'<cosmetic>'.chr(10));
-				if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-				if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
-				fwrite($f, chr(9).chr(9).chr(9).'</cosmetic>'.chr(10));
+				if (!empty($gender)) {
+					fwrite($f, chr(9).chr(9).chr(9).'<cosmetic>'.chr(10));
+					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
+					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
+					fwrite($f, chr(9).chr(9).chr(9).'</cosmetic>'.chr(10));
+				}
 				break;
 			case 'child':
-				fwrite($f, chr(9).chr(9).chr(9).'<child>'.chr(10));
-				if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-				if ($sizes && !empty($gender)) {
-					fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
-					foreach ($sizes as $size) {
-						$size_items = mb_strtolower($size['name']);
-						$size_item = '';
-						if (!is_numeric($size_items)) {
-							if ($size_items == 'xx small' || $size_items == 'xxs') 	{$size_item = 'XXS';};
-							if ($size_items == 'x small' || $size_items == 'xs') 	{$size_item = 'XS';};
-							if ($size_items == 'small' || $size_items == 's') 	{$size_item = 'S';};
-							if ($size_items == 'medium' || $size_items == 'm') 	{$size_item = 'M';};
-							if ($size_items == 'large' || $size_items == 'l') 	{$size_item = 'L';};
-							if ($size_items == 'x large' || $size_items == 'xl') 	{$size_item = 'XL';};
-							if ($size_items == 'xx large' || $size_items == 'xxl') 	{$size_item = 'XXL';};
-							if ($size_items == 'xxx large' || $size_items == 'xxxl'){$size_item = 'XXXL';};
-						} else {
-							$size_item = $size_items;
+				if (!empty($gender)) {
+					fwrite($f, chr(9).chr(9).chr(9).'<child>'.chr(10));
+					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
+					if ($sizes && !empty($gender)) {
+						fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
+						foreach ($sizes as $size) {
+							$size_items = mb_strtolower($size['name']);
+							$size_item = '';
+							if (!is_numeric($size_items)) {
+								if ($size_items == 'xx small' || $size_items == 'xxs') 	{$size_item = 'XXS';};
+								if ($size_items == 'x small' || $size_items == 'xs') 	{$size_item = 'XS';};
+								if ($size_items == 'small' || $size_items == 's') 	{$size_item = 'S';};
+								if ($size_items == 'medium' || $size_items == 'm') 	{$size_item = 'M';};
+								if ($size_items == 'large' || $size_items == 'l') 	{$size_item = 'L';};
+								if ($size_items == 'x large' || $size_items == 'xl') 	{$size_item = 'XL';};
+								if ($size_items == 'xx large' || $size_items == 'xxl') 	{$size_item = 'XXL';};
+								if ($size_items == 'xxx large' || $size_items == 'xxxl'){$size_item = 'XXXL';};
+							} else {
+								$size_item = $size_items;
+							}
+							if (!empty($size_item)) {
+								fwrite($f, chr(9).chr(9).chr(9).chr(9).chr(9).'<size>'.$size_item.'</size>'.chr(10));
+							}
 						}
-						if (!empty($size_item)) {
-							fwrite($f, chr(9).chr(9).chr(9).chr(9).chr(9).'<size>'.$size_item.'</size>'.chr(10));
-						}
+						fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
 					}
-					fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
+					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
+					fwrite($f, chr(9).chr(9).chr(9).'</child>'.chr(10));
 				}
-				if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
-				fwrite($f, chr(9).chr(9).chr(9).'</child>'.chr(10));
 				break;
 		}
 	}
