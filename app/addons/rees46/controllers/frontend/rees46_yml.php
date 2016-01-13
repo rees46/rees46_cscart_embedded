@@ -202,18 +202,30 @@ foreach ($products as $product) {
 		}
 
 
-		$query = "SELECT optvd.variant_name AS name
-			FROM cscart_product_options AS opt
-			LEFT JOIN cscart_product_options_descriptions AS optd
-				ON optd.option_id = opt.option_id
-			LEFT JOIN cscart_product_option_variants AS optv
-				ON optv.option_id = opt.option_id
-			LEFT JOIN cscart_product_option_variants_descriptions AS optvd
-				ON optvd.variant_id = optv.variant_id
-			WHERE 	opt.product_id = ".$product['id']." AND
-				opt.status = 'A' AND
+		$query = "SELECT DISTINCT optvd.variant_name AS name
+				FROM (
+					(SELECT	opt.option_id AS option_id,
+						opt.product_id AS product_id,
+			        		opt.status AS status
+					FROM cscart_product_options AS opt)
+					UNION
+					(SELECT	opt.option_id AS option_id,
+						opt.product_id AS product_id,
+			        		NULL
+					FROM cscart_product_global_option_links AS opt)
+					ORDER BY product_id
+			        ) AS opt
+				LEFT JOIN cscart_product_options_descriptions AS optd
+					ON optd.option_id = opt.option_id
+				LEFT JOIN cscart_product_option_variants AS optv
+					ON optv.option_id = opt.option_id
+				LEFT JOIN cscart_product_option_variants_descriptions AS optvd
+					ON optvd.variant_id = optv.variant_id
+			WHERE	opt.product_id = ".$product['id']." AND
+				(opt.status = 'A' OR opt.status IS NULL) AND
 				(optd.option_name LIKE 'size' OR
-				optd.option_name LIKE 'размер')";
+				optd.option_name LIKE 'размер')
+			ORDER BY name";
 
 		$sizes = db_get_array($query, USERGROUP_ALL);
 
@@ -290,7 +302,7 @@ foreach ($products as $product) {
 				break;
 		}
 	}
-        fwrite($f, chr(9).'</offer>'.chr(10));
+        fwrite($f, chr(9).chr(9).'</offer>'.chr(10));
 }
 
 /*----------------------------------------------------------------------------*/
