@@ -25,27 +25,16 @@
           document.currentProductId = {$product.product_id};
         {/if}
 
-        {if $cart}
-          document.currentCart = '{$cart.products|json_encode}';
-	  {literal}
-          document.currentCart = document.currentCart.replace(/&quot;/g, "'");
-          document.currentCart = document.currentCart.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
-          document.currentCart = document.currentCart.replace(/'(?=[:,}\]])/g, '"');
-          document.currentCart = document.currentCart.replace(/([{:,\[])'/g, '$1"');
-          document.currentCart = document.currentCart.replace(/'/g, '&quot;');
-          document.currentCart = JSON.parse(document.currentCart);
-          {/literal}
-
-          var ids = [];
-
-          for(var k in document.currentCart) {
-            ids.push(document.currentCart[k].product_id);
-          }
-
-          document.currentCart = ids;
-        {else}
-          document.currentCart = [];
-        {/if}
+	{assign var="_cart_products" value=$smarty.session.cart.products|array_reverse:true}
+	{if $_cart_products}
+		var ids = [];
+		{foreach from=$_cart_products key="key" item="product" name="cart_products"}
+			ids.push({$product.product_id});
+		{/foreach}
+		document.currentCart = ids;
+	{else}
+		document.currentCart = [];
+	{/if}
 
         REES46.addReadyListener(function() {
           var link = document.createElement('link');
@@ -56,88 +45,7 @@
 
           {if ($runtime.controller == 'products' && $runtime.mode == 'view')}
             {if $product}
-		{$features=$product.header_features}
-		{if $features}
-			{foreach from=$features key=feature_id item=feature}
-			{$feature_desc = $feature.description|lower}
-			{if ($feature_desc == 'brand') || 
-			    ($feature_desc == 'vendor') || 
-			    ($feature_desc == 'бренд') || 
-			    ($feature_desc == 'брэнд') ||
-			    ($feature_desc == 'производитель') || 
-			    ($feature_desc == 'торговая марка') ||
-			    ($feature_desc == 'вендор')}
-			{$brand = $feature.variant|default:$feature.value}
-			{/if}
-			{if ($feature.description|lower == 'gender') || 
-			    ($feature.description|lower == 'пол')}
-				{$genders = $feature.variant|default:$feature.value|lower}
-				{if $genders == 'female' ||
-				    $genders|mb_substr:0:5 == 'женск'}
-					{$gender = 'f'}
-				{elseif $feature.variant|default:$feature.value|lower == 'male' ||
-					$feature.variant|default:$feature.value|lower|mb_substr:0:5 == 'мужск'}
-					{$gender = 'm'}
-				{/if}
-			{/if}
-			{/foreach}
-		{/if}
-		{if !$gender}
-			{$features=$product.product_features}
-			{if $features}
-				{foreach from=$features key=feature_id item=feature}
-				{if ($feature.description|lower == 'gender') || 
-				    ($feature.description|lower == 'пол')}
-					{$feature_item = $feature.variant_id}
-					{if $feature_item}
-						{$genders = $feature.variants.$feature_item.variant|lower}
-						{if $genders == 'female' ||
-						    $genders|mb_substr:0:5 == 'женск'}
-							{$gender = 'f'}
-						{elseif $genders == 'male' ||
-							$genders|mb_substr:0:5 == 'мужск'}
-							{$gender = 'm'}
-						{/if}
-					{/if}
-
-				{/if}
-				{/foreach}
-			{/if}
-		{/if}
-		{$options=$product.product_options}
-		{foreach from=$options key=option_id item=option}
-			{$opt_name = $option.option_name|lower}
-			{if ($opt_name == 'size') || 
-			    ($opt_name|mb_substr:0:6 == 'размер')}
-				{$size_items=$option.variants}
-				{assign var=sizes value=''}
-				{foreach from=$size_items key=variant_id item=size name=sizes_arr}
-					{$size_item = $size.variant_name|lower}
-					{if $size_item == 'xx small' || $size_item == 'xxs'}{if $sizes}{assign var=sizes value="$sizes, `XXS`"}{else}{assign var=sizes value="`XXS`"}{/if}{/if}
-					{if $size_item == 'x small' || $size_item == 'xs'}{if $sizes}{assign var=sizes value="$sizes, `XS`"}{else}{assign var=sizes value="`XS`"}{/if}{/if}
-					{if $size_item == 'small' || $size_item == 's'}{if $sizes}{assign var=sizes value="$sizes, `S`"}{else}{assign var=sizes value="`S`"}{/if}{/if}
-					{if $size_item == 'medium' || $size_item == 'm'}{if $sizes}{assign var=sizes value="$sizes, `M`"}{else}{assign var=sizes value="`M`"}{/if}{/if}
-					{if $size_item == 'large' || $size_item == 'l'}{if $sizes}{assign var=sizes value="$sizes, `L`"}{else}{assign var=sizes value="`L`"}{/if}{/if}
-					{if $size_item == 'x large' || $size_item == 'xl'}{if $sizes}{assign var=sizes value="$sizes, `XL`"}{else}{assign var=sizes value="`XL`"}{/if}{/if}
-					{if $size_item == 'xx large' || $size_item == 'xxl'}{if $sizes}{assign var=sizes value="$sizes, `XXL`"}{else}{assign var=sizes value="`XXL`"}{/if}{/if}
-					{if $size_item == 'xxx large' || $size_item == 'xxxl'}{if $sizes}{assign var=sizes value="$sizes, `XXXL`"}{else}{assign var=sizes value="`XXXL`"}{/if}{/if}
-					{if is_numeric($size_item)}{if $sizes}{assign var=sizes value="$sizes, $size_item"}{else}{assign var=sizes value="$size_item"}{/if}{/if}
-				{/foreach}
-			{/if}
-		{/foreach}
-
 		param = {
-			{if $gender || $sizes}
-				attributes: {
-					fashion: {
-						{if $gender}gender: '{$gender}',{/if}
-						{if $sizes}sizes: [{$sizes}],{/if}
-						{if $brand}brand: '{$brand}'{/if}
-					}
-				},
-			{elseif $brand}
-				brand: '{$brand}',
-			{/if}
 			{if $rees46_type}
 			recommended_by: '{$rees46_type}',
 			{/if}
@@ -177,7 +85,10 @@
 							}
 							REES46.recommend({
 								{if $rees46.modification && $rees46.modification != 'none'}
-									modification: '{$rees46.modification}',
+								modification: '{$rees46.modification}',
+								{/if}
+								{if ($runtime.controller == 'products' && $runtime.mode == 'search')}
+								search_query: '{$search.q}',
 								{/if}
 								recommender_type: recommenderType,
 								category: categoryId,
@@ -199,7 +110,8 @@
 										popular: 'Популярные товары',
 										see_also: 'Посмотрите также',
 										recently_viewed: 'Вы недавно смотрели',
-										buying_now: 'Сейчас покупают'
+										buying_now: 'Сейчас покупают',
+										search: 'Ищущие это также покупают'
 									};
 
 									//Отправляем запрос

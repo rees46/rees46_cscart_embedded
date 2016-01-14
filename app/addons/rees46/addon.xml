@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>2.2</version>
+	<version>2.3</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -195,6 +195,7 @@
 		<item lang="ru" id="rees46_see_also">Посмотрите также</item>
 		<item lang="ru" id="rees46_similar">Похожие товары</item>
 		<item lang="ru" id="rees46_buying_now">Сейчас покупают</item>
+		<item lang="ru" id="rees46_search">Ищущие это также покупают</item>
 		<item lang="ru" id="rees46_items_count">Товаров в блоке</item>
 		<item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
 		<item lang="ru" id="recommenders">Персонализация</item>
@@ -235,6 +236,7 @@
 		<item lang="en" id="rees46_see_also">Customers who viewed this product also viewed</item>
 		<item lang="en" id="rees46_similar">Similar products</item>
 		<item lang="en" id="rees46_buying_now">Right now people buying</item>
+		<item lang="en" id="rees46_search">Who search this also bought</item>
 		<item lang="en" id="rees46_items_count">Items in the widget</item>
 		<item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
 		<item lang="en" id="recommenders">Personalisation</item>

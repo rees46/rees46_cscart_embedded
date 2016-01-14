@@ -162,8 +162,7 @@ foreach ($products as $product) {
 		pfdesc.description LIKE 'вендор')";
 
 	$line = db_get_row($query);
-	$vendor = $line['vendor'];
-
+	if (!empty($line['vendor'])) {$vendor = $line['vendor'];};
         if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).'<vendor>'.$vendor.'</vendor>'.chr(10));};
         // описание получаем из  короткого описания товара
         fwrite($f, chr(9).chr(9).chr(9).'<name> '.check_xml($product["name"]).'</name>'.chr(10));
@@ -191,16 +190,18 @@ foreach ($products as $product) {
 				fv.variant_id = fvar.variant_id AND
 				pf.status = 'A'";
 		$line = db_get_row($query);
-		$gender = $line ['variant'];
-		$gender = mb_substr(mb_strtolower($gender),0,4);
-		if ($gender == 'male' || $gender == 'мужс') { 
-			$gender = 'm';
-		} elseif ($gender == 'fema' || $gender == 'женс') {
-			$gender = 'f';
-		} else {
-			$gender = '';
+		$gender = '';
+		if (!empty($line ['variant'])) {
+			$gender = $line ['variant'];
+			$gender = mb_substr(mb_strtolower($gender),0,4);
+			if ($gender == 'male' || $gender == 'мужс') { 
+				$gender = 'm';
+			} elseif ($gender == 'fema' || $gender == 'женс') {
+				$gender = 'f';
+			} else {
+				$gender = '';
+			}
 		}
-
 
 		$query = "SELECT DISTINCT optvd.variant_name AS name
 				FROM (

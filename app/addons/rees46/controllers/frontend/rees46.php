@@ -7,6 +7,7 @@ if( !defined('BOOTSTRAP') ) {
 }
 
 if( $mode == 'get_info' ) {
+
 	if( empty($_REQUEST['count']) ) {
 		$count = 4;
 	} else {
@@ -28,7 +29,6 @@ if( $mode == 'get_info' ) {
 	} else {
 		$products = array();
 	}
-
 	Registry::get('view')->assign('rees46_products', $products);
 	Registry::get('view')->assign('rees46_type', $_REQUEST['recommended_by']);
 	Registry::get('view')->assign('rees46_title', $_REQUEST['title']);
