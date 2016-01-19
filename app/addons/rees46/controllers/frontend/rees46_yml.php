@@ -258,7 +258,6 @@ foreach ($products as $product) {
 						}
 						fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
 					}
-					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
 					fwrite($f, chr(9).chr(9).chr(9).'</fashion>'.chr(10));
 				}
 				break;
@@ -266,7 +265,6 @@ foreach ($products as $product) {
 				if (!empty($gender)) {
 					fwrite($f, chr(9).chr(9).chr(9).'<cosmetic>'.chr(10));
 					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
 					fwrite($f, chr(9).chr(9).chr(9).'</cosmetic>'.chr(10));
 				}
 				break;
@@ -297,7 +295,6 @@ foreach ($products as $product) {
 						}
 						fwrite($f, chr(9).chr(9).chr(9).chr(9).'</sizes>'.chr(10));
 					}
-					if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<brand>'.$vendor.'</brand>'.chr(10));};
 					fwrite($f, chr(9).chr(9).chr(9).'</child>'.chr(10));
 				}
 				break;
