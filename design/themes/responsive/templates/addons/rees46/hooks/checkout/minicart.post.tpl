@@ -2,11 +2,11 @@
 <script type="text/javascript">
 {if $_cart_products}
 	cart = {};
-	{foreach from=$_cart_products key="key" item="product" name="cart_products"}
+	{foreach from=$_cart_products key="key" item="cart_product" name="cart_products"}
 		cart['{$key}'] = {
-				product_id: {$product.product_id},
-				price: {$product.price},
-				category_ids: [{foreach from=$product.category_ids key=cat_id item=cat name=cats}{$cat}{if !$smarty.foreach.cats.last},{/if}{/foreach}]
+				product_id: {$cart_product.product_id},
+				price: {$cart_product.price},
+				category_ids: [{foreach from=$cart_product.category_ids key=cat_id item=cat name=cats}{$cat}{if !$smarty.foreach.cats.last},{/if}{/foreach}]
 				};
 	{/foreach}
 	$('a.cm-ajax').each(function (b,a){

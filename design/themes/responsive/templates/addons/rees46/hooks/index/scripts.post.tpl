@@ -28,8 +28,8 @@
 	{assign var="_cart_products" value=$smarty.session.cart.products|array_reverse:true}
 	{if $_cart_products}
 		var ids = [];
-		{foreach from=$_cart_products key="key" item="product" name="cart_products"}
-			ids.push({$product.product_id});
+		{foreach from=$_cart_products key="key" item="cart_product" name="cart_products"}
+			ids.push({$cart_product.product_id});
 		{/foreach}
 		document.currentCart = ids;
 	{else}
