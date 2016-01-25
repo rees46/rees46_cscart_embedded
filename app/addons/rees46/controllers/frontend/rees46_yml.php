@@ -162,7 +162,7 @@ foreach ($products as $product) {
 		pfdesc.description LIKE 'вендор')";
 
 	$line = db_get_row($query);
-	if (!empty($line['vendor'])) {$vendor = $line['vendor'];};
+	if (!empty($line['vendor'])) {$vendor = check_xml($line['vendor']);};
         if (!empty($vendor)) {fwrite($f, chr(9).chr(9).chr(9).'<vendor>'.$vendor.'</vendor>'.chr(10));};
         // описание получаем из  короткого описания товара
         fwrite($f, chr(9).chr(9).chr(9).'<name> '.check_xml($product["name"]).'</name>'.chr(10));
@@ -235,7 +235,7 @@ foreach ($products as $product) {
 				if (!empty($gender)) {
 					fwrite($f, chr(9).chr(9).chr(9).'<fashion>'.chr(10));
 					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-					if ($sizes && !empty($gender)) {
+					if (!empty($sizes) && !empty($gender)) {
 						fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
 						foreach ($sizes as $size) {
 							$size_items = mb_strtolower($size['name']);
@@ -272,7 +272,7 @@ foreach ($products as $product) {
 				if (!empty($gender)) {
 					fwrite($f, chr(9).chr(9).chr(9).'<child>'.chr(10));
 					if (!empty($gender)) {fwrite($f, chr(9).chr(9).chr(9).chr(9).'<gender>'.$gender.'</gender>'.chr(10));};
-					if ($sizes && !empty($gender)) {
+					if (!empty($sizes) && !empty($gender)) {
 						fwrite($f, chr(9).chr(9).chr(9).chr(9).'<sizes>'.chr(10));
 						foreach ($sizes as $size) {
 							$size_items = mb_strtolower($size['name']);
