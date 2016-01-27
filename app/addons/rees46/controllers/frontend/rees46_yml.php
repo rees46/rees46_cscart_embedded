@@ -117,7 +117,7 @@ foreach ($products as $product) {
         $offer = 'offer id="'.$product['id'].'" available="true"';
         fwrite($f, chr(9).chr(9).'<'.$offer.'>'.chr(10));
 //        // пишем ссылку на страницу.
-        fwrite($f, chr(9).chr(9).chr(9).'<url>' . fn_url(htmlentities('products.view?product_id=' . $product["id"])).'</url>'.chr(10));
+        fwrite($f, chr(9).chr(9).chr(9).'<url>'.fn_url(htmlentities('products.view?product_id=' . $product["id"])).'</url>'.chr(10));
         // вытаскиваем цену товара
         $query = "SELECT price FROM
                       cscart_product_prices

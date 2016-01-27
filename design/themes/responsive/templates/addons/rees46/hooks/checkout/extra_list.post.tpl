@@ -3,6 +3,7 @@
 	{if $cart}
 		cart = '{$cart.products|json_encode}';
 		{literal}
+		order_info = order_info.replace(/\s/g, " ");
 		cart = cart.replace(/&quot;/g, "'");
 		cart = cart.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
 		cart = cart.replace(/'(?=[:,}\]])/g, '"');

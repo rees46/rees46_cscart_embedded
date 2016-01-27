@@ -2,6 +2,7 @@
 <script type="text/javascript">
 	order_info = '{$order_info|json_encode}';
 	{literal}
+	order_info = order_info.replace(/\s/g, " ");
 	order_info = order_info.replace(/&quot;/g, "'");
 	order_info = order_info.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
 	order_info = order_info.replace(/'(?=[:,}\]])/g, '"');
