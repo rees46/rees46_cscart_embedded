@@ -15,12 +15,12 @@ function check_xml ($strng_xml) {
 }
 
 function recursive_category($pid, $f, $arr_category) {
-    $query = "SELECT cat1.category_id AS id, cat1.parent_id 
-		AS parentId, cat2.category 
-		AS name FROM `cscart_categories` 
-		AS cat1 
-		LEFT JOIN `cscart_category_descriptions`AS cat2 
-		ON cat1.category_id = cat2.category_id 
+    $query = "SELECT cat1.category_id AS id, cat1.parent_id
+		AS parentId, cat2.category
+		AS name FROM `?:categories`
+		AS cat1
+		LEFT JOIN `?:category_descriptions`AS cat2
+		ON cat1.category_id = cat2.category_id
 		WHERE cat2.lang_code = 'RU' AND cat1.status = 'A' AND cat1.parent_id = ".$pid."
             ";
     $categories = db_get_array($query, USERGROUP_ALL);
@@ -43,7 +43,7 @@ function fn_yml_get_rees46_yml($filename){
 	$location = Registry::get('config.http_location');
 	$lmod     = date('Y-m-d H:i');
 	$modification  = Registry::get('addons.rees46.modification');
-	
+
 	header("Content-Type: text/xml;charset=utf-8");
 
 /*============================================================================*/
@@ -102,12 +102,12 @@ $query = "SELECT DISTINCT
                 p.product_id AS id,
                 pdesc.product AS name,
                 pdesc.full_description AS descript
-		FROM cscart_products AS p
-			LEFT JOIN cscart_product_features_values AS pfval
+		FROM ?:products AS p
+			LEFT JOIN ?:product_features_values AS pfval
 			ON p.product_id = pfval.product_id
-			LEFT JOIN cscart_product_descriptions AS pdesc
+			LEFT JOIN ?:product_descriptions AS pdesc
             		ON p.product_id=pdesc.product_id
-                        LEFT JOIN cscart_product_prices AS prices
+                        LEFT JOIN ?:product_prices AS prices
                         ON p.product_id = prices.product_id
 		WHERE pdesc.lang_code='RU' AND p.status='A' AND p.amount > 0 AND prices.price > 0";
 $products = db_get_array($query, USERGROUP_ALL);
@@ -120,19 +120,19 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'<url>'.fn_url(htmlentities('products.view?product_id=' . $product["id"])).'</url>'.chr(10));
         // вытаскиваем цену товара
         $query = "SELECT price FROM
-                      cscart_product_prices
+                      ?:product_prices
                       WHERE product_id=".$product['id']." AND usergroup_id=0";
 		$line1 = db_get_row($query);
         $i = intval($line1['price']);
         fwrite($f, chr(9).chr(9).chr(9).'<price>'.$i.'</price>'.chr(10));
         // здесь ставится валюта цены. в данном случае рубли
-	$query = "SELECT currency_code AS currency FROM cscart_currencies WHERE is_primary='Y'";
+	$query = "SELECT currency_code AS currency FROM ?:currencies WHERE is_primary='Y'";
 	$line1 = db_get_row($query);
         fwrite($f, chr(9).chr(9).chr(9).'<currencyId>'.$line1['currency'].'</currencyId>'.chr(10));
         // список категорий для маркета именовали через ID категорий, и теперь получаем
         // ID категории конкретного товара
         $query = "SELECT category_id FROM
-                    cscart_products_categories WHERE product_id=".$product['id']." AND link_type='M' ORDER BY category_id";
+                    ?:products_categories WHERE product_id=".$product['id']." AND link_type='M' ORDER BY category_id";
         $result1 = db_get_array($query);
         if (count($result1)>0)
 		$line1 = db_get_row($query);
@@ -142,18 +142,18 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'<picture>' . $img["detailed"]["http_image_path"] . '</picture>'.chr(10));
 
         fwrite($f, chr(9).chr(9).chr(9).'<delivery>true</delivery>'.chr(10));
-	$query = "SELECT 
+	$query = "SELECT
 		p.product_id AS id,
                 pfvdesc.variant AS vendor
-	FROM cscart_products AS p
-                LEFT JOIN cscart_product_features_values AS pfval
+	FROM ?:products AS p
+                LEFT JOIN ?:product_features_values AS pfval
                 ON pfval.product_id = p.product_id
-                LEFT JOIN cscart_product_feature_variant_descriptions AS pfvdesc
+                LEFT JOIN ?:product_feature_variant_descriptions AS pfvdesc
                 ON pfvdesc.variant_id = pfval.variant_id
-                LEFT JOIN cscart_product_features_descriptions AS pfdesc
-                ON pfdesc.feature_id = pfval.feature_id 
-	WHERE p.product_id =".$product['id']." AND pfval.feature_id AND 
-		(pfdesc.description LIKE 'brand' OR 
+                LEFT JOIN ?:product_features_descriptions AS pfdesc
+                ON pfdesc.feature_id = pfval.feature_id
+	WHERE p.product_id =".$product['id']." AND pfval.feature_id AND
+		(pfdesc.description LIKE 'brand' OR
 		pfdesc.description LIKE 'vendor' OR
 		pfdesc.description LIKE 'бренд' OR
 		pfdesc.description LIKE 'брэнд' OR
@@ -172,17 +172,17 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'</description>'.chr(10));
 	if ($modification && $modification!='none') {
 
-		$query = "SELECT 
+		$query = "SELECT
 				fd.description AS description,
 				fvard.variant AS variant
-			  FROM cscart_product_features_values AS fv
-			  LEFT JOIN cscart_product_features_descriptions AS fd
+			  FROM ?:product_features_values AS fv
+			  LEFT JOIN ?:product_features_descriptions AS fd
 				ON fd.feature_id = fv.feature_id
-			  LEFT JOIN cscart_product_feature_variants AS fvar
+			  LEFT JOIN ?:product_feature_variants AS fvar
 				ON fvar.feature_id = fv.feature_id
-			  LEFT JOIN cscart_product_feature_variant_descriptions AS fvard
+			  LEFT JOIN ?:product_feature_variant_descriptions AS fvard
 				ON fvard.variant_id = fvar.variant_id
-			LEFT JOIN cscart_product_features AS pf
+			LEFT JOIN ?:product_features AS pf
 				ON pf.feature_id = fv.feature_id
 			  WHERE
 				fv.product_id = ".$product['id']." AND
@@ -194,7 +194,7 @@ foreach ($products as $product) {
 		if (!empty($line ['variant'])) {
 			$gender = $line ['variant'];
 			$gender = mb_substr(mb_strtolower($gender),0,4);
-			if ($gender == 'male' || $gender == 'мужс') { 
+			if ($gender == 'male' || $gender == 'мужс') {
 				$gender = 'm';
 			} elseif ($gender == 'fema' || $gender == 'женс') {
 				$gender = 'f';
@@ -208,19 +208,19 @@ foreach ($products as $product) {
 					(SELECT	opt.option_id AS option_id,
 						opt.product_id AS product_id,
 			        		opt.status AS status
-					FROM cscart_product_options AS opt)
+					FROM ?:product_options AS opt)
 					UNION
 					(SELECT	opt.option_id AS option_id,
 						opt.product_id AS product_id,
 			        		NULL
-					FROM cscart_product_global_option_links AS opt)
+					FROM ?:product_global_option_links AS opt)
 					ORDER BY product_id
 			        ) AS opt
-				LEFT JOIN cscart_product_options_descriptions AS optd
+				LEFT JOIN ?:product_options_descriptions AS optd
 					ON optd.option_id = opt.option_id
-				LEFT JOIN cscart_product_option_variants AS optv
+				LEFT JOIN ?:product_option_variants AS optv
 					ON optv.option_id = opt.option_id
-				LEFT JOIN cscart_product_option_variants_descriptions AS optvd
+				LEFT JOIN ?:product_option_variants_descriptions AS optvd
 					ON optvd.variant_id = optv.variant_id
 			WHERE	opt.product_id = ".$product['id']." AND
 				(opt.status = 'A' OR opt.status IS NULL) AND
