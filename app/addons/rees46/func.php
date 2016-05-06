@@ -18,6 +18,14 @@ function fn_rees46_generate_orders()
 	return $res;
 }
 
+
+function fn_rees46_sync_status_orders ()
+{
+	$res = __('rees46_sync_status');
+	$res = $res.'<p><a href="' . fn_url('rees46.sync_status_orders') . '" class="btn btn-primary">' . __('rees46_sync_status_orders') . '</a></p>';
+	return $res;
+}
+
 function fn_rees46_generate_docs()
 {
 	$res = __('rees46_docs');
