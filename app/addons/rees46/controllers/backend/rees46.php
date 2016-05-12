@@ -72,7 +72,7 @@ if ($mode == 'sync_status_orders') {
         foreach (reset($orders) as $order) {
             $order_info = fn_get_order_info($order['order_id']);
 
-            $order_status = null;
+            $order_status = 0;
             if (preg_match('/[FID]/', $order_info['status'])) {
                 $order_status = 2;
             } elseif ($order_info['status'] == 'C') {
