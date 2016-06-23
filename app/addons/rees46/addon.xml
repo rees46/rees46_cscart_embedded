@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>2.13</version>
+	<version>2.11</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -53,6 +53,64 @@
 						<translations>
 							<item lang="en">Shop secret key</item>
 						</translations>
+					</item>
+					<item id="modification">
+						<name>Модификация алгоритма для тарифа &quot;&lt;a href=&quot;http://rees46.com/ecommerce#prices&quot; target=&quot;_blank&quot;&gt;Отраслевой&lt;/a&gt;&quot;</name>
+						<type>selectbox</type>
+						<default_value>none</default_value>
+							<variants>
+								<item id="none">
+									<name>Без модификаций</name>
+									<translations>
+										<item lang="en">Without modifications</item>
+									</translations>
+								</item>
+								<item id="appliances">
+									<name>Бытовая техника</name>
+									<translations>
+										<item lang="en">Appliances</item>
+									</translations>
+								</item>
+								<item id="child">
+									<name>Детские товары</name>
+									<translations>
+										<item lang="en">Childen's goods</item>
+									</translations>
+								</item>
+								<item id="cosmetic">
+									<name>Косметика</name>
+									<translations>
+										<item lang="en">Cosmetics</item>
+									</translations>
+								</item>
+								<item id="coupon">
+									<name>Купоны, акции, скидки</name>
+									<translations>
+										<item lang="en">Discounts, promotions</item>
+									</translations>
+								</item>
+								<item id="fashion">
+									<name>Одежда, обувь, аксессуары</name>
+									<translations>
+										<item lang="en">Fashion</item>
+									</translations>
+								</item>
+								<item id="construction">
+									<name>Строительные материалы</name>
+									<translations>
+										<item lang="en">Construction materials and tools</item>
+									</translations>
+								</item>
+								<item id="animal">
+									<name>Товары для животных</name>
+									<translations>
+										<item lang="en">Goods for pets</item>
+									</translations>
+								</item>
+								<item id="fmcg">
+									<name>FMCG/CPG</name>
+								</item>
+							</variants>
 					</item>
 					<item id="rees46_yml_header">
 						<name>Настройка YML-файла</name>

@@ -42,6 +42,7 @@ function fn_yml_get_rees46_yml($filename){
 	$company  = Registry::get('addons.my_yml.company_name');
 	$location = Registry::get('config.http_location');
 	$lmod     = date('Y-m-d H:i');
+	$modification  = Registry::get('addons.rees46.modification');
 
 	header("Content-Type: text/xml;charset=utf-8");
 
@@ -169,9 +170,6 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'<description>'.chr(10));
         fwrite($f, chr(9).chr(9).chr(9).chr(9).check_xml(strip_tags($product["descript"])).chr(10));
         fwrite($f, chr(9).chr(9).chr(9).'</description>'.chr(10));
-
-/*
-
 	if ($modification && $modification!='none') {
 
 		$query = "SELECT
@@ -302,9 +300,6 @@ foreach ($products as $product) {
 				break;
 		}
 	}
-
-*/
-
         fwrite($f, chr(9).chr(9).'</offer>'.chr(10));
 }
 
