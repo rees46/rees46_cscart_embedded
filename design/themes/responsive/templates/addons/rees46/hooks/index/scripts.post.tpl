@@ -84,9 +84,6 @@
 								return;
 							}
 							REES46.recommend({
-								{if $rees46.modification && $rees46.modification != 'none'}
-								modification: '{$rees46.modification}',
-								{/if}
 								{if ($runtime.controller == 'products' && $runtime.mode == 'search')}
 								search_query: '{$search.q}',
 								{/if}

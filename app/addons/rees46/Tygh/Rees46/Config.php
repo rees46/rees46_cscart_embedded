@@ -15,8 +15,4 @@ class Config
     {
         return Registry::get('addons.rees46.shop_secret');
     }
-    public static function getModification()
-    {
-        return Registry::get('addons.rees46.modification');
-    }
 }
