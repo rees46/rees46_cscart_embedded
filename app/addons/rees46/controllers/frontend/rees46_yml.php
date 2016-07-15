@@ -152,7 +152,8 @@ foreach ($products as $product) {
                 ON pfvdesc.variant_id = pfval.variant_id
                 LEFT JOIN ?:product_features_descriptions AS pfdesc
                 ON pfdesc.feature_id = pfval.feature_id
-	WHERE p.product_id =".$product['id']." AND pfval.feature_id AND
+	WHERE p.product_id =".$product['id']." AND 
+		pfval.feature_id = pfdesc.feature_id AND
 		(pfdesc.description LIKE 'brand' OR
 		pfdesc.description LIKE 'vendor' OR
 		pfdesc.description LIKE 'бренд' OR
