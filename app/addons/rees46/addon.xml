@@ -2,19 +2,19 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>2.13</version>
+	<version>3.0</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
 
-	<name>REES46: рекомендательная система</name>
+	<name>REES46: центр управления конверсией</name>
 	<description>
-		Модуль персонализации REES46 повышает конверсию и средний чек интернет-магазина за счет персонализированных товарных рекомендаций.
+		Модуль REES46 повышает конверсию и средний чек интернет-магазина за счет персонализированных товарных рекомендаций.
 	</description>
 	<status>active</status>
 
 	<translations>
-		<item for="name" lang="en">REES46: best recommender engine for e-commerce</item>
+		<item for="name" lang="en">REES46: eCommerce marketing automation toolkit</item>
 		<item for="description" lang="en">REES46 increases revenue for 20% using personalization technologies.</item>
 	</translations>
 
