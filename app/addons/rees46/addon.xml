@@ -188,7 +188,7 @@
 			&lt;p&gt;Для повышения эффективности работы триггерных рассылок и актуальности отчетов необходимо с периодичностью раз в месяц синхронизировать статусы заказов. Для этого достаточно нажать на кнопку ниже.&lt;/p&gt;
 		</item>
 		<item lang="ru" id="rees46_docs">
-			&lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
+			&lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
 		</item>
 		<item lang="ru" id="rees46_statistics">
 			&lt;p&gt;Для анализа статистики работы товарных рекомендаций, пожалуйста, перейдите в ваш &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личный кабинет&lt;/a&gt; REES46.&lt;/p&gt;
@@ -234,7 +234,7 @@
 			&lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
 		</item>
 		<item lang="en" id="rees46_docs">
-			&lt;p&gt;Please check out the &lt;a href=&quot;http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
+			&lt;p&gt;Please check out the &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
 		</item>
 		<item lang="en" id="rees46_statistics">
 			&lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;

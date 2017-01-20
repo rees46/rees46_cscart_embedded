@@ -1,1 +1,1 @@
-http://memo.mkechinov.ru/pages/viewpage.action?pageId=1409157
+http://docs.rees46.com/pages/viewpage.action?pageId=1409157
