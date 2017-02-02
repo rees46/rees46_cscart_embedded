@@ -14,14 +14,24 @@ function check_xml ($strng_xml) {
     return $strng_xml;
 }
 
+function get_language() {
+    $query = "SELECT `lang_code` FROM `?:languages` WHERE `status`='A' ORDER BY `lang_id` ASC LIMIT 1";
+    $lang = db_get_row($query);
+    $lang = !empty($lang['lang_code']) ? $lang['lang_code'] : null;
+    return $lang;
+}
+
+
 function recursive_category($pid, $f, $arr_category) {
+    $lang = get_language();
+    if (empty($lang)) { exit; };
     $query = "SELECT cat1.category_id AS id, cat1.parent_id
 		AS parentId, cat2.category
 		AS name FROM `?:categories`
 		AS cat1
 		LEFT JOIN `?:category_descriptions`AS cat2
 		ON cat1.category_id = cat2.category_id
-		WHERE cat2.lang_code = 'RU' AND cat1.status = 'A' AND cat1.parent_id = ".$pid."
+		WHERE cat2.lang_code = '".$lang."' AND cat1.status = 'A' AND cat1.parent_id = ".$pid."
             ";
     $categories = db_get_array($query, USERGROUP_ALL);
 
@@ -45,6 +55,9 @@ function fn_yml_get_rees46_yml($filename){
 	$modification  = Registry::get('addons.rees46.modification');
 
 	header("Content-Type: text/xml;charset=utf-8");
+
+    $lang = get_language();
+    if (empty($lang)) { exit; };
 
 /*============================================================================*/
 // Вывод заголовка файла
@@ -109,7 +122,7 @@ $query = "SELECT DISTINCT
             		ON p.product_id=pdesc.product_id
                         LEFT JOIN ?:product_prices AS prices
                         ON p.product_id = prices.product_id
-		WHERE pdesc.lang_code='RU' AND p.status='A' AND p.amount > 0 AND prices.price > 0";
+		WHERE pdesc.lang_code='".$lang."' AND p.status='A' AND p.amount > 0 AND prices.price > 0";
 $products = db_get_array($query, USERGROUP_ALL);
 
 foreach ($products as $product) {

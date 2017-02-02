@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>3.1</version>
+	<version>3.2</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -44,14 +44,14 @@
 						<name>Код вашего магазина</name>
 						<type>input</type>
 						<translations>
-							<item lang="en">Shop ID</item>
+							<item lang="en">Store Key</item>
 						</translations>
 					</item>
 					<item id="shop_secret">
 						<name>Секретный ключ вашего магазина</name>
 						<type>input</type>
 						<translations>
-							<item lang="en">Shop secret key</item>
+							<item lang="en">Secret Key</item>
 						</translations>
 					</item>
 					<item id="modification">
@@ -228,7 +228,7 @@
 
 
 		<item lang="en" id="rees46_info">
-			&lt;p&gt;If you have not yet registered at REES46.com, please  &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Connection Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
+			&lt;p&gt;If you have not yet registered at REES46.com, please  &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Store Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
 		</item>
 		<item lang="en" id="rees46_orders">
 			&lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
@@ -239,7 +239,7 @@
 		<item lang="en" id="rees46_statistics">
 			&lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;
 		</item>
-		<item lang="en" id="rees46_error_export_order">To upload orders, enter the code and a secret key of your store in the module settings.</item>
+		<item lang="en" id="rees46_error_export_order">To upload orders, enter Store and Secret Keys in the module settings.</item>
 		<item lang="en" id="rees46_yml">
 			&lt;p&gt;Please copy the link below and paste in the settings of your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;profile&lt;/a&gt;.&lt;/p&gt;
 		</item>
