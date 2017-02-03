@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>3.2</version>
+	<version>3.3</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -55,7 +55,10 @@
 						</translations>
 					</item>
 					<item id="modification">
-						<name>Модификация алгоритма для тарифа &quot;&lt;a href=&quot;http://rees46.com/ecommerce#prices&quot; target=&quot;_blank&quot;&gt;Отраслевой&lt;/a&gt;&quot;</name>
+						<name>Модификация отраслевого алгоритма:</name>
+						<translations>
+							<item lang="en">Industry algorithm modification: </item>
+						</translations>
 						<type>selectbox</type>
 						<default_value>none</default_value>
 							<variants>
@@ -233,6 +236,11 @@
 		<item lang="en" id="rees46_orders">
 			&lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
 		</item>
+
+		<item lang="en" id="rees46_sync_status">
+			&lt;p&gt;To improve the efficiency of the trigger mailings and relevance of reports, the order status should be synchronized once per month. To do this, simply click on the button below.&lt;/p&gt;
+		</item>
+
 		<item lang="en" id="rees46_docs">
 			&lt;p&gt;Please check out the &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
 		</item>
