@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
 	<id>rees46</id>
-	<version>3.3</version>
+	<version>3.4</version>
 	<default_language>ru</default_language>
 	<priority>100500</priority>
 	<auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -280,6 +280,8 @@
 		<item lang="en" id="rees46_sync_status_orders">Sync status of orders</item>
 		<item lang="en" id="rees46_sync_status_success">Synchronizing status of orders successfully initiated.</item>
 		<item lang="en" id="rees46_sync_status_unsuccess">Synchronizing status of orders in REES46 has failed.</item>
-
 	</language_variables>
+    <functions>
+        <item for="install">fn_rees46_copying_theme</item>
+    </functions>
 </addon>

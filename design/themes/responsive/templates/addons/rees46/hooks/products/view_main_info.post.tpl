@@ -1,4 +1,4 @@
-﻿{if $rees46 && $rees46.shop_id != ''}
+{if $rees46 && $rees46.shop_id != ''}
 <script type="text/javascript">
     {if ($runtime.controller == 'products' && $runtime.mode == 'quick_view')}
         {if $product}

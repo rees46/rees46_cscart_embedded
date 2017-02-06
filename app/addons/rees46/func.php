@@ -4,6 +4,8 @@ if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
 use Tygh\Rees46\Config;
 use Tygh\Registry;
+use Tygh\Settings;
+use Tygh\Themes\Themes;
 
 function fn_rees46_generate_info()
 {
@@ -56,3 +58,15 @@ function fn_rees46_get_products_post(&$products, $params, $lang_code) {
 		}
 	}
 }
+
+// Копируем шаблоны в текущую тему
+function fn_rees46_copying_theme() {
+    $responsive_theme_path = !empty(Themes::factory('responsive')->getThemePath()) ? Themes::factory('responsive')->getThemePath() : '';
+    $themes_path = !empty(fn_get_theme_path('[themes]/', 'C')) ? fn_get_theme_path('[themes]/', 'C') : '';
+    $current_theme_name = !empty(Settings::instance()->getValue('theme_name', '') && Settings::instance()->getValue('theme_name', '') != 'responsive') ? Settings::instance()->getValue('theme_name', '') : '';
+    if (!empty($responsive_theme_path) && !empty($themes_path) && !empty($current_theme_name)) {
+        fn_copy_addon_templates_from_repo($responsive_theme_path, $themes_path, 'rees46', $current_theme_name);
+    }
+}
+
+
