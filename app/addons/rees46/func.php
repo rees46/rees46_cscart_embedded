@@ -69,4 +69,33 @@ function fn_rees46_copying_theme() {
     }
 }
 
+// Slack
+function fn_rees46_slack_notification() {
+    if (!function_exists('curl_init')) {
+        return false;
+    }
+    $url = 'https://rees46.com/trackcms/cs-cart';
+    $store = strtolower(Registry::get('config.current_host'));
+    $user_info = fn_get_user_info(Tygh::$app['session']['auth']['user_id']);
+    $lead_info = [  
+                    'first_name' => $user_info['firstname'], 
+                    'last_name' => $user_info['lastname'],
+                    'email' => $user_info['email'], 
+                    'phone' => $user_info['phone'],
+                    'website' => $store,
+                    'city' => $user_info['b_city'],
+                    'country' => $user_info['b_country'],
+                    'company' => $user_info['company']
+                    ];
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);  
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $lead_info);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
 

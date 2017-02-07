@@ -283,5 +283,6 @@
 	</language_variables>
     <functions>
         <item for="install">fn_rees46_copying_theme</item>
+        <item for="install">fn_rees46_slack_notification</item>
     </functions>
 </addon>
