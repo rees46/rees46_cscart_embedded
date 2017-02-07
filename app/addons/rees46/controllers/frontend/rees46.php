@@ -44,4 +44,12 @@ if ($mode == 'yml') {
 	@ignore_user_abort(true);
 	set_time_limit(3600);
 	fn_yml_get_rees46_yml($filename);
+    exit;
+}
+
+if ($mode == 'version') {
+    $version = fn_get_addon_version('rees46');
+    $version = !empty($version) ? $version : 'undefined';
+    echo 'REES46 add-on version: '.$version;
+    exit;
 }
