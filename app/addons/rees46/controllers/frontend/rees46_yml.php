@@ -2,16 +2,7 @@
 use Tygh\Registry;
 
 function check_xml ($strng_xml) {
-    $translate_xml = array (
-        '&' => '&amp;',
-        '\'' => '&apos;',
-        '"' => '&quot;',
-        '>' => '&gt;',
-        '<' => '&lt;'
-    );
-    $original = array_flip($translate_xml);
-    $strng_xml = str_replace($original, $translate_xml, $strng_xml);
-    return $strng_xml;
+    return '<![CDATA['.$strng_xml.']]>';
 }
 
 function get_language() {
@@ -130,7 +121,7 @@ foreach ($products as $product) {
         $offer = 'offer id="'.$product['id'].'" available="true"';
         fwrite($f, chr(9).chr(9).'<'.$offer.'>'.chr(10));
 //        // пишем ссылку на страницу.
-        fwrite($f, chr(9).chr(9).chr(9).'<url>'.fn_url(htmlentities('products.view?product_id=' . $product["id"])).'</url>'.chr(10));
+        fwrite($f, chr(9).chr(9).chr(9).'<url>'.check_xml(fn_url(htmlentities('products.view?product_id=' . $product["id"]))).'</url>'.chr(10));
         // вытаскиваем цену товара
         $query = "SELECT price FROM
                       ?:product_prices
@@ -152,7 +143,7 @@ foreach ($products as $product) {
         fwrite($f, chr(9).chr(9).chr(9).'<categoryId>'.$line1['category_id'].'</categoryId>'.chr(10));
         // изображения.
         $img = fn_get_image_pairs($product["id"], "product", "M", false, true);
-        fwrite($f, chr(9).chr(9).chr(9).'<picture>' . $img["detailed"]["http_image_path"] . '</picture>'.chr(10));
+        fwrite($f, chr(9).chr(9).chr(9).'<picture>' . check_xml($img["detailed"]["http_image_path"]) . '</picture>'.chr(10));
 
         fwrite($f, chr(9).chr(9).chr(9).'<delivery>true</delivery>'.chr(10));
 	$query = "SELECT
