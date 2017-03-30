@@ -18,18 +18,17 @@
                 amount: b.amount
             });
         });
+
         user_info = {};
-        if (typeof order_info.user_id != 'undefined' && order_info.user_id != '') {
+        if (typeof order_info.user_id != 'undefined' && order_info.user_id != 0 && typeof order_info.email != 'undefined') {
             user_info.id = order_info.user_id;
-        }
-        if (typeof order_info.email != 'undefined') {
             var email = order_info.email.trim();
             var pattern=/^([\w-]+(?:.[\w-]+)*)@((?:[\w-]+.)*\w[\w-]{0,66}).([a-z]{2,6}(?:.[a-z]{2})?)$/i;
             if (pattern.test(email)){
                 user_info.email = email;
             }
         }
-        r46('profile', 'set', user_info);
+        Object.keys(user_info).length&&r46('profile', 'set', user_info);
         r46('track', 'purchase', {products: products, order: order_info['order_id'], order_price: order_info['subtotal']});
     };
     {/literal}

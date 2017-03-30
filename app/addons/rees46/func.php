@@ -61,9 +61,12 @@ function fn_rees46_get_products_post(&$products, $params, $lang_code) {
 
 // Копируем шаблоны в текущую тему
 function fn_rees46_copying_theme() {
-    $responsive_theme_path = !empty(Themes::factory('responsive')->getThemePath()) ? Themes::factory('responsive')->getThemePath() : '';
-    $themes_path = !empty(fn_get_theme_path('[themes]/', 'C')) ? fn_get_theme_path('[themes]/', 'C') : '';
-    $current_theme_name = !empty(Settings::instance()->getValue('theme_name', '') && Settings::instance()->getValue('theme_name', '') != 'responsive') ? Settings::instance()->getValue('theme_name', '') : '';
+    $responsive_theme_path = Themes::factory('responsive')->getThemePath();
+    $responsive_theme_path = !empty($responsive_theme_path) ? $responsive_theme_path : '';
+    $themes_path = fn_get_theme_path('[themes]/', 'C');
+    $themes_path = !empty($themes_path) ? $themes_path : '';
+    $current_theme_name = Settings::instance()->getValue('theme_name', '');
+    $current_theme_name = (!empty($current_theme_name) && $current_theme_name != 'responsive')  ? $current_theme_name : '';
     if (!empty($responsive_theme_path) && !empty($themes_path) && !empty($current_theme_name)) {
         fn_copy_addon_templates_from_repo($responsive_theme_path, $themes_path, 'rees46', $current_theme_name);
     }
@@ -76,26 +79,28 @@ function fn_rees46_slack_notification() {
     }
     $url = 'https://rees46.com/trackcms/cs-cart';
     $store = strtolower(Registry::get('config.current_host'));
-    $user_info = fn_get_user_info(Tygh::$app['session']['auth']['user_id']);
-    $lead_info = [  
-                    'first_name' => $user_info['firstname'], 
-                    'last_name' => $user_info['lastname'],
-                    'email' => $user_info['email'], 
-                    'phone' => $user_info['phone'],
-                    'website' => $store,
-                    'city' => $user_info['b_city'],
-                    'country' => $user_info['b_country'],
-                    'company' => $user_info['company']
-                    ];
+    if (!empty($app['session'])) {
+        $user_info = fn_get_user_info(Tygh::$app['session']['auth']['user_id']);
+        $lead_info = array (  
+                        'first_name' => $user_info['firstname'], 
+                        'last_name' => $user_info['lastname'],
+                        'email' => $user_info['email'], 
+                        'phone' => $user_info['phone'],
+                        'website' => $store,
+                        'city' => $user_info['b_city'],
+                        'country' => $user_info['b_country'],
+                        'company' => $user_info['company']
+                        );
 
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);  
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $lead_info);
-    curl_exec($ch);
-    curl_close($ch);
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);  
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $lead_info);
+        curl_exec($ch);
+        curl_close($ch);
+    }
 }
 
 

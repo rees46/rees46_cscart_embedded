@@ -83,7 +83,7 @@ if ($mode == 'sync_status_orders') {
 
             $order_formatted_info = array(
                 'id' => $order_info['order_id'],
-		'status' => $order_status
+                'status' => $order_status
             );
 
             array_push($processed_orders, $order_formatted_info);

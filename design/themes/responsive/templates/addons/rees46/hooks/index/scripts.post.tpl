@@ -147,6 +147,40 @@ window._r46 = {
 }
 _r46.init();
 _r46.view();
-_r46.recommend();
+
+var getRecommend = function () {
+    var pageIsReady = setInterval(function() {
+        if (typeof jQuery != 'undefined') {
+            clearInterval(pageIsReady);
+            _r46.recommend();
+        }
+    }, 100);
+}
+   
+var isREES46InitializationStarted = false;
+if ( document.readyState === "complete" ) {
+    isREES46InitializationStarted = true;
+    getRecommend();
+} else if ( document.addEventListener ) {
+    document.addEventListener( "DOMContentLoaded", function(){
+        if(isREES46InitializationStarted == false) {
+            getRecommend();
+            isREES46InitializationStarted = true;
+        }
+    });
+    window.addEventListener( "load", function(){
+        if(isREES46InitializationStarted == false) {
+            getRecommend();
+            isREES46InitializationStarted = true;
+        }
+    });
+} else {
+    window.attachEvent( "onload", function(){
+        if(isREES46InitializationStarted == false) {
+            getRecommend();
+            isREES46InitializationStarted = true;
+        }
+    });
+}
 </script>
 {/if}

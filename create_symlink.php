@@ -17,11 +17,11 @@ $dir = realpath(__DIR__);
 $dir_target = realpath($argv[1]);
 
 //Пути создания симлинков
-$paths = [
+$paths = array(
 	'/app/addons/rees46' => 'app/addons/rees46',
 	'/design/themes/basic/templates/addons/rees46' => 'design/themes/responsive/templates/addons/rees46',
 	'/design/themes/responsive/templates/addons/rees46' => 'design/themes/responsive/templates/addons/rees46',
-];
+);
 
 //Проходим по путям
 foreach( $paths as $target => $source ) {
