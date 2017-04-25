@@ -36,8 +36,9 @@ window._r46 = {
             document.currentProductId = {$product.product_id};
         {/if}
 
-        {assign var="_cart_products" value=$smarty.session.cart.products|array_reverse:true}
+        {assign var="_cart_products" value=$smarty.session.cart.products}
         {if $_cart_products}
+            {$_cart_products = $_cart_products|array_reverse:true}
             var ids = [];
             {foreach from=$_cart_products key="key" item="cart_product" name="cart_products"}
                 ids.push({$cart_product.product_id});
