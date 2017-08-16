@@ -77,7 +77,7 @@ function fn_rees46_slack_notification() {
     if (!function_exists('curl_init')) {
         return false;
     }
-    $url = 'https://rees46.com/trackcms/cs-cart';
+    $url = 'https://app.rees46.com/trackcms/cs-cart';
     $store = strtolower(Registry::get('config.current_host'));
     if (!empty($app['session'])) {
         $user_info = fn_get_user_info(Tygh::$app['session']['auth']['user_id']);
