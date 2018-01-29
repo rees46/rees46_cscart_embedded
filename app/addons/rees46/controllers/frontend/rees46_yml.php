@@ -62,8 +62,8 @@ fwrite($f, '<yml_catalog date="'.$lmod.'">'.chr(10));
 fwrite($f, '<shop>'.chr(10));
 /*============================================================================*/
 // Вывод данных о компании
-fwrite($f, chr(9).'<name>'.Registry::get('settings.Company.company_name').'</name>'.chr(10));
-fwrite($f, chr(9).'<company>'.Registry::get('settings.Company.company_name').'</company>'.chr(10));
+fwrite($f, chr(9).'<name>'.check_xml(Registry::get('settings.Company.company_name')).'</name>'.chr(10));
+fwrite($f, chr(9).'<company>'.check_xml(Registry::get('settings.Company.company_name')).'</company>'.chr(10));
 fwrite($f, chr(9).'<url>'.$location.'</url>'.chr(10));
 /*============================================================================*/
 fwrite($f, chr(9).'<currencies>'.chr(10));
