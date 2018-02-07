@@ -74,6 +74,19 @@ window._r46 = {
             {/if}
         {/if}
     },
+    search: function() {
+        {if ($runtime.controller == 'products' && $runtime.mode == 'search')}
+            var search_query = '{$search.q}';
+            if(search_query) {
+                r46('track', 'search', search_query);
+            }
+        {/if}
+    },
+    category: function() {
+        {if ($runtime.controller == 'categories' && $runtime.mode == 'view') && $category_data.category_id > 0}
+        r46('track','category', {$category_data.category_id});
+        {/if}
+    },
     recommend: function() {        
         var rees46_blocks = $('.rees46'), i = 0;
         var rees46_block_render = function () {
@@ -148,6 +161,8 @@ window._r46 = {
 }
 _r46.init();
 _r46.view();
+_r46.search();
+_r46.category();
 
 var getRecommend = function () {
     var pageIsReady = setInterval(function() {
