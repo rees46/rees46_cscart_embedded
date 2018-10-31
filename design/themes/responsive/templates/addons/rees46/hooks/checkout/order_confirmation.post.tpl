@@ -1,13 +1,9 @@
 {if $rees46 && $rees46.shop_id != ''}
 <script type="text/javascript">
-    order_info = '{$order_info|json_encode}';
+{capture assign="r46_order"}{$order_info|json_encode:8 nofilter}{/capture}
+{capture assign="r46_order"}{$r46_order|replace:'\u0022':'' nofilter}{/capture}
+    order_info = '{$r46_order nofilter}';
     {literal}
-    order_info = order_info.replace(/\s/g, " ");
-    order_info = order_info.replace(/&quot;/g, "'");
-    order_info = order_info.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
-    order_info = order_info.replace(/'(?=[:,}\]])/g, '"');
-    order_info = order_info.replace(/([{:,\[])'/g, '$1"');
-    order_info = order_info.replace(/'/g, '&quot;');
     order_info = JSON.parse(order_info);
     window.onload = function () {
         products = [];
