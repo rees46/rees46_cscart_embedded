@@ -21,9 +21,9 @@
                     if(cart[cid]){
                         d=cart[cid];
                         r46('track', 'remove_from_cart', d.product_id);
-                    }
+                    };
                 });
-            }
+            };
         });
     {/if}
 </script>

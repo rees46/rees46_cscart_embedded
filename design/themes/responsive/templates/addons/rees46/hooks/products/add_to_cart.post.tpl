@@ -20,7 +20,7 @@
             name: '{$product.product}',
             url: '{"products.view?product_id=`$product.product_id`"|fn_url}',
             image: '{$product.main_pair.detailed.image_path}'
-        }
+        };
 
         if ($("#button_cart_ajax{$product.product_id}").length>0) {
             $("#button_cart_ajax{$product.product_id}").on ("click", function(){
@@ -30,7 +30,7 @@
             $("{if $rees46_type}#rees46_recommend_{$rees46_type}{/if} #button_cart_{$product.product_id}").on ("click", function(){
                 r46('track', 'cart', cart_params);
             });
-        }
+        };
     {/if}
 </script>
 {/if}

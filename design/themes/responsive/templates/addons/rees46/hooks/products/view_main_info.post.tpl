@@ -21,7 +21,7 @@
             name: '{$product.product}',
             url: '{"products.view?product_id=`$product.product_id`"|fn_url}',
             image: '{$product.main_pair.detailed.image_path}'
-        }       
+        };
         r46('track', 'view', params);
         {/if}
     {/if}

@@ -11,7 +11,7 @@ if (!String.prototype.format) {
                 ;
         });
     };
-}
+};
 
 window._r46 = {
     init: function() {
@@ -69,7 +69,7 @@ window._r46 = {
                     name: '{$product.product}',
                     url: '{"products.view?product_id=`$product.product_id`"|fn_url}',
                     image: '{$product.main_pair.detailed.image_path}'
-                }
+                };
                 r46('track', 'view', params);
             {/if}
         {/if}
@@ -79,7 +79,7 @@ window._r46 = {
             var search_query = '{$search.q}';
             if(search_query) {
                 r46('track', 'search', search_query);
-            }
+            };
         {/if}
     },
     category: function() {
@@ -142,7 +142,7 @@ window._r46 = {
                                     this.href += (this.href.match(/\?/) ? '&' : '?') + 'recommended_by=' + recommenderType
                                 });
                                 rees46_next_render();
-                            }
+                            };
                         });
                     } else {
                         rees46_next_render();
@@ -154,11 +154,11 @@ window._r46 = {
             if( i < rees46_blocks.length ) {
                 rees46_block_render.apply(rees46_blocks.eq(i));
                 i++;
-            }
+            };
         };
         rees46_next_render();
-    }
-}
+    };
+};
 _r46.init();
 _r46.view();
 _r46.search();
@@ -169,9 +169,9 @@ var getRecommend = function () {
         if (typeof jQuery != 'undefined') {
             clearInterval(pageIsReady);
             _r46.recommend();
-        }
+        };
     }, 100);
-}
+};
    
 var isREES46InitializationStarted = false;
 if ( document.readyState === "complete" ) {
@@ -182,21 +182,21 @@ if ( document.readyState === "complete" ) {
         if(isREES46InitializationStarted == false) {
             getRecommend();
             isREES46InitializationStarted = true;
-        }
+        };
     });
     window.addEventListener( "load", function(){
         if(isREES46InitializationStarted == false) {
             getRecommend();
             isREES46InitializationStarted = true;
-        }
+        };
     });
 } else {
     window.attachEvent( "onload", function(){
         if(isREES46InitializationStarted == false) {
             getRecommend();
             isREES46InitializationStarted = true;
-        }
+        };
     });
-}
+};
 </script>
 {/if}
