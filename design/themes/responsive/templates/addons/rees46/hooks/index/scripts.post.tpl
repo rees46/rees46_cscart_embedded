@@ -142,22 +142,22 @@ window._r46 = {
                                     this.href += (this.href.match(/\?/) ? '&' : '?') + 'recommended_by=' + recommenderType
                                 });
                                 rees46_next_render();
-                            };
+                            }
                         });
                     } else {
                         rees46_next_render();
-                    };
+                    }
                 });
-            };
+            }
         };
         var rees46_next_render = function() {
             if( i < rees46_blocks.length ) {
                 rees46_block_render.apply(rees46_blocks.eq(i));
                 i++;
-            };
+            }
         };
         rees46_next_render();
-    };
+    }
 };
 _r46.init();
 _r46.view();

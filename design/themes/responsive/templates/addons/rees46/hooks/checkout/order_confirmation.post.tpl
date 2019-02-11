@@ -4,7 +4,7 @@
 {capture assign="r46_order"}{$r46_order|replace:'\u0022':'' nofilter}{/capture}
     order_info = '{$r46_order nofilter}';
     {literal}
-    order_info = JSON.parse(order_info.replace(/\s{2,}/g, ' ');
+    order_info = JSON.parse(order_info.replace(/\s{2,}/g, ' '));
     window.onload = function () {
         products = [];
         $.each (order_info.products, function(a, b){
@@ -22,7 +22,7 @@
             var pattern=/^([\w-]+(?:.[\w-]+)*)@((?:[\w-]+.)*\w[\w-]{0,66}).([a-z]{2,6}(?:.[a-z]{2})?)$/i;
             if (pattern.test(email)){
                 user_info.email = email;
-            };
+            }
         };
         Object.keys(user_info).length&&r46('profile', 'set', user_info);
         r46('track', 'purchase', {products: products, order: order_info['order_id'], order_price: order_info['subtotal']});
