@@ -5,7 +5,7 @@
     order_info = '{$r46_order nofilter}';
     {literal}
     order_info = JSON.parse(order_info.replace(/\s{2,}/g, ' '));
-    window.onload = function () {
+    document.addEventListener("DOMContentLoaded", function() {
         products = [];
         $.each (order_info.products, function(a, b){
             products.push ({
@@ -26,7 +26,7 @@
         };
         Object.keys(user_info).length&&r46('profile', 'set', user_info);
         r46('track', 'purchase', {products: products, order: order_info['order_id'], order_price: order_info['subtotal']});
-    };
+    });
     {/literal}
 </script>
 {/if}
