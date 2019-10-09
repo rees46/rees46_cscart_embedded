@@ -1,7 +1,10 @@
 {if $rees46 && $rees46.shop_id != ''}
 <script type="text/javascript">
     {if $product}
-        cart_params = {
+    {literal}
+    (function() {
+        {/literal}
+        var cart_params = {
             {if $rees46_type}
             recommended_by: '{$rees46_type}',
             {/if}
@@ -31,6 +34,9 @@
                 r46('track', 'cart', cart_params);
             });
         };
+        {literal}
+    })();
+    {/literal}
     {/if}
 </script>
 {/if}
