@@ -8,6 +8,9 @@
             {if $rees46_type}
             recommended_by: '{$rees46_type}',
             {/if}
+            {if $rees46_code}
+            recommended_code: '{$rees46_code}',
+            {/if}
             id: {$product.product_id},
             {if $product.price}
             price: {$product.price},
@@ -30,7 +33,7 @@
                 r46('track', 'cart', cart_params);
             });
         } else {
-            $("{if $rees46_type}#rees46_recommend_{$rees46_type}{/if} #button_cart_{$product.product_id}").on ("click", function(){
+            $("{if $rees46_code}#rees46_recommend_{$rees46_code}{/if} #button_cart_{$product.product_id}").on ("click", function(){
                 r46('track', 'cart', cart_params);
             });
         };

@@ -1,4 +1,4 @@
-<div  class="rees46 rees46-recommend" data-orientation="{$block.properties.rees46_recommender_orientation}" data-category="{if $category_data}{$category_data.category_id}{/if}" data-type="{$block.properties.rees46_recommender_type}" data-title="{$block.properties.rees46_recommender_title}" data-count="{$block.properties.rees46_items_count}" id="rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}">
+<div  class="rees46 rees46-recommend" rees46-data-orientation="{$block.properties.rees46_recommender_orientation}" {if $category_data}rees46-data-category="{$category_data.category_id}"{/if} rees46-data-code="{$rees46_code|default:$block.properties.rees46_recommender_code|trim}" id="rees46_recommend_{$rees46_code|default:$block.properties.rees46_recommender_code|trim}">
 {if $rees46_block_orientation && $rees46_block_orientation == "vertical"}
     {$rees46_template="blocks/list_templates/small_items.tpl"}
 {else}
@@ -23,4 +23,4 @@
     no_pagination=true
     show_discount_label=true}
 {/if}
-<!--rees46_recommend_{$rees46_type|default:$block.properties.rees46_recommender_type}--></div>
+<!--rees46_recommend_{$rees46_code|default:$block.properties.rees46_recommender_code}--></div>

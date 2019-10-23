@@ -1,26 +1,20 @@
 {if $rees46 && $rees46.shop_id != ''}
 <script type="text/javascript">
     {if $cart}
+        {capture assign="r46_cart"}{$cart.products|json_encode:8 nofilter}{/capture}
+        {capture assign="r46_cart"}{$r46_cart|replace:'\u0022':'' nofilter}{/capture}
         {literal}
         (function() {
-            var cart = '{/literal}{$cart.products|json_encode}{literal}';
-            cart = cart.replace(/\s/g, " ");
-            cart = cart.replace(/&quot;/g, "'");
-            cart = cart.replace(/('([{}:,\[\]]))(?=\s)/g, '&quot;$2');
-            cart = cart.replace(/'(?=[:,}\]])/g, '"');
-            cart = cart.replace(/([{:,\[])'/g, '$1"');
-            cart = cart.replace(/'/g, '&quot;');
-            cart = JSON.parse(cart);
-            $("a.ty-cart-content__product-delete").each(function(b, a){
-                r = new RegExp('cart_id=([0-9]+)','g');
-                cid = a.href.match(r);
-                if (cid) {
-                    cid = cid[0].split('=')[1];
+            var cart = '{/literal}{$r46_cart nofilter}{literal}';
+            cart = JSON.parse(cart.replace(/\s{2,}/g, ' '));
+            $("a.ty-cart-content__product-delete").each(function(key, value) {
+                var pattern = new RegExp('cart_id=([0-9]+)','g');
+                if (pattern.test(value.href)) {
                     $(this).on("click",function() {
-                        cid = this.href.match(r)[0].split('=')[1];
+                        var cid = this.href.match(pattern)[0].split('=')[1];
                         if (cart[cid]) {
-                            d = cart[cid];
-                            r46('track', 'remove_from_cart', d.product_id);
+                            var id = cart[cid];
+                            r46('track', 'remove_from_cart', id.product_id);
                         }
                     })
                 }

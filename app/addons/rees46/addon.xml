@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
     <id>rees46</id>
-    <version>3.16</version>
+    <version>4.00</version>
     <default_language>ru</default_language>
     <priority>100500</priority>
     <auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -53,6 +53,14 @@
                         <translations>
                             <item lang="en">Secret Key</item>
                         </translations>
+                    </item>
+                    <item id="instant_search">
+                        <name>Встраивать быстрый поиск REES46</name>
+                        <translations>
+                            <item lang="en">Try to embed the REES46 instant search</item>
+                        </translations>
+                        <type>checkbox</type>
+                        <default_value>none</default_value>
                     </item>
                     <item id="modification">
                         <name>Модификация отраслевого алгоритма:</name>
@@ -203,20 +211,10 @@
 
         <item lang="ru" id="rees46_menu">Рекомендательная система REES46</item>
         <item lang="ru" id="rees46_menu_settings">Настройки</item>
-        <item lang="ru" id="block_rees46">Блок рекомендаций REES46</item>
-        <item lang="ru" id="block_rees46_description">Блок рекомендаций выбранного типа</item>
-        <item lang="ru" id="rees46_also_bought">С этим также покупают</item>
-        <item lang="ru" id="rees46_interesting">Вам это будет интересно</item>
-        <item lang="ru" id="rees46_popular">Популярные</item>
-        <item lang="ru" id="rees46_recently_viewed">Вы недавно смотрели</item>
-        <item lang="ru" id="rees46_see_also">Посмотрите также</item>
-        <item lang="ru" id="rees46_similar">Похожие товары</item>
-        <item lang="ru" id="rees46_buying_now">Сейчас покупают</item>
-        <item lang="ru" id="rees46_search">Искавшие это также купили</item>
-        <item lang="ru" id="rees46_items_count">Товаров в блоке</item>
-        <item lang="ru" id="rees46_recommender_type">Тип рекомендатора</item>
-        <item lang="ru" id="recommenders">Персонализация</item>
-        <item lang="ru" id="rees46_recommender_title">Заголовок блока</item>
+        <item lang="ru" id="block_rees46">REES46</item>
+        <item lang="ru" id="block_rees46_description">Блок товарных рекомендаций</item>
+        <item lang="ru" id="rees46_recommender_code">Уникальный код блока рекомендаций</item>
+        <item lang="ru" id="recommenders">REES46</item>
         <item lang="ru" id="rees46_recommender_orientation">Расположение блока</item>
         <item lang="ru" id="rees46_orientation_horizontal">Горизонтальное</item>
         <item lang="ru" id="rees46_orientation_vertical">Вертикальное</item>
@@ -254,21 +252,10 @@
 
         <item lang="en" id="rees46_menu">Recommender Engine REES46</item>
         <item lang="en" id="rees46_menu_settings">Settings</item>
-        <item lang="en" id="block_rees46">REES46 product recommendation widget</item>
-        <item lang="en" id="block_rees46_description">Recommendation widget of the type chosen</item>
-        <item lang="en" id="rees46_also_bought">Customers who bought this product also bought</item>
-        <item lang="en" id="rees46_interesting">You may be interested with these products</item>
-        <item lang="en" id="rees46_popular">Popular products</item>
-        <item lang="en" id="rees46_recently_viewed">Recently viewed products</item>
-        <item lang="en" id="rees46_see_also">Customers who viewed this product also viewed</item>
-        <item lang="en" id="rees46_similar">Similar products</item>
-        <item lang="en" id="rees46_buying_now">Right now people buying</item>
-        <item lang="en" id="rees46_search">Who search this also bought</item>
-        <item lang="en" id="rees46_items_count">Items in the widget</item>
-        <item lang="en" id="rees46_recommender_type">Type of recommendation widget</item>
-        <item lang="en" id="recommenders">Personalisation</item>
-        <item lang="en" id="rees46_recommender_title">Widget title</item>
-
+        <item lang="en" id="block_rees46">REES46</item>
+        <item lang="en" id="block_rees46_description">Recommendation widget</item>
+        <item lang="en" id="rees46_recommender_code">Unique code of the recommendation widget</item>
+        <item lang="en" id="recommenders">REES46</item>
         <item lang="en" id="rees46_recommender_orientation">Widget orientation</item>
         <item lang="en" id="rees46_orientation_horizontal">Horizontal</item>
         <item lang="en" id="rees46_orientation_vertical">Vertical</item>

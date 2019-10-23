@@ -9,6 +9,9 @@
                 {if $rees46_type}
                 recommended_by: '{$rees46_type}',
                 {/if}
+                {if $rees46_code}
+                recommended_code: '{$rees46_code}',
+                {/if}
                 id: {$product.product_id},
                 {if $product.price}
                 price: {$product.price},

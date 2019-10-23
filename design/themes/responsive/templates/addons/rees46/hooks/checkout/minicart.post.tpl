@@ -11,16 +11,14 @@
         };
         {/foreach}
         {literal}
-        $('a.cm-ajax').each(function(b, a){
-            r = new RegExp('cart_id=([0-9]+)','g');
-            cid = a.href.match(r);
-            if(cid) {
-                cid = cid[0].split('=')[1];
+        $('a.cm-ajax').each(function(key, value){
+            var pattern = new RegExp('cart_id=([0-9]+)','g');
+            if (pattern.test(value.href)) {
                 $(this).on("click",function() {
-                    cid = this.href.match(r)[0].split('=')[1];
-                    if(cart[cid]) {
-                        d = cart[cid];
-                        r46('track', 'remove_from_cart', d.product_id);
+                    var cid = this.href.match(pattern)[0].split('=')[1];
+                    if (cart[cid]) {
+                        var id = cart[cid];
+                        r46('track', 'remove_from_cart', id.product_id);
                     }
                 })
             }
