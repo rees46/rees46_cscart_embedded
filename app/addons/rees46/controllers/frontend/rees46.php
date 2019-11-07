@@ -2,17 +2,20 @@
 
 use Tygh\Registry;
 
-if( !defined('BOOTSTRAP') ) {
+if (!defined('BOOTSTRAP')) {
     die('Access denied');
 }
 
-if( $mode == 'get_info' ) {
+if ($mode == 'get_info') {
 
-    if( empty($_REQUEST['orientation']) ) {
+    if (empty($_REQUEST['orientation'])) {
         $orientation = 'horizontal';
     } else {
         $orientation = $_REQUEST['orientation'];
     }
+
+    $productsPerLine = 4;
+    if (!empty($_REQUEST['products_perline'])) $productsPerLine = $_REQUEST['products_perline'];
 
     $ids = array_map('intval', $_REQUEST['product_ids']);
     list($products, $search) = fn_get_products(array(
@@ -27,6 +30,7 @@ if( $mode == 'get_info' ) {
     Registry::get('view')->assign('rees46_code', $_REQUEST['recommended_code']);
     Registry::get('view')->assign('rees46_title', $_REQUEST['title']);
     Registry::get('view')->assign('rees46_block_orientation', $orientation);
+    Registry::get('view')->assign('rees46_products_per_line', $productsPerLine);
     Registry::get('view')->display('addons/rees46/blocks/recommenders.tpl');
     exit;
 }

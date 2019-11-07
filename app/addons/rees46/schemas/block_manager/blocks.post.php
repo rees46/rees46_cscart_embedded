@@ -8,6 +8,10 @@ $schema['rees46'] = array(
         'rees46_recommender_code' => array(
             'type' => 'input'
         ),
+        'rees46_products_per_line' => array(
+            'type' => 'input',
+            'default_value' => 4
+        ),
         'rees46_recommender_orientation' => array(
             'type'          => 'selectbox',
             'values'        => array(

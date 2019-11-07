@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
     <id>rees46</id>
-    <version>4.00</version>
+    <version>4.01</version>
     <default_language>ru</default_language>
     <priority>100500</priority>
     <auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -214,6 +214,7 @@
         <item lang="ru" id="block_rees46">REES46</item>
         <item lang="ru" id="block_rees46_description">Блок товарных рекомендаций</item>
         <item lang="ru" id="rees46_recommender_code">Уникальный код блока рекомендаций</item>
+        <item lang="ru" id="rees46_products_per_line">Кол-во товаров в каждой линии блока</item>
         <item lang="ru" id="recommenders">REES46</item>
         <item lang="ru" id="rees46_recommender_orientation">Расположение блока</item>
         <item lang="ru" id="rees46_orientation_horizontal">Горизонтальное</item>
@@ -255,6 +256,7 @@
         <item lang="en" id="block_rees46">REES46</item>
         <item lang="en" id="block_rees46_description">Recommendation widget</item>
         <item lang="en" id="rees46_recommender_code">Unique code of the recommendation widget</item>
+        <item lang="en" id="rees46_products_per_line">Number of products in each line</item>
         <item lang="en" id="recommenders">REES46</item>
         <item lang="en" id="rees46_recommender_orientation">Widget orientation</item>
         <item lang="en" id="rees46_orientation_horizontal">Horizontal</item>

@@ -99,6 +99,17 @@ function fn_yml_get_rees46_yml($filename){
     $products = db_get_array($query, USERGROUP_ALL);
 
     foreach ($products as $product) {
+        // ID категории конкретного товара
+        $categoryQuery = "
+            SELECT products.category_id FROM ?:products_categories AS products
+            LEFT JOIN ?:categories AS categories
+            ON products.category_id = categories.category_id
+            WHERE products.product_id = ".$product['id']." AND products.link_type = 'M' AND categories.status = 'A'
+            ORDER BY products.category_id
+        ";
+        $categoryResult = db_get_array($categoryQuery);
+        if (count($categoryResult) == 0) continue;
+
         $offer = 'offer id="'.$product['id'].'" available="true"';
         fwrite($f, chr(9).chr(9).'<'.$offer.'>'.chr(10));
         //пишем ссылку на страницу.
@@ -114,9 +125,7 @@ function fn_yml_get_rees46_yml($filename){
         fwrite($f, chr(9).chr(9).chr(9).'<currencyId>'.$line1['currency'].'</currencyId>'.chr(10));
         // список категорий для маркета именовали через ID категорий, и теперь получаем
         // ID категории конкретного товара
-        $query = "SELECT category_id FROM ?:products_categories WHERE product_id=".$product['id']." AND link_type='M' ORDER BY category_id";
-        $result1 = db_get_array($query);
-        if (count($result1) > 0) $line1 = db_get_row($query);
+        $line1 = db_get_row($categoryQuery);
         fwrite($f, chr(9).chr(9).chr(9).'<categoryId>'.$line1['category_id'].'</categoryId>'.chr(10));
         // изображения.
         $img = fn_get_image_pairs($product["id"], "product", "M", false, true);

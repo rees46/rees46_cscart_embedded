@@ -99,6 +99,7 @@
             var recommenderCode = $.trim(recommenderBlock.attr("rees46-data-code"));
             var categoryId = recommenderBlock.attr("rees46-data-category");
             var recommenderOrientation = recommenderBlock.attr("rees46-data-orientation");
+            var productsPerLine = recommenderBlock.attr("rees46-data-perline");
 
             if (recommenderCode) {
                 r46("recommend", recommenderType, {
@@ -122,7 +123,8 @@
                                 recommended_code: recommenderCode,
                                 title: recommenderTitle,
                                 result_ids: recommenderBlock.attr("id"),
-                                orientation: recommenderOrientation
+                                orientation: recommenderOrientation,
+                                products_perline: productsPerLine
                             }, callback: function () {
                                 recommenderBlock.find('a').each(function () {
                                     this.href += (this.href.match(/\?/) ? '&' : '?') + 'recommended_by=' + recommenderType + '&recommended_code=' + recommenderCode

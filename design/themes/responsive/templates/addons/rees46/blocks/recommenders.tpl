@@ -1,4 +1,4 @@
-<div  class="rees46 rees46-recommend" rees46-data-orientation="{$block.properties.rees46_recommender_orientation}" {if $category_data}rees46-data-category="{$category_data.category_id}"{/if} rees46-data-code="{$rees46_code|default:$block.properties.rees46_recommender_code|trim}" id="rees46_recommend_{$rees46_code|default:$block.properties.rees46_recommender_code|trim}">
+<div class="rees46 rees46-recommend clearfix" rees46-data-perline="{$block.properties.rees46_products_per_line}" rees46-data-orientation="{$block.properties.rees46_recommender_orientation}" {if $category_data}rees46-data-category="{$category_data.category_id}"{/if} rees46-data-code="{$rees46_code|default:$block.properties.rees46_recommender_code|trim}" id="rees46_recommend_{$rees46_code|default:$block.properties.rees46_recommender_code|trim}">
 {if $rees46_block_orientation && $rees46_block_orientation == "vertical"}
     {$rees46_template="blocks/list_templates/small_items.tpl"}
 {else}
@@ -19,7 +19,7 @@
     show_add_to_cart=$show_add_to_cart|default:false
     but_role="action"
     no_sorting=true
-    columns={$rees46_count|default:4}
+    columns={$rees46_products_per_line|default:4}
     no_pagination=true
     show_discount_label=true}
 {/if}
