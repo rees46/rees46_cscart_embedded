@@ -5,7 +5,9 @@
     {literal}
     (function() {
         var order_info = '{/literal}{$r46_order nofilter}{literal}';
-        order_info = JSON.parse(order_info.replace(/\s{2,}/g, ' '));
+        var pattern = new RegExp("(\\r?\\n|\\r|\\\\)", "ig");
+        order_info = order_info.replace(pattern, '').replace(/\s{2,}/g, ' ');
+        order_info = JSON.parse(order_info);
         document.addEventListener("DOMContentLoaded", function() {
             products = [];
             $.each (order_info.products, function(a, b){
