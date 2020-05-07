@@ -40,6 +40,7 @@ if ($mode == 'yml') {
     require_once('rees46_yml.php');
     @ignore_user_abort(true);
     set_time_limit(3600);
+    fn_sync_status_orders();
     fn_yml_get_rees46_yml($filename);
     exit;
 }

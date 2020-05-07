@@ -150,7 +150,7 @@
 
     AddInstantSearch: function() {
         {/literal}
-        {if $rees46.instant_search == "Y"}
+        {if $rees46.instant_search }
         $("#search_input").addClass("rees46-instant-search");
         r46("search_init", ".rees46-instant-search");
         {/if}

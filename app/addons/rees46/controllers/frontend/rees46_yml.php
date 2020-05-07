@@ -33,7 +33,7 @@ function recursive_category($pid, $f, $arr_category) {
     foreach ($categories as  $category) {
         $str = '<category id="'.$category['id'].'"';
         if ($pid > 0) $str .= ' parentId="'.$pid.'"';
-        fwrite($f, chr(9).chr(9).$str.'>'.check_xml($category['name']).'</category>'.chr(10));
+        fwrite($f, chr(9).chr(9).$str.' url="'. fn_url('categories.view?category_id=' . $category['id']) .'">'.check_xml($category['name']).'</category>'.chr(10));
         $arr_category[] = $category['id'];
         recursive_category($category['id'], $f, $arr_category);
     }

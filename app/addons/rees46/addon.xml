@@ -2,7 +2,7 @@
 
 <addon scheme="2.0">
     <id>rees46</id>
-    <version>4.02</version>
+    <version>4.03</version>
     <default_language>ru</default_language>
     <priority>100500</priority>
     <auto_install>PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
@@ -60,10 +60,18 @@
                             <item lang="en">Try to embed the REES46 instant search</item>
                         </translations>
                         <type>checkbox</type>
-                        <default_value>none</default_value>
+                        <default_value>Y</default_value>
+                    </item>
+                    <item id="auto_order_sync">
+                        <name>Автоматически синхронизировать статусы заказов во время получения YML</name>
+                        <translations>
+                            <item lang="en">Synchronize order statuses while product feed (YML) is being received</item>
+                        </translations>
+                        <type>checkbox</type>
+                        <default_value>Y</default_value>
                     </item>
                     <item id="modification">
-                        <name>Модификация отраслевого алгоритма:</name>
+                        <name>Модификация отраслевого алгоритма</name>
                         <translations>
                             <item lang="en">Industry algorithm modification: </item>
                         </translations>
@@ -149,17 +157,6 @@
                         <type>info</type>
                         <handler>fn_rees46_generate_orders</handler>
                     </item>
-                    <item id="rees46_sync_status_header">
-                        <name>Cинхронизация статусов заказов</name>
-                        <type>header</type>
-                        <translations>
-                            <item lang="en">Synchronization status of orders</item>
-                        </translations>
-                    </item>
-                    <item id="rees46_sync_status">
-                        <type>info</type>
-                        <handler>fn_rees46_sync_status_orders</handler>
-                    </item>
                     <item id="rees46_docs_header">
                         <name>Документация</name>
                         <type>header</type>
@@ -195,9 +192,6 @@
         <item lang="ru" id="rees46_orders">
             &lt;p&gt;Процесс обучения алгоритма рекомендаций занимает определенное время. Основное время, как правило, требуется на сбор информации и построение взаимосвязей между покупателями и товарами. Ускорить это время можно, загрузив в систему REES46 историю ваших заказов за последние полгода. Это позволяет построить рекомендации для ваших предыдущих клиентов и сформировать более детальные связи между товарами. Загрузка истории может занять некоторое время.&lt;/p&gt;
         </item>
-        <item lang="ru" id="rees46_sync_status">
-            &lt;p&gt;Для повышения эффективности работы триггерных рассылок и актуальности отчетов необходимо с периодичностью раз в месяц синхронизировать статусы заказов. Для этого достаточно нажать на кнопку ниже.&lt;/p&gt;
-        </item>
         <item lang="ru" id="rees46_docs">
             &lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
         </item>
@@ -224,20 +218,11 @@
         <item lang="ru" id="rees46_export_success">Выгрузка заказов в REES46 успешно инициирована.</item>
         <item lang="ru" id="rees46_export_unsuccess">Ошибка инициализации выгрузки заказов в REES46.</item>
 
-        <item lang="ru" id="rees46_sync_status_orders">Синхронизировать статусы заказов</item>
-        <item lang="ru" id="rees46_sync_status_success">Синхронизация статусов заказов в REES46 успешно инициирована.</item>
-        <item lang="ru" id="rees46_sync_status_unsuccess">Ошибка синхронизации статусов заказов в REES46.</item>
-
-
         <item lang="en" id="rees46_info">
             &lt;p&gt;If you have not yet registered at REES46.com, please  &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Store Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
         </item>
         <item lang="en" id="rees46_orders">
             &lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
-        </item>
-
-        <item lang="en" id="rees46_sync_status">
-            &lt;p&gt;To improve the efficiency of the trigger mailings and relevance of reports, the order status should be synchronized once per month. To do this, simply click on the button below.&lt;/p&gt;
         </item>
 
         <item lang="en" id="rees46_docs">
@@ -265,10 +250,6 @@
         <item lang="en" id="rees46_export_order">Export order</item>
         <item lang="en" id="rees46_export_success">Unloading orders REES46 successfully initiated.</item>
         <item lang="en" id="rees46_export_unsuccess">Unloading of the orders in REES46 has failed.</item>
-
-        <item lang="en" id="rees46_sync_status_orders">Sync status of orders</item>
-        <item lang="en" id="rees46_sync_status_success">Synchronizing status of orders successfully initiated.</item>
-        <item lang="en" id="rees46_sync_status_unsuccess">Synchronizing status of orders in REES46 has failed.</item>
     </language_variables>
     <functions>
         <item for="install">fn_rees46_copying_theme</item>

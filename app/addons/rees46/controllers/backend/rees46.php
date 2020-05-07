@@ -55,55 +55,5 @@ if ($mode == 'export_orders') {
 	}
     }
 
-    return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");
+    return array(CONTROLLER_STATUS_REDIRECT, "addons.update&addon=rees46");
 }
-
-if ($mode == 'sync_status_orders') {
-    $shop_id = Config::getShopID();
-    $shop_secret = Config::getShopSecret();
-    if (($shop_id == '') || ($shop_secret == '')) {
-        fn_set_notification('E', __('error'),__('rees46_error_export_order'), 'I');
-    } else {
-        $params = array('timestamp > ' . strtotime('-2 months'), 'items_per_page' => 500);
-        $orders = fn_get_orders($params);
-
-        $processed_orders = array();
-
-        foreach (reset($orders) as $order) {
-            $order_info = fn_get_order_info($order['order_id']);
-
-            $order_status = 0;
-            if (preg_match('/[FID]/', $order_info['status'])) {
-                $order_status = 2;
-            } elseif ($order_info['status'] == 'C') {
-                $order_status = 1;
-            } elseif (preg_match('/[OPBY]/', $order_info['status'])) {
-                $order_status = 0;
-            };
-
-            $order_formatted_info = array(
-                'id' => $order_info['order_id'],
-                'status' => $order_status
-            );
-
-            array_push($processed_orders, $order_formatted_info);
-        }
-
-        $result = array(
-            'shop_id' => $shop_id,
-            'shop_secret' => $shop_secret,
-            'orders' => $processed_orders
-        );
-
-
-	$respond=Http::post('http://api.rees46.com/import/sync_orders', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
-	if (strtoupper($respond)=='OK') {
-		fn_set_notification('N', __('rees46_sync_status_success'), '', 'I');
-	} else {
-		fn_set_notification('E', __('rees46_sync_status_unsuccess'), '', 'I');
-	}
-    }
-
-    return array(CONTROLLER_STATUS_REDIRECT, "addons.manage");
-}
-

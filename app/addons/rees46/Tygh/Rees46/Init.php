@@ -8,7 +8,6 @@ class Init
     {
         return array(
             'shop_id' => Config::getShopID(),
-            'modification' => Config::getModification(),
             'instant_search' => Config::getInstantSearch()
         );
     }

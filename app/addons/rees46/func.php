@@ -6,6 +6,7 @@ use Tygh\Rees46\Config;
 use Tygh\Registry;
 use Tygh\Settings;
 use Tygh\Themes\Themes;
+use Tygh\Http;
 
 function fn_rees46_generate_info()
 {
@@ -17,14 +18,6 @@ function fn_rees46_generate_orders()
 {
     $res = __('rees46_orders');
     $res = $res.'<p><a href="' . fn_url('rees46.export_orders') . '" class="btn btn-primary">' . __('rees46_export_order') . '</a></p>';
-    return $res;
-}
-
-
-function fn_rees46_sync_status_orders ()
-{
-    $res = __('rees46_sync_status');
-    $res = $res.'<p><a href="' . fn_url('rees46.sync_status_orders') . '" class="btn btn-primary">' . __('rees46_sync_status_orders') . '</a></p>';
     return $res;
 }
 
@@ -104,4 +97,47 @@ function fn_rees46_slack_notification() {
     }
 }
 
+function fn_sync_status_orders() {
+    $orderSync  = Config::getOrderSync();
+    if (!$orderSync) return;
+
+    $shop_id = Config::getShopID();
+    $shop_secret = Config::getShopSecret();
+    if (($shop_id == '') || ($shop_secret == '')) {
+        fn_set_notification('E', __('error'),__('rees46_error_export_order'), 'I');
+    } else {
+        $params = array('timestamp > ' . strtotime('-2 months'), 'items_per_page' => 500);
+        $orders = fn_get_orders($params);
+
+        $processed_orders = array();
+
+        foreach (reset($orders) as $order) {
+            $order_info = fn_get_order_info($order['order_id']);
+
+            $order_status = 0;
+            if (preg_match('/[FID]/', $order_info['status'])) {
+                $order_status = 2;
+            } elseif ($order_info['status'] == 'C') {
+                $order_status = 1;
+            } elseif (preg_match('/[OPBY]/', $order_info['status'])) {
+                $order_status = 0;
+            };
+
+            $order_formatted_info = array(
+                'id' => $order_info['order_id'],
+                'status' => $order_status
+            );
+
+            array_push($processed_orders, $order_formatted_info);
+        }
+
+        $result = array(
+            'shop_id' => $shop_id,
+            'shop_secret' => $shop_secret,
+            'orders' => $processed_orders
+        );
+
+        $respond = Http::post('http://api.rees46.com/import/sync_orders', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
+    }
+}
 

@@ -17,7 +17,13 @@ class Config
     }
     public static function getInstantSearch()
     {
-        return Registry::get('addons.rees46.instant_search');
+        $value = Registry::get('addons.rees46.instant_search');
+        return $value == "Y" ? true : false;
+    }
+    public static function getOrderSync()
+    {
+        $value = Registry::get('addons.rees46.auto_order_sync');
+        return $value == "Y" ? true : false;
     }
     public static function getModification()
     {
