@@ -16,17 +16,18 @@ function get_language() {
 }
 
 
-function recursive_category($pid, $f, $arr_category) {
+function recursive_category($pid, $f, $arr_category, $company_id) {
     $lang = get_language();
     if (empty($lang)) { exit; };
-    $query = "SELECT cat1.category_id AS id, cat1.parent_id
-        AS parentId, cat2.category
-        AS name FROM `?:categories`
-        AS cat1
+    $query = "
+        SELECT 
+            cat1.category_id AS id, 
+            cat1.parent_id AS parentId, 
+            cat2.category AS name 
+        FROM `?:categories` AS cat1
         LEFT JOIN `?:category_descriptions`AS cat2
         ON cat1.category_id = cat2.category_id
-        WHERE cat2.lang_code = '".$lang."' AND cat1.status = 'A' AND cat1.parent_id = ".$pid."
-            ";
+        WHERE cat2.lang_code = '{$lang}' AND cat1.status = 'A' AND cat1.parent_id = {$pid} AND cat1.company_id = {$company_id}";
     $categories = db_get_array($query, USERGROUP_ALL);
 
     if ($pid == 0) fwrite($f, chr(9).'<categories>'.chr(10));
@@ -35,7 +36,7 @@ function recursive_category($pid, $f, $arr_category) {
         if ($pid > 0) $str .= ' parentId="'.$pid.'"';
         fwrite($f, chr(9).chr(9).$str.' url="'. fn_url('categories.view?category_id=' . $category['id']) .'">'.check_xml($category['name']).'</category>'.chr(10));
         $arr_category[] = $category['id'];
-        recursive_category($category['id'], $f, $arr_category);
+        recursive_category($category['id'], $f, $arr_category, $company_id);
     }
     if ($pid == 0) fwrite($f, chr(9).'</categories>'.chr(10));
 }
@@ -43,9 +44,15 @@ function recursive_category($pid, $f, $arr_category) {
 function fn_yml_get_rees46_yml($filename){
     $arr_category = array();
     $company  = Registry::get('addons.my_yml.company_name');
-    $location = Registry::get('config.http_location');
+    $storefrontUrls = fn_get_storefront_urls(Registry::get('runtime.company_id'));
+    if (empty ($storefrontUrls) || empty($storefrontUrls["current_location"])) {
+        $location = Registry::get('config.http_location');
+    } else {
+        $location = $storefrontUrls["current_location"];
+    }
     $lmod     = date('Y-m-d H:i');
     $modification  = Registry::get('addons.rees46.modification');
+    $company_id = Registry::get('runtime.company_id');
 
     header("Content-Type: text/xml;charset=utf-8");
 
@@ -81,10 +88,11 @@ function fn_yml_get_rees46_yml($filename){
     fwrite($f, chr(9).'</currencies>'.chr(10));
     /*============================================================================*/
     // Загружаем дерево разделов каталога
-    recursive_category(0, $f, $arr_category);
+    recursive_category(0, $f, $arr_category, $company_id);
     /*============================================================================*/
     fwrite($f, chr(9).'<offers>'.chr(10));
-    $query = "SELECT DISTINCT
+    $query = "
+            SELECT DISTINCT
                 p.product_id AS id,
                 pdesc.product AS name,
                 pdesc.full_description AS descript
@@ -95,7 +103,7 @@ function fn_yml_get_rees46_yml($filename){
                 ON p.product_id=pdesc.product_id
             LEFT JOIN ?:product_prices AS prices
                 ON p.product_id = prices.product_id
-            WHERE pdesc.lang_code='".$lang."' AND p.status='A' AND p.amount > 0 AND prices.price > 0";
+            WHERE pdesc.lang_code='{$lang}' AND p.status='A' AND p.amount > 0 AND prices.price > 0";
     $products = db_get_array($query, USERGROUP_ALL);
 
     foreach ($products as $product) {
@@ -104,7 +112,7 @@ function fn_yml_get_rees46_yml($filename){
             SELECT products.category_id FROM ?:products_categories AS products
             LEFT JOIN ?:categories AS categories
             ON products.category_id = categories.category_id
-            WHERE products.product_id = ".$product['id']." AND products.link_type = 'M' AND categories.status = 'A'
+            WHERE products.product_id = {$product['id']} AND categories.status = 'A' AND categories.company_id = {$company_id}
             ORDER BY products.category_id
         ";
         $categoryResult = db_get_array($categoryQuery);
@@ -125,22 +133,29 @@ function fn_yml_get_rees46_yml($filename){
         fwrite($f, chr(9).chr(9).chr(9).'<currencyId>'.$line1['currency'].'</currencyId>'.chr(10));
         // список категорий для маркета именовали через ID категорий, и теперь получаем
         // ID категории конкретного товара
-        $line1 = db_get_row($categoryQuery);
-        fwrite($f, chr(9).chr(9).chr(9).'<categoryId>'.$line1['category_id'].'</categoryId>'.chr(10));
+        //$line1 = db_get_row($categoryQuery);
+        //fwrite($f, chr(9).chr(9).chr(9).'<categoryId>'.$line1['category_id'].'</categoryId>'.chr(10));
+        foreach($categoryResult as $category) {
+            fwrite($f, chr(9).chr(9).chr(9).'<categoryId>'.$category['category_id'].'</categoryId>'.chr(10));
+        }
         // изображения.
         $img = fn_get_image_pairs($product["id"], "product", "M", false, true);
         fwrite($f, chr(9).chr(9).chr(9).'<picture>' . check_xml($img["detailed"]["http_image_path"]) . '</picture>'.chr(10));
 
         fwrite($f, chr(9).chr(9).chr(9).'<delivery>true</delivery>'.chr(10));
-        $query = "SELECT p.product_id AS id, pfvdesc.variant AS vendor
-                    FROM ?:products AS p
+        $query = "
+                SELECT 
+                    p.product_id AS id, 
+                    pfvdesc.variant AS vendor
+                FROM ?:products AS p
                 LEFT JOIN ?:product_features_values AS pfval
                     ON pfval.product_id = p.product_id
                 LEFT JOIN ?:product_feature_variant_descriptions AS pfvdesc
                     ON pfvdesc.variant_id = pfval.variant_id
                 LEFT JOIN ?:product_features_descriptions AS pfdesc
                     ON pfdesc.feature_id = pfval.feature_id
-                WHERE p.product_id =".$product['id']." AND 
+                WHERE p.product_id = {$product['id']} AND 
+                    p.company_id = {$company_id} AND
                     pfval.feature_id = pfdesc.feature_id AND
                     (pfdesc.description LIKE 'brand' OR
                     pfdesc.description LIKE 'vendor' OR
@@ -158,21 +173,25 @@ function fn_yml_get_rees46_yml($filename){
         // описание
         fwrite($f, chr(9).chr(9).chr(9).'<description>'.check_xml(strip_tags($product["descript"])).'</description>'.chr(10));
         if ($modification && $modification!='none') {
-            $query = "SELECT fd.description AS description, fvard.variant AS variant
-                        FROM ?:product_features_values AS fv
-                        LEFT JOIN ?:product_features_descriptions AS fd
-                            ON fd.feature_id = fv.feature_id
-                        LEFT JOIN ?:product_feature_variants AS fvar
-                            ON fvar.feature_id = fv.feature_id
-                        LEFT JOIN ?:product_feature_variant_descriptions AS fvard
-                            ON fvard.variant_id = fvar.variant_id
-                        LEFT JOIN ?:product_features AS pf
-                            ON pf.feature_id = fv.feature_id
-                        WHERE
-                            fv.product_id = ".$product['id']." AND
-                            (fd.description LIKE 'пол' OR fd.description LIKE 'gender') AND
-                            fv.variant_id = fvar.variant_id AND
-                            pf.status = 'A'";
+            $query = "
+                SELECT 
+                    fd.description AS description, 
+                    fvard.variant AS variant
+                FROM ?:product_features_values AS fv
+                LEFT JOIN ?:product_features_descriptions AS fd
+                    ON fd.feature_id = fv.feature_id
+                LEFT JOIN ?:product_feature_variants AS fvar
+                    ON fvar.feature_id = fv.feature_id
+                LEFT JOIN ?:product_feature_variant_descriptions AS fvard
+                    ON fvard.variant_id = fvar.variant_id
+                LEFT JOIN ?:product_features AS pf
+                    ON pf.feature_id = fv.feature_id
+                WHERE
+                    fv.product_id = {$product['id']} AND
+                    pf.company_id = {$company_id} AND
+                    (fd.description LIKE 'пол' OR fd.description LIKE 'gender') AND
+                    fv.variant_id = fvar.variant_id AND
+                    pf.status = 'A'";
             $line = db_get_row($query);
             $gender = '';
             if (!empty($line ['variant'])) {
@@ -187,26 +206,36 @@ function fn_yml_get_rees46_yml($filename){
                 }
             }
 
-            $query = "SELECT DISTINCT optvd.variant_name AS name
-                        FROM (
-                            (SELECT opt.option_id AS option_id, opt.product_id AS product_id, opt.status AS status
-                                FROM ?:product_options AS opt)
-                            UNION
-                            (SELECT opt.option_id AS option_id, opt.product_id AS product_id, NULL
-                                FROM ?:product_global_option_links AS opt)
+            $query = "
+                    SELECT DISTINCT optvd.variant_name AS name
+                    FROM (
+                        (SELECT 
+                            opt.option_id AS option_id, 
+                            opt.product_id AS product_id, 
+                            opt.status AS status
+                        FROM ?:product_options AS opt
+                        )
+                        UNION
+                            (SELECT 
+                                opt.option_id AS option_id, 
+                                opt.product_id AS product_id, 
+                                NULL
+                            FROM ?:product_global_option_links AS opt
+                            )
                         ORDER BY product_id
-                        ) AS opt
-                        LEFT JOIN ?:product_options_descriptions AS optd
-                            ON optd.option_id = opt.option_id
-                        LEFT JOIN ?:product_option_variants AS optv
-                            ON optv.option_id = opt.option_id
-                        LEFT JOIN ?:product_option_variants_descriptions AS optvd
-                            ON optvd.variant_id = optv.variant_id
-                        WHERE opt.product_id = ".$product['id']." AND
-                            (opt.status = 'A' OR opt.status IS NULL) AND
-                            (optd.option_name LIKE 'size' OR
-                            optd.option_name LIKE 'размер')
-                        ORDER BY name";
+                    ) AS opt
+                    LEFT JOIN ?:product_options_descriptions AS optd
+                        ON optd.option_id = opt.option_id
+                    LEFT JOIN ?:product_option_variants AS optv
+                        ON optv.option_id = opt.option_id
+                    LEFT JOIN ?:product_option_variants_descriptions AS optvd
+                        ON optvd.variant_id = optv.variant_id
+                    WHERE opt.product_id = {$product['id']} AND
+                        opt.company_id = {$company_id} AND
+                        (opt.status = 'A' OR opt.status IS NULL) AND
+                        (optd.option_name LIKE 'size' OR
+                        optd.option_name LIKE 'размер')
+                    ORDER BY name";
 
             $sizes = db_get_array($query, USERGROUP_ALL);
 

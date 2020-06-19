@@ -48,6 +48,9 @@ if ($mode == 'yml') {
 if ($mode == 'version') {
     $version = fn_get_addon_version('rees46');
     $version = !empty($version) ? $version : 'undefined';
-    echo 'REES46 add-on version: '.$version;
+    echo "REES46 add-on version: {$version}\n\n";
+    $company_id = Registry::get('runtime.company_id');
+    echo "StoreFront ID: {$company_id}";
+
     exit;
 }
