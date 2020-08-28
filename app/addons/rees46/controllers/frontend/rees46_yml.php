@@ -44,11 +44,15 @@ function recursive_category($pid, $f, $arr_category, $company_id) {
 function fn_yml_get_rees46_yml($filename){
     $arr_category = array();
     $company  = Registry::get('addons.my_yml.company_name');
-    $storefrontUrls = fn_get_storefront_urls(Registry::get('runtime.company_id'));
-    if (empty ($storefrontUrls) || empty($storefrontUrls["current_location"])) {
-        $location = Registry::get('config.http_location');
+    if (fn_allowed_for('ULTIMATE')) {
+        $storefrontUrls = fn_get_storefront_urls(Registry::get('runtime.company_id'));
+        if (empty ($storefrontUrls) || empty($storefrontUrls["current_location"])) {
+            $location = (defined('HTTPS')) ? Registry::get('config.https_location') : Registry::get('config.http_location');
+        } else {
+            $location = $storefrontUrls["current_location"];
+        }
     } else {
-        $location = $storefrontUrls["current_location"];
+        $location = (defined('HTTPS')) ? Registry::get('config.https_location') : Registry::get('config.http_location');
     }
     $lmod     = date('Y-m-d H:i');
     $modification  = Registry::get('addons.rees46.modification');

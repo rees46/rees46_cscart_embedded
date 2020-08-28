@@ -36,11 +36,15 @@ function fn_rees46_generate_statistics()
 function fn_rees46_yml_url()
 {
     $res = __('rees46_yml');
-    $storefrontUrls = fn_get_storefront_urls(Registry::get('runtime.company_id'));
-    if (empty ($storefrontUrls) || empty($storefrontUrls["current_location"])) {
-        $location = Registry::get('config.http_location');
+    if (fn_allowed_for('ULTIMATE')) {
+        $storefrontUrls = fn_get_storefront_urls(Registry::get('runtime.company_id'));
+        if (empty ($storefrontUrls) || empty($storefrontUrls["current_location"])) {
+            $location = (defined('HTTPS')) ? Registry::get('config.https_location') : Registry::get('config.http_location');
+        } else {
+            $location = $storefrontUrls["current_location"];
+        }
     } else {
-        $location = $storefrontUrls["current_location"];
+        $location = (defined('HTTPS')) ? Registry::get('config.https_location') : Registry::get('config.http_location');
     }
     $res = $res.'<input type="text" style="width:98%;font-size: 1.5em;cursor:text;" value="' . $location . '/index.php?dispatch=rees46.yml" disabled>';
     return $res;
