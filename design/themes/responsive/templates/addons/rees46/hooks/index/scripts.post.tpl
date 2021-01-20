@@ -102,8 +102,7 @@
             var productsPerLine = recommenderBlock.attr("rees46-data-perline");
 
             if (recommenderCode) {
-                r46("recommend", recommenderType, {
-                    code: recommenderCode,
+                r46("recommend", recommenderCode, {
                     {/literal}
                     {if ($runtime.controller == "products" && $runtime.mode == "search")}
                     search_query: "{$search.q}",
