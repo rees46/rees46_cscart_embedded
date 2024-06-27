@@ -1,1 +1,1 @@
-http://docs.rees46.com/pages/viewpage.action?pageId=1409157
+https://rees46.ru/docs/ru/setup/cms-plugins/cs-cart.html

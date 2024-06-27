@@ -3,8 +3,8 @@
 
 {literal}
 ({
-    api: "//api.rees46.com",
-    cdn: "//cdn.rees46.com",
+    api: "//api.rees46.ru",
+    cdn: "//cdn.rees46.ru",
     currentProductId: null,
     Init: function() {
 

@@ -81,7 +81,7 @@ function fn_rees46_slack_notification() {
     if (!function_exists('curl_init')) {
         return false;
     }
-    $url = 'https://app.rees46.com/trackcms/cs-cart';
+    $url = 'https://app.rees46.ru/trackcms/cs-cart';
     $store = strtolower(Registry::get('config.current_host'));
     if (!empty($app['session'])) {
         $user_info = fn_get_user_info(Tygh::$app['session']['auth']['user_id']);
@@ -147,7 +147,7 @@ function fn_sync_status_orders() {
             'orders' => $processed_orders
         );
 
-        $respond = Http::post('http://api.rees46.com/import/sync_orders', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
+        $respond = Http::post('https://api.rees46.ru/sync/orders', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
     }
 }
 

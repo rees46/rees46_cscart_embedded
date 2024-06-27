@@ -47,7 +47,7 @@ if ($mode == 'export_orders') {
             'orders' => $processed_orders
         );
 
-	$respond=Http::post('http://api.rees46.com/import/orders.json', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
+	$respond=Http::post('https://api.rees46.ru/sync/orders', json_encode($result), array( 'headers' => array('Content-Type: application/json')));
 	if (strtoupper($respond)=='OK') {
 		fn_set_notification('N', __('rees46_export_success'), '', 'I');
 	} else {

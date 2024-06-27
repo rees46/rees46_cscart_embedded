@@ -187,20 +187,20 @@
     <language_variables>
 
         <item lang="ru" id="rees46_info">
-            &lt;p&gt;Если вы ещё не зарегистрированы в REES46, то, пожалуйста, &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;зарегистрируйтесь&lt;/a&gt;. Затем добавьте свой интернет-магазин в &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личном кабинете&lt;/a&gt; REES46. Обратите внимание на &quot;&lt;b&gt;код магазина&lt;/b&gt;&quot; и &quot;&lt;b&gt;секретный ключ&lt;/b&gt;&quot;, они понадобятся для настройки модуля.&lt;/p&gt;
+            &lt;p&gt;Если вы ещё не зарегистрированы в REES46, то, пожалуйста, &lt;a href=&quot;http://rees46.ru&quot; target=&quot;_blank&quot;&gt;зарегистрируйтесь&lt;/a&gt;. Затем добавьте свой интернет-магазин в &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личном кабинете&lt;/a&gt; REES46. Обратите внимание на &quot;&lt;b&gt;код магазина&lt;/b&gt;&quot; и &quot;&lt;b&gt;секретный ключ&lt;/b&gt;&quot;, они понадобятся для настройки модуля.&lt;/p&gt;
         </item>
         <item lang="ru" id="rees46_orders">
             &lt;p&gt;Процесс обучения алгоритма рекомендаций занимает определенное время. Основное время, как правило, требуется на сбор информации и построение взаимосвязей между покупателями и товарами. Ускорить это время можно, загрузив в систему REES46 историю ваших заказов за последние полгода. Это позволяет построить рекомендации для ваших предыдущих клиентов и сформировать более детальные связи между товарами. Загрузка истории может занять некоторое время.&lt;/p&gt;
         </item>
         <item lang="ru" id="rees46_docs">
-            &lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
+            &lt;p&gt;Ознакомьтесь с &lt;a href=&quot;http://docs.rees46.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;подробной инструкцией&lt;/a&gt; по настройке модуля и расстановке блоков рекомендаций.&lt;/p&gt;
         </item>
         <item lang="ru" id="rees46_statistics">
-            &lt;p&gt;Для анализа статистики работы товарных рекомендаций, пожалуйста, перейдите в ваш &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личный кабинет&lt;/a&gt; REES46.&lt;/p&gt;
+            &lt;p&gt;Для анализа статистики работы товарных рекомендаций, пожалуйста, перейдите в ваш &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личный кабинет&lt;/a&gt; REES46.&lt;/p&gt;
         </item>
         <item lang="ru" id="rees46_error_export_order">Для выгрузки заказов и синхронизации статусов заказов введите код и секретный ключ вашего магазина в настройках модуля.</item>
         <item lang="ru" id="rees46_yml">
-            &lt;p&gt;Ссылку на YML-файл необходимо указать в настройках &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личного кабинета&lt;/a&gt; REES46.&lt;/p&gt;
+            &lt;p&gt;Ссылку на YML-файл необходимо указать в настройках &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;личного кабинета&lt;/a&gt; REES46.&lt;/p&gt;
         </item>
 
         <item lang="ru" id="rees46_menu">Рекомендательная система REES46</item>
@@ -219,21 +219,21 @@
         <item lang="ru" id="rees46_export_unsuccess">Ошибка инициализации выгрузки заказов в REES46.</item>
 
         <item lang="en" id="rees46_info">
-            &lt;p&gt;If you have not yet registered at REES46.com, please  &lt;a href=&quot;http://rees46.com&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Store Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
+            &lt;p&gt;If you have not yet registered at rees46.ru, please  &lt;a href=&quot;http://rees46.ru&quot; target=&quot;_blank&quot;&gt;sign up&lt;/a&gt;. After that you should enter the information about your online store in your REES46 &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;personal account&lt;/a&gt;. Pay attention at the &quot;&lt;b&gt;Store Key&lt;/b&gt;&quot; и &quot;&lt;b&gt;Secret Key&lt;/b&gt;&quot; which are needed to configure the module.&lt;/p&gt;
         </item>
         <item lang="en" id="rees46_orders">
             &lt;p&gt;The learning process of recommendation algorithm takes some time. The principal time is required to collect the information and build relationships between customers and products. You may speed up the learning process by uploading to REES46 your order history for the past six months. This will allow you to create the recommendations to your existing customers as well as to generate more detailed connections between the goods. The upload may take some time.&lt;/p&gt;
         </item>
 
         <item lang="en" id="rees46_docs">
-            &lt;p&gt;Please check out the &lt;a href=&quot;http://docs.rees46.com/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
+            &lt;p&gt;Please check out the &lt;a href=&quot;http://docs.rees46.ru/pages/viewpage.action?pageId=1409157&quot; target=&quot;_blank&quot;&gt;detailed instructions&lt;/a&gt; on configuring the module and placing the recommendations widgets.&lt;/p&gt;
         </item>
         <item lang="en" id="rees46_statistics">
-            &lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;To analyze the statistics of product recommendations, please sign in your &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;REES46 personal account&lt;/a&gt;.&lt;/p&gt;
         </item>
         <item lang="en" id="rees46_error_export_order">To upload orders, enter Store and Secret Keys in the module settings.</item>
         <item lang="en" id="rees46_yml">
-            &lt;p&gt;Please copy the link below and paste in the settings of your REES46 &lt;a href=&quot;https://rees46.com/customers/sign_in&quot; target=&quot;_blank&quot;&gt;profile&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;Please copy the link below and paste in the settings of your REES46 &lt;a href=&quot;https://rees46.ru/customers/sign_in&quot; target=&quot;_blank&quot;&gt;profile&lt;/a&gt;.&lt;/p&gt;
         </item>
 
         <item lang="en" id="rees46_menu">Recommender Engine REES46</item>
